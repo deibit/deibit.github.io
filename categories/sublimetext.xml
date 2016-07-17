@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (sublimetext)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/sublimetext.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Moving selected text in vim</title><link>http://deibit.com/posts/2012/08/22/moving-selected-text-in-vim/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;One of the features of other editors (put: SublimeText or Notepad++) that is not native to Vim is move selected text via Ctrl+shift+arrow.&lt;/p&gt;
+&lt;p&gt;But of course this is not problem in Vim, just add this to your .vimrc:&lt;/p&gt;
+&lt;p&gt;[sourcecode]&lt;/p&gt;
+&lt;p&gt;nnoremap &amp;lt;c-s-down&amp;gt; :m+&amp;lt;CR&amp;gt;==&lt;br&gt;
+nnoremap &amp;lt;c-s-up&amp;gt; :m-2&amp;lt;CR&amp;gt;==&lt;br&gt;
+inoremap &amp;lt;c-s-down&amp;gt; &amp;lt;Esc&amp;gt;:m+&amp;lt;CR&amp;gt;==gi&lt;br&gt;
+inoremap &amp;lt;c-s-up&amp;gt; &amp;lt;Esc&amp;gt;:m-2&amp;lt;CR&amp;gt;==gi&lt;br&gt;
+vnoremap &amp;lt;c-s-down&amp;gt; :m’&amp;gt;+&amp;lt;CR&amp;gt;gv=gv&lt;br&gt;
+vnoremap &amp;lt;c-s-up&amp;gt; :m-2&amp;lt;CR&amp;gt;gv=gv&lt;/p&gt;
+&lt;p&gt;[/sourcecode]&lt;/p&gt;
+&lt;p&gt;source: &lt;a href="http://vim.wikia.com/wiki/Moving_lines_up_or_down"&gt;http://vim.wikia.com/wiki/Moving_lines_up_or_down&lt;/a&gt;&lt;/p&gt;
+</description><category>lines</category><category>moving</category><category>notepad++</category><category>sublimetext</category><category>vim</category><guid>http://deibit.com/posts/2012/08/22/moving-selected-text-in-vim/</guid><pubDate>Wed, 22 Aug 2012 06:49:10 GMT</pubDate></item></channel></rss>

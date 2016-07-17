@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+<head>
+<meta charset="utf-8">
+<base href="http://deibit.com/">
+<meta name="description" content="This is a demo site for Nikola.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>deibit</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="http://deibit.com/">
+<link rel="next" href="index-11.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2013/05/20/damo-security-challenge-viii-write-up/" type="text/html">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://deibit.com/">
+
+                <span id="blog-title">deibit</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archivo</a>
+                </li>
+<li>
+<a href="categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2013/05/20/damo-security-challenge-viii-write-up/" class="u-url">Damo Security Challenge VIII - Write Up</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2013/05/20/damo-security-challenge-viii-write-up/" rel="bookmark"><time class="published dt-published" datetime="2013-05-20T14:58:38+02:00" title="2013-05-20 14:58">2013-05-20 14:58</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Well, the (at this time) final challenge of Damo series. A really cool one. I expected it would take me much more time but I must have been lucky solving it.</p>
+<p>This time we have to show our RE skills, more accurately on Java apps. Ok, we just download the zip that contains the GovermentFileStore.jar</p>
+<p>If we execute the app it shows a modal window asking for a username / password. I put it through a http-proxy (Burp) and sniffing all network activity with Wireshark but there weren’t activity at all. I put a wrong combination, failed of course but any network traffic…Ok, username and password are checked at home.</p>
+<p>By using a decompiler we target the custom package: com.security.challenge.eight, just wandering along the code the username/password arises:</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-111301-00001.png"><img class="aligncenter size-medium wp-image-682" alt="2013-05-20 11:13:01 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-111301-00001.png?w=300" width="300" height="230"></a></p>
+<p>Now we can upload files.I did some tries uploading little custom php shells (you know, the system($_GET['cmd']…) but it didn’t feel the way to go. Some of the advices at the challenge page says “flaws in the application”. Ok let’s change the strategy.</p>
+<p>From the captured traffic at Burp, our requests to the upload script uses a Basic Authentication coded string:</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-134505-00001.png"><img class="aligncenter size-medium wp-image-683" alt="2013-05-20 13:45:05 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-134505-00001.png?w=300" width="300" height="101"></a></p>
+<p>From the request we take the Basic Authentication value:</p>
+<p>Host: damo.clanteam.com<br><strong>Authorization: Basic YWRtaW5pc3RyYXRvcjphZGYwODkyM2RoZGZzZGZnNzQ1a2x4</strong><br>
+Accept: */*<br>
+Accept-Language: en<br>
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)<br>
+Connection: close</p>
+<p>When we decoded it (base64) results in:</p>
+<p>administrator:adf08923dhdfsdfg745klx</p>
+<p>Now we can tinker with it in the browser at the file_upload folder:</p>
+<p><img class="aligncenter size-medium wp-image-684" alt="2013-05-20 13:19:18 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-131918-00001.png?w=300" width="300" height="191"></p>
+<p>Besides other contestants stuff the admin’s file is there. What? ok, the older one and the first from the list.</p>
+<p>Now if we try to uncompress the file (a Zip format) it ask for a password.</p>
+<p>When we upload the file it seems to be already compressed (pay attention at the PK signature of the second screenshot) so the application is compressing and cyphering the zip. Additionally the package of the decompiled Java net.lingala.zip4j confirms all.</p>
+<p>Well, again, looking at the code it looked clear:</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-132656-00001.png"><img class="aligncenter size-medium wp-image-685" alt="2013-05-20 13:26:56 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-132656-00001.png?w=300" width="300" height="37"></a></p>
+<p>If the original filename was: <em>memo_to_hof_admin.txt</em> We only need to know the SHA1 hash of the filename (Python):</p>
+<p>&gt;&gt;&gt; hashlib.sha1(“memo_to_hof_admin.txt”).hexdigest()<br>
+’293b663b729409237c28c2ff5659b0ba22caf50b’</p>
+<p>Uncompressing the zip gives us a txt file with the following content:</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-135525-00001.png"><img class="aligncenter size-medium wp-image-686" alt="2013-05-20 13:55:25 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-135525-00001.png?w=300" width="300" height="139"></a></p>
+<p>And that’s all! We are done.</p>
+<p>Kudos to <a href="http://damo.clanteam.com/">damo</a> for the challenges, it was a pleasure to play with them.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2013/05/20/damo-security-challenge-vii-write-up/" class="u-url">Damo Security Challenge VII - Write Up</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2013/05/20/damo-security-challenge-vii-write-up/" rel="bookmark"><time class="published dt-published" datetime="2013-05-20T14:00:53+02:00" title="2013-05-20 14:00">2013-05-20 14:00</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Another write up on Damo’s Challenges. This time was the turn for VII and the topic was on WiFi caps. Really fun.</p>
+<p>All we got are some packets captured by a guy. A packet capture and some csv files from kismet, etc. We need to decrypt the packets to get the “conversation” in clear text. So we need the WEP key.</p>
+<p>If we try to use aircrack-ng with the capture it will say that the IV (initialization vector) are insufficient in number. So, how are we gonna manage to get the key?…The used router was an Eircom one. Googling it the results says some of them contains a weak algorithm when they make the default WEP key. In one of the csv files you can see the SSID of the router: “Eircom1234 5670″. Putting it in<a href="http://www.bacik.ie/eircomwep/"> this online key generator </a>brings us some WEP keys.</p>
+<table class=" aligncenter" border="0" cellpadding="10"><tbody>
+<tr>
+<td>WEP Key 1</td>
+<td>1809d03b82b17d47d8195be596</td>
+</tr>
+<tr>
+<td>WEP Key 2</td>
+<td>3e4e9dd68d42d47fb87b89cbc1</td>
+</tr>
+<tr>
+<td>WEP Key 3</td>
+<td>fd2e8feb1d511e4e1db9f6d98e</td>
+</tr>
+<tr>
+<td>WEP Key 3</td>
+<td>7181fdcaca488e991ed90bb124</td>
+</tr>
+</tbody></table>
+<p>Using airdecap-ng with the key on the capture file output the decrypted version of the file:</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-071321-00001.png"><img class="aligncenter size-medium wp-image-677" alt="2013-05-20 07:13:21 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-071321-00001.png?w=300" width="300" height="178"></a></p>
+<p>And opening the file with wireshark shows a nice view of the capture.</p>
+<p>damo.clanteam.com resolves to 67.220.217.235, filtering by this IP in Wireshark…</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-072136-00001.png"><img class="aligncenter size-medium wp-image-678" alt="2013-05-20 07:21:36 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-072136-00001.png?w=300" width="300" height="178"></a></p>
+<p>Looking for the right request we can see the Basic Authentication token and just by decoding it (base64):</p>
+<p>YWRtaW46eDRnaDlpMTA= -&gt; admin:x4gh9i10</p>
+<p>We got the user/pass. The url to go is in the capture too:</p>
+<p>damo.clanteam.com/sch7/updatehof</p>
+<p>That’s all. We are done.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2013/05/12/damo-security-challenge-vi-write-up/" class="u-url">Damo Security Challenge VI - Write Up</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2013/05/12/damo-security-challenge-vi-write-up/" rel="bookmark"><time class="published dt-published" datetime="2013-05-12T11:50:25+02:00" title="2013-05-12 11:50">2013-05-12 11:50</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>I managed to have to some time to post on another write up. This is the challenge number 6 (ta-ta-taaaa), numbers IV, V, IX and X are offline by now.</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-12-100706-00001.png"><img class="aligncenter size-medium wp-image-667" alt="2013-05-12 10:07:06 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-12-100706-00001.png?w=300" width="300" height="203"></a></p>
+<p>We have the Hall of Fame page (like previous challenges) a members area and this time a Register functionality where you can have an account.</p>
+<p>After creating an account proceed to the login page and mark the remember me box. By doing this two cookies will be created: usernamesch6 and passwordsch6. Their values are codified in base64 (The username and the sha-512 hash of the password). This behavior marks the different so the key is close to those values.</p>
+<p>The application has to check if the user is admin before write a name in the Hall of Fame (We are in Members Only Area). Only the admin user is able to write there. How would the application check if the user is really the admin?</p>
+<p>A possible SQL sentence could be this way:</p>
+<p>SELECT ‘usernamesch6′ FROM users_table WHERE admin = ‘yes’ AND password = ‘passwordsch6′;</p>
+<p>So we need to get the sentence this form:</p>
+<p>SELECT ‘usernamesch6′ FROM users_table WHERE admin = ‘yes’ AND password =’1′ OR ’1′=’1′;</p>
+<p>Then the query will be affirmative and the application would think we are admin.</p>
+<p>Because the application decodes the value in base64 we previously need to code in base64 our payload.</p>
+<p>Payload should be 1′ OR ’1′=’1 which in base64 is the string: MScgT1IgJzEnPScx</p>
+<p>We set it in our cookie passwordsch6 and work done!</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-12-104147-00001.png"><img class="aligncenter size-medium wp-image-669" alt="2013-05-12 10:41:47 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-12-104147-00001.png?w=300" width="300" height="156"></a></p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2013/04/18/cansina-web-content-discover-tool/" class="u-url">Cansina Web Content Discovery Tool</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2013/04/18/cansina-web-content-discover-tool/" rel="bookmark"><time class="published dt-published" datetime="2013-04-18T17:26:00+02:00" title="2013-04-18 17:26">2013-04-18 17:26</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>I forgot to mention here in my blog a web pentest tool I’m making: <a href="https://github.com/deibit/cansina">Cansina</a>. Is just a little tool to discover by dictionary hidden content in a website. Useful (I hope) while doing web security assessment.   It is code in Python and accepts list of entries in plain text files that will use to tireless ask the website. It has a couple of interesting options and more is to come. If you are a pentester take a look at it. I hope it would be useful for you.</p>
+<p><a href="http://daganu.files.wordpress.com/2013/04/cansina-showcase.png"><img class="size-full wp-image" id="i-618" alt="Image" src="http://daganu.files.wordpress.com/2013/04/cansina-showcase.png?w=650"></a></p>
+<p>https://github.com/deibit/cansina</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2013/04/11/solving-ld-symbols-not-found-for-architecture-x86_64-in-osx/" class="u-url">Solving "ld: symbol(s) not found for architecture x86_64" in OSX</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2013/04/11/solving-ld-symbols-not-found-for-architecture-x86_64-in-osx/" rel="bookmark"><time class="published dt-published" datetime="2013-04-11T23:00:16+02:00" title="2013-04-11 23:00">2013-04-11 23:00</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>It seems that this error is rather frequently when compiling programs. I found mine compiling a dumb example after building <a href="https://github.com/LaurentGomila/SFML">SFML 2.0</a> (git)</p>
+<p>After browsing several answers none of them worked for me. Making a “lipo -info” on all the framework libs gives a perfect “x86_64″ seal of approval…mmm</p>
+<p>I tried to force clang++ with the known flags combinations -m32, -m64, -std=c++11, -stdlib=libc++ and so on.</p>
+<p>None.</p>
+<p>A short time before giving up a light was turned on.</p>
+<p>I remembered installing SFML before as a shared library instead of a framework and there were a bunch of previous headers installed in /usr/local/include/SFML.</p>
+<p>Deleting it all the next go went right.</p>
+<p>The problem here was (I suspect) that the compiler was looking for the /usr/local/include before the headers that inhabit the same folder framework hence causing odd errors.</p>
+<p>Here is the output when applied the -v flag in clang++</p>
+<p>/usr/include/c++/4.2.1<br>
+/usr/include/c++/4.2.1/backward<br>
+/usr/local/include<br>
+/usr/bin/../lib/clang/4.2/include<br>
+/usr/include<br>
+/System/Library/Frameworks (framework directory)<br>
+/Library/Frameworks (framework directory)</p>
+<p>As you may note /usr/local/include is before /Library/Frameworks</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2013/04/04/kevin-mitnicks-books/" class="u-url">Kevin Mitnick's books</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2013/04/04/kevin-mitnicks-books/" rel="bookmark"><time class="published dt-published" datetime="2013-04-04T22:28:18+02:00" title="2013-04-04 22:28">2013-04-04 22:28</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p><img src="http://daganu.files.wordpress.com/2013/04/mitnicks.jpg" class="size-full" alt="Kevin Mitnick's books"></p>
+<p>A series of books by Kevin Mitnick. Social skills are the future of (in) security. </p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2013/02/17/calling-python-from-c/" class="u-url">Calling Python from C++</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2013/02/17/calling-python-from-c/" rel="bookmark"><time class="published dt-published" datetime="2013-02-17T01:50:36+01:00" title="2013-02-17 01:50">2013-02-17 01:50</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Just a little snippet of code to show how to call python (an entire Python interpreter) from inside a C++ program:</p>
+<p>[sourcecode language="cpp"]<br>
+#include &lt;Python.h&gt;</p>
+<p>int main(int argc, char const *argv[])<br>
+{<br>
+Py_SetProgramName(const_cast&lt;char*&gt;(argv[0]));<br>
+Py_Initialize();<br>
+PyRun_SimpleString("from time import time,ctime\n" "print ‘Today is’,ctime(time())\n");<br>
+Py_Finalize();<br>
+return 0;<br>
+}<br>
+[/sourcecode]</p>
+<p>You will need the path to the Python headers and library “libpython2.7″ (2.7 for the Python version).</p>
+<p>In OSX I asked clang++ this way:</p>
+<p>clang++ -I./python2.7 -L. -lpython2.7 pyfromcpp.cpp -o pyfromcpp
+</p>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/12/22/remove-duplicate-entries-in-open-with-menu-in-osx/" class="u-url">Remove duplicate entries in "Open with..." menu in OSX</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/12/22/remove-duplicate-entries-in-open-with-menu-in-osx/" rel="bookmark"><time class="published dt-published" datetime="2012-12-22T01:09:12+01:00" title="2012-12-22 01:09">2012-12-22 01:09</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>When an app is updated it register again as a launcher overpopulating the “Open with” menu each time.</p>
+<p>Run this from a terminal (user permissions is ok) for cleaning the menu by reconstructing the index. Note that you should close Finder before trying the results.</p>
+<p>[sourcecode]</p>
+<p>/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user</p>
+<p>[/sourcecode]</p>
+<p>That’s valid for 10.5 or later.</p>
+<p>via <a href="http://macs.about.com/od/usingyourmac/qt/remove-duplicate-applications-from-open-with.htm">http://macs.about.com/od/usingyourmac/qt/remove-duplicate-applications-from-open-with.htm</a></p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/12/15/vim-extracting-text-via-match-and-replace/" class="u-url">vim: Extracting text via Match and Replace</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/12/15/vim-extracting-text-via-match-and-replace/" rel="bookmark"><time class="published dt-published" datetime="2012-12-15T22:23:54+01:00" title="2012-12-15 22:23">2012-12-15 22:23</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Lets suppose you want to extract text from some lines, exactly the url of the img tags.</p>
+<p>[sourcecode language="html"]</p>
+<p>&lt;img src="http://www.images.com/?=1" alt="images"/&gt;</p>
+<p>&lt;img src="http://www.images.com/?=2" alt="images2"/&gt;</p>
+<p>[/sourcecode]</p>
+<p>What we are going to do is match the target data with a regexp, group it and put it in the replace with field of a :s operation:</p>
+<p>:%s/.*\(http:\/\/www.images.com\/?=.\).*\1/g</p>
+<p>After that the two lines are replaced with:</p>
+<p>[sourcecode language="html"]</p>
+<p>http://www.images.com/?=1</p>
+<p>http://www.images.com/?=2</p>
+<p>[/sourcecode]</p>
+<p>What that weird expression means is:</p>
+<p>:%s///g -&gt; for all the buffer (%) substitute (s) this / with / this /</p>
+<p>The target part is:</p>
+<p>.*\(http:\/\/www.images.com\/?=.\).*</p>
+<p>.* -&gt; for every character as many as it appears</p>
+<p>\(http:\/\/www.images.com\/?=.\) -&gt; match this and put it in \1 group for latter reference.</p>
+<p>.*  -&gt; same as before.</p>
+<p>And the replacement is:</p>
+<p>\1</p>
+<p>Which means just take the first group and use it for replacement</p>
+<p>So the final results will be our beloved urls.</p>
+<p> </p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/11/23/fixing-java-security-cert-certificateexception-in-burp-suite/" class="u-url">Fixing java.security.cert.CertificateException in Burp Suite</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/11/23/fixing-java-security-cert-certificateexception-in-burp-suite/" rel="bookmark"><time class="published dt-published" datetime="2012-11-23T23:20:06+01:00" title="2012-11-23 23:20">2012-11-23 23:20</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>When Burp suite accesses a server with an encrypted channel it depends in some way on the underlying Java Security layer when using java.security classes. It happens that Java 7 disables the old <a href="http://en.wikipedia.org/wiki/MD2_(cryptography)">MD2</a> algorithm by default in its policy file:</p>
+<p>File (windows):  <em>Programs Files\Java\jre7\lib\security\java.security</em></p>
+<p>(excerpt)</p>
+<p>…</p>
+<p><em>jdk.certpath.disabledAlgorithms=MD2</em></p>
+<p><em># Algorithm restrictions for Secure Socket Layer/Transport Layer Security</em><br><em># (SSL/TLS) processing</em><br><em>#</em><br><em># In some environments, certain algorithms or key lengths may be undesirable</em><br><em># when using SSL/TLS. This section describes the mechanism for disabling</em><br><em># algorithms during SSL/TLS security parameters negotiation, including cipher</em><br><em># suites selection, peer authentication and key exchange mechanisms.</em></p>
+<p>…</p>
+<p>So, if we visit any site that supports MD2 Java will raise an exception prenventing Burp from continuing its work. The infamous:</p>
+<p><em>Burp proxy error: java.security.cert.CertificateException: Certificates does not conform to algorithm constraints</em></p>
+<p>Just remove the ‘MD2′ from the directive and save the file. Your problem is gone but the whole Java ecosystem is now exposed and you have to remember to add the constraint again when finishing with Burp.</p>
+
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="next">
+                <a href="index-11.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul></nav>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:daganu@gmail.com">David García</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script><script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

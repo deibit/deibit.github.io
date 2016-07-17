@@ -1,0 +1,17 @@
+<html><body><p>Cuando tienes varias máquinas se hace tedioso loguearte cada vez que tienes que entrar en alguna.</p>
+<p>Para ello disponemos de la opción de autenticarnos a través de una llave.</p>
+<p>Primero generamos una llave en nuestra máquina local:</p>
+<p>home$ ssh-keygen -t rsa -b 4096</p>
+<p>Donde -t es el tipo de cifrado (rsa, dsa…) y -b es la lontigud en bits de la clave.</p>
+<p>Nos preguntará donde queremos guardar la llave. La opción por defecto es en ‘./ssh/id_rsa’</p>
+<p>Ahora debemos copiar la llave pública a la máquina remota:</p>
+<p>home$ scp ~/.ssh/id_rsa.pub usuario@remota:</p>
+<p>Esto deja la llave pública en nuestro ‘home’ remoto.</p>
+<p>Ahora debemos concatenar esa llave pública al archivo del home remoto ‘.ssh/authorized_keys’</p>
+<p>Entramos en la máquina remota y concatenamos la llave que hemos copiado a través de ‘scp’ en el home.</p>
+<p>remota$ cat id_rsa.pub &gt;&gt; .ssh/authorized_keys</p>
+<p>y borramos la llave pública:</p>
+<p>remota$ rm id_rsa.pub</p>
+<p>Si usamos GNOME el programa GNOME Keyring nos preguntará la frase de paso y nos dará opción a que cada vez que nos logueemos<br>
+lo hará por nosotros facilitando la entrada en cada máquina.</p>
+</body></html>

@@ -1,0 +1,74 @@
+<html><body><p>Cuando tienes más de una máquina y Vim (o cualquier otro programa) instalado en algunas de ellas, resulta tedioso ir copiando y manteniendo al día tu archivo de configuración (.vimrc) y los diversos plugins, archivos de sintaxis o esquemas de colores.</p>
+<p>Una de las soluciones que usaba era <a href="https://www.dropbox.com">DropBox</a>. Tenía una carpeta donde lo guardaba todo e iba subiendo y bajando a base de linea de comandos. Bastante cómodo la verdad.</p>
+<p>Usar un gestor de versiones no es una idea nueva. Hay gente que usa Subversion para gestionar documentación con bastante éxito. </p>
+<p>Bueno, la idea es usar Git para ese control de versiones. Alojar el repositorio en <a href="https://github.com/">GitHub</a> por comodidad y usar Pathogen (es un plugin para Vim) para cierta “magia” con los plugins.</p>
+<p><strong>Lo primero es instalar Git y que éste responda desde la linea de comandos</strong> (hay miles de guías para hacerlo). Y luego tener una cuenta en GitHub (es gratuito). Vamos, uno de los requisitos es saber manejar Git de manera básica.</p>
+<p>1.- Movemos  nuestro .vimrc a ~/.vim/vimrc (sin el ‘.’, no hace falta que esté oculto)</p>
+<p>[sourcecode language="bash"]<br>
+mv ~/.vimrc ~/.vim/vimrc<br>
+[/sourcecode]</p>
+<p>2.- Creamos un enlace simbólico para que Vim lo encuentre:</p>
+<p>[sourcecode language="bash"]<br>
+ln -s ~/.vim/vimrc ~/.vimrc<br>
+[/sourcecode]</p>
+<p>3.- Hacemos que nuestro .vim sea un repositorio de Git y agregamos los archivos iniciales:</p>
+<p>[sourcecode language="bash"]<br>
+cd ~/.vim<br>
+git init<br>
+git add .<br>
+git commit -m "Commit inicial"<br>
+[/sourcecode]</p>
+<p>4.- Instalamos “<a href="https://github.com/tpope/vim-pathogen">Pathogen</a>“.</p>
+<p>Para instalar Pathogen tan solo hay que guardar el archivo pathogen.vim en la carpeta: ~/.vim/autoload y agregar las dos lineas siguientes a nuestro .vimrc:</p>
+<p>[sourcecode]<br>
+call pathogen#runtime_append_all_bundles()<br>
+call pathogen#helptags()<br>
+[/sourcecode]</p>
+<p>También creamos la carpeta ~/.vim/bundle</p>
+<p>Ahí, en esa carpeta es donde vamos a ir guardando todos los plugins. La gracia de esto es que tenemos <a href="https://github.com/vim-scripts">tooooodos los plugins que queramos</a> pero en PATHs independientes. Cada uno en su carpeta, bien ordenados sin necesidad de crear archivos sueltos por todo el .vim</p>
+<p>Basta descomprimir la carpeta de un plugin en bundle, PATHogen se encarga del resto. Pero la gracia de todo esto es que en el mismo GitHub vamos a encontrar miles de plugins y otros para Vim.</p>
+<p>¿Que significa esto?</p>
+<p>Que vamos a poder instalar plugins y poder actualizarlos desde Git. </p>
+<p>¿Como?</p>
+<p>Cada plugin irá instalado independientemente como un “submodulo” de Git en la carpeta bundle.</p>
+<p>Se acabo tener los plugins sueltos y desactualizados y el desastre que suponía el proceder a borrar alguno. Ahora si no queremos un plugin simplemente borramos la carpeta con Git y listo.</p>
+<p>Naturalmente no hace falta Git ni GitHub para trabajar con Pathogen, pero el complemento es perfecto.</p>
+<p>5.- Creamos un repositorio en GitHub, vamos a suponer que lo llamamos “vimdots”</p>
+<p>El proceso para crear un repositorio en GitHub viene perfectamente explicado en sus guías.</p>
+<p>6.- Agregar repositorio remoto a nuestro repositorio local.</p>
+<p>Esto es, asociar el repositorio que hemos creado en GitHub a lo que tenemos ya en nuestro repositorio “.vim” local. La orden sería:</p>
+<p>[sourcecode]<br>
+cd ~/.vim<br>
+git remote add origin git@github.com:deibit/vimdots.git<br>
+git push -u origin master<br>
+[/sourcecode]</p>
+<p>Por supuesto con el nombre de nuestra cuenta y el nombre del repositorio GitHub que le hemos dado.</p>
+<p> 7.- Agregamos plugins y creamos submodulos para ellos.</p>
+<p>Lo ideal aquí sería <a href="https://github.com/vim-scripts">encontrar los plugins que deseemos en GitHub</a> y agregarlos simplemente con esta orden:</p>
+<p>Vamos a usar como ejemplo el plugin vim-fugitive que nos integra Git en Vim.</p>
+<p>[sourcecode]<br>
+cd ~/.vim<br>
+git submodule add http://github.com/tpope/vim-fugitive.git bundle/fugitive<br>
+[/sourcecode]</p>
+<p>Lo recomendable después de agregar, como cualquier fichero, es hacer push:</p>
+<p>[sourcecode]<br>
+git commit -am "Agregado plugin vim-fugitive"<br>
+git push -u origin master<br>
+[/sourcecode]</p>
+<p>Con esto vamos creando submodulos que son repositorios Git dentro de un repositorio Git.</p>
+<p>Los submodulos se pueden actualizar de golpe con:</p>
+<p>[sourcecode]<br>
+git submodule update<br>
+[/sourcecode]</p>
+<p><strong>ACTUALIZACIÓN</strong></p>
+<p>Se me olvidó comentar como hacemos para instalar este tinglado en otro ordenador. Es fácil. Lo primero es decirle a git que clone nuestro repositorio de GitHub en el directorio por defecto de Vim (~/.vim). Luego como nuestros plugins están en el directorio bundles y son a su vez repositorios de Git (ver el archivo .gitmodules) debemos de decirle a Git que proceda a instalarlos y actualizarlos también:</p>
+<p>[sourcecode]<br>
+git clone https://deibit@github.com/deibit/vimdots.git ~/.vim<br>
+git submodule init<br>
+git submodule update<br>
+[/sourcecode]</p>
+<p>Lo último es enlazar el vimrc de nuestro repositorio local en .vim al home que es donde Vim irá a buscarlo cuando arranque:</p>
+<p>[sourcecode]<br>
+ln -s ~/.vim/vimrc ~/.vimrc<br>
+[/sourcecode]</p>
+</body></html>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (vim)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/vim.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>vim: Extracting text via Match and Replace</title><link>http://deibit.com/posts/2012/12/15/vim-extracting-text-via-match-and-replace/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Lets suppose you want to extract text from some lines, exactly the url of the img tags.&lt;/p&gt;
+&lt;p&gt;[sourcecode language="html"]&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src="http://www.images.com/?=1" alt="images"/&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src="http://www.images.com/?=2" alt="images2"/&amp;gt;&lt;/p&gt;
+&lt;p&gt;[/sourcecode]&lt;/p&gt;
+&lt;p&gt;What we are going to do is match the target data with a regexp, group it and put it in the replace with field of a :s operation:&lt;/p&gt;
+&lt;p&gt;:%s/.*\(http:\/\/www.images.com\/?=.\).*\1/g&lt;/p&gt;
+&lt;p&gt;After that the two lines are replaced with:&lt;/p&gt;
+&lt;p&gt;[sourcecode language="html"]&lt;/p&gt;
+&lt;p&gt;http://www.images.com/?=1&lt;/p&gt;
+&lt;p&gt;http://www.images.com/?=2&lt;/p&gt;
+&lt;p&gt;[/sourcecode]&lt;/p&gt;
+&lt;p&gt;What that weird expression means is:&lt;/p&gt;
+&lt;p&gt;:%s///g -&amp;gt; for all the buffer (%) substitute (s) this / with / this /&lt;/p&gt;
+&lt;p&gt;The target part is:&lt;/p&gt;
+&lt;p&gt;.*\(http:\/\/www.images.com\/?=.\).*&lt;/p&gt;
+&lt;p&gt;.* -&amp;gt; for every character as many as it appears&lt;/p&gt;
+&lt;p&gt;\(http:\/\/www.images.com\/?=.\) -&amp;gt; match this and put it in \1 group for latter reference.&lt;/p&gt;
+&lt;p&gt;.*  -&amp;gt; same as before.&lt;/p&gt;
+&lt;p&gt;And the replacement is:&lt;/p&gt;
+&lt;p&gt;\1&lt;/p&gt;
+&lt;p&gt;Which means just take the first group and use it for replacement&lt;/p&gt;
+&lt;p&gt;So the final results will be our beloved urls.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+</description><category>:s</category><category>regexp</category><category>replacement</category><category>vim</category><guid>http://deibit.com/posts/2012/12/15/vim-extracting-text-via-match-and-replace/</guid><pubDate>Sat, 15 Dec 2012 21:23:54 GMT</pubDate></item><item><title>vim: The same vimrc on multiple computers</title><link>http://deibit.com/posts/2012/08/29/vim-the-same-vimrc-on-multiple-computers/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Reading this &lt;a href="http://usevim.com/2012/08/29/conditional-vimrc/"&gt;post&lt;/a&gt; I remember that I never commented here the way I (and a lot of people) use to share the same vimrc on different computers. Instead of doing it as that post says (which is not a great idea because an ‘ack’ may exists in OSX systems via port or homebrew) you can actually differentiate computers by…its name!…surprised?&lt;/p&gt;
+&lt;p&gt;Vim has a handy function called ‘hostname’. So, easy, just store it in a variable and let the music go:&lt;/p&gt;
+&lt;p&gt;let computername=hostname()&lt;/p&gt;
+&lt;p&gt;Now you can adapt your preferences between your computers. For example you can have a laptop with a little screen and a big iMac with a stunning 27 inch display. Obviously your columns and lines would not be the same.&lt;/p&gt;
+&lt;p&gt;How do you solve it? Come in, you are welcome to comment. I promise I won’t delete your contribution ;)&lt;/p&gt;
+</description><category>github</category><category>vim</category><category>vimrc</category><guid>http://deibit.com/posts/2012/08/29/vim-the-same-vimrc-on-multiple-computers/</guid><pubDate>Wed, 29 Aug 2012 20:02:01 GMT</pubDate></item><item><title>vim, substitute command with unicode characters</title><link>http://deibit.com/posts/2012/08/24/vim-substitute-command-with-unicode-characters/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;When we need to substitute an unicode character via a :s// command.&lt;/p&gt;
+&lt;p&gt;First we need to know which code the character have, it is easy with just typing: ga&lt;/p&gt;
+&lt;p&gt;ga brings us the ascii, hex and octal code of the character.&lt;/p&gt;
+&lt;p&gt;next we put it in our s command:&lt;/p&gt;
+&lt;p&gt;:%:s/\%u&amp;lt;code&amp;gt;/&amp;lt;substitution/g&lt;/p&gt;
+&lt;p&gt;note the % character before the code&lt;/p&gt;
+</description><category>substitution</category><category>unicode</category><category>vim</category><guid>http://deibit.com/posts/2012/08/24/vim-substitute-command-with-unicode-characters/</guid><pubDate>Fri, 24 Aug 2012 07:33:16 GMT</pubDate></item><item><title>Moving selected text in vim</title><link>http://deibit.com/posts/2012/08/22/moving-selected-text-in-vim/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;One of the features of other editors (put: SublimeText or Notepad++) that is not native to Vim is move selected text via Ctrl+shift+arrow.&lt;/p&gt;
+&lt;p&gt;But of course this is not problem in Vim, just add this to your .vimrc:&lt;/p&gt;
+&lt;p&gt;[sourcecode]&lt;/p&gt;
+&lt;p&gt;nnoremap &amp;lt;c-s-down&amp;gt; :m+&amp;lt;CR&amp;gt;==&lt;br&gt;
+nnoremap &amp;lt;c-s-up&amp;gt; :m-2&amp;lt;CR&amp;gt;==&lt;br&gt;
+inoremap &amp;lt;c-s-down&amp;gt; &amp;lt;Esc&amp;gt;:m+&amp;lt;CR&amp;gt;==gi&lt;br&gt;
+inoremap &amp;lt;c-s-up&amp;gt; &amp;lt;Esc&amp;gt;:m-2&amp;lt;CR&amp;gt;==gi&lt;br&gt;
+vnoremap &amp;lt;c-s-down&amp;gt; :m’&amp;gt;+&amp;lt;CR&amp;gt;gv=gv&lt;br&gt;
+vnoremap &amp;lt;c-s-up&amp;gt; :m-2&amp;lt;CR&amp;gt;gv=gv&lt;/p&gt;
+&lt;p&gt;[/sourcecode]&lt;/p&gt;
+&lt;p&gt;source: &lt;a href="http://vim.wikia.com/wiki/Moving_lines_up_or_down"&gt;http://vim.wikia.com/wiki/Moving_lines_up_or_down&lt;/a&gt;&lt;/p&gt;
+</description><category>lines</category><category>moving</category><category>notepad++</category><category>sublimetext</category><category>vim</category><guid>http://deibit.com/posts/2012/08/22/moving-selected-text-in-vim/</guid><pubDate>Wed, 22 Aug 2012 06:49:10 GMT</pubDate></item><item><title>vim pasting through ssh (PuTTy)</title><link>http://deibit.com/posts/2012/08/21/vim-pasting-through-ssh-putty/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;I always forget it whilst working in Putty. So here is this note when we want to paste anything in an open Vim in our ssh session:&lt;/p&gt;
+&lt;p&gt;set mouse=&lt;/p&gt;
+&lt;p&gt;insert mode&lt;/p&gt;
+&lt;p&gt;right mouse button&lt;/p&gt;
+</description><category>paste</category><category>putty</category><category>ssh</category><category>vim</category><guid>http://deibit.com/posts/2012/08/21/vim-pasting-through-ssh-putty/</guid><pubDate>Tue, 21 Aug 2012 07:33:07 GMT</pubDate></item><item><title>Folding in vim, basic setup</title><link>http://deibit.com/posts/2011/11/15/folding-on-vim-basic-setup/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Ok, I used a very basic setup for folding. Just put ‘set foldmethod=marker’ in my .vimrc and leave the marker as is set by default, this is: {{{ for start a fold and }}} for end it.&lt;/p&gt;
+&lt;p&gt;I haven’t any other set, so it just works fine but I need to “manually” set the folds. A little price I don’t mind to pay. &lt;/p&gt;
+&lt;p&gt;Well, let’s say you got a big class on Python but you want to hidden in a fold.&lt;/p&gt;
+&lt;p&gt;- Select the whole body class with ‘V}’&lt;br&gt;
+- put :fold&lt;/p&gt;
+&lt;p&gt;And that’s all. You got a fold.&lt;/p&gt;
+&lt;p&gt;The rest is the usually commands on folding:&lt;/p&gt;
+&lt;p&gt;zo, zc open and close a fold&lt;br&gt;
+zO, zC open/close all folds&lt;br&gt;
+zR, zM same as former but sets fold level to highest/0 level&lt;/p&gt;
+</description><category>fold</category><category>folding</category><category>vim</category><guid>http://deibit.com/posts/2011/11/15/folding-on-vim-basic-setup/</guid><pubDate>Tue, 15 Nov 2011 21:35:04 GMT</pubDate></item><item><title>Repeating a macro in a given range (vim)</title><link>http://deibit.com/posts/2011/11/14/repeating-a-macro-in-a-given-range-vim/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;As &lt;a href="http://www.reddit.com/r/vim/comments/djwkv/vim_gurus_is_there_a_way_to_replay_a_macro/"&gt;someone commented&lt;/a&gt; on Vim subreddit, there is a way to apply a macro in a given range, either a mark, lines, visual…&lt;/p&gt;
+&lt;p&gt;So, the ‘hack’ is using the ‘g’ command matching all lines (beware, this could break some combinations on macro that includes line up/down movements) and execute a normal command:&lt;/p&gt;
+&lt;p&gt;{range}g/./norm @a&lt;/p&gt;
+&lt;p&gt;(register ‘a’ used in the example)&lt;/p&gt;
+</description><category>macro</category><category>ranges</category><category>vim</category><guid>http://deibit.com/posts/2011/11/14/repeating-a-macro-in-a-given-range-vim/</guid><pubDate>Mon, 14 Nov 2011 14:50:31 GMT</pubDate></item><item><title>Two handy functions for turning on-off an 'IDE' in vim</title><link>http://deibit.com/posts/2011/09/13/two-handy-functions-for-turning-on-off-an-ide-in-vim/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Sometimes I found myself working on Vim as a simple editor, just to write a single file (tweaking a configuration file and similar stuff) but frequently I’m working on a project, these kind of project you’d use a complete IDE (put here Eclipse, NetBeans…). &lt;/p&gt;
+&lt;p&gt;Vim fills my needs in both sides so I worked two functions that make switching from side to side in a flick. Just put this in your vimrc and change key triggers as you want:&lt;/p&gt;
+&lt;div class="code-unformatted"&gt;&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="lineno"&gt; 1 &lt;/span&gt;nmap &amp;amp;lt;leader&amp;amp;gt;ide :call GetIDE()&amp;amp;lt;CR&amp;amp;gt;
+&lt;span class="lineno"&gt; 2 &lt;/span&gt;function! GetIDE()
+&lt;span class="lineno"&gt; 3 &lt;/span&gt;    if !exists(&amp;amp;quot;*GetIDE&amp;amp;quot;)
+&lt;span class="lineno"&gt; 4 &lt;/span&gt;        return
+&lt;span class="lineno"&gt; 5 &lt;/span&gt;    endif
+&lt;span class="lineno"&gt; 6 &lt;/span&gt;    NERDTree
+&lt;span class="lineno"&gt; 7 &lt;/span&gt;    TagbarOpen
+&lt;span class="lineno"&gt; 8 &lt;/span&gt;    set columns +=20
+&lt;span class="lineno"&gt; 9 &lt;/span&gt;endfunc
+&lt;span class="lineno"&gt;10 &lt;/span&gt;
+&lt;span class="lineno"&gt;11 &lt;/span&gt;nmap &amp;amp;lt;leader&amp;amp;gt;edi :call GetEDI()&amp;amp;lt;CR&amp;amp;gt;
+&lt;span class="lineno"&gt;12 &lt;/span&gt;function! GetEDI()
+&lt;span class="lineno"&gt;13 &lt;/span&gt;    if !exists(&amp;amp;quot;*GetEDI&amp;amp;quot;)
+&lt;span class="lineno"&gt;14 &lt;/span&gt;        return
+&lt;span class="lineno"&gt;15 &lt;/span&gt;    endif
+&lt;span class="lineno"&gt;16 &lt;/span&gt;    NERDTreeClose
+&lt;span class="lineno"&gt;17 &lt;/span&gt;    TagbarClose
+&lt;span class="lineno"&gt;18 &lt;/span&gt;    set columns -=20
+&lt;span class="lineno"&gt;19 &lt;/span&gt;endfunc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Just the idea is simple: leader+ide to get a full flavor IDE and leader+edi to return to an EDItor (pun wasn’t intended when named the function EDI = reverse(IDE);)&lt;/p&gt;
+&lt;p&gt;Code still needed a review and maybe an improvent but works right. Of course you’ll need NERDTree and Tagbar plugins but is easy to change these for your favorite plugin. &lt;/p&gt;
+&lt;p&gt;Hope it will be useful for you.&lt;/p&gt;
+</description><category>ide</category><category>vim</category><category>vimrc</category><guid>http://deibit.com/posts/2011/09/13/two-handy-functions-for-turning-on-off-an-ide-in-vim/</guid><pubDate>Tue, 13 Sep 2011 09:10:47 GMT</pubDate></item><item><title>Como funcionan los registros de vim</title><link>http://deibit.com/posts/2011/09/08/como-funcionan-los-registros-de-vim/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Copiar, pegar y cortar son conceptos que en Vim pueden llegar a ser un poco liosos si no se aprende bien como funciona el tema de los registros.&lt;/p&gt;
+&lt;p&gt;Los registros son “espacios” donde Vim guarda aquello que copiamos (&lt;strong&gt;y&lt;/strong&gt;ank) o borramos (&lt;strong&gt;d&lt;/strong&gt;elete). Cualquier operación que signifique borrar, copiar o en definitiva cambiar el texto va a ser “registrada” por Vim.&lt;/p&gt;
+&lt;p&gt;Vim posee 9 de estos registros, vamos a ver para que y como funciona cada uno de ellos:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;El registro sin nombre&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Invocado como “”&lt;/p&gt;
+&lt;p&gt;Vim copia aquí todo lo que se borra o copia. También copia a este registro aquello que se ha escrito en el último registro referenciado. Es decir:&lt;/p&gt;
+&lt;p&gt;“ay3w (seleccionar registro ‘a’ y copiar 3 palabras)&lt;/p&gt;
+&lt;p&gt;Podremos comprobar como tanto en el registro ‘a’ y en el registro sin nombre o ‘”‘ se halla el mismo valor.&lt;/p&gt;
+&lt;p&gt;El registro sin nombre es como un puntero a la última acción efectuada sobre un registro.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Los registros numerados del 0 al 9&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;El registro ’0′ se usa cada cada vez que se copia. Todo lo que copiemos estará en el registro ’0′.&lt;/p&gt;
+&lt;p&gt;Del 1 al 9 son registros que van a ir secuencialmente todo aquello que cambiemos en el texto. Cada cambio situará el texto contenido en un registro al siguiente (como una cola) al salir del registro ’9′ el contenido se perderá.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;El registro de borrado o ‘-’&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Aquí se sitúan los datos borrados siempre que el comando haya afectado a menos de una linea y no se haya invocado un registro específicamente.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Registros nombrados o registros a-z y A-Z&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Estos son los registros que el usuario puede invocar. Si se invoca como letra minúscula el contenido anterior se perderá. Si se invoca en mayúsculas el contenido será agregado al contenido anterior que tuviera el registro.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Registros de solo lectura ‘.’ ‘%’ ‘#’ y ‘:’&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;“. este registro contendrá el último texto insertado. Un registro tremendamente útil cuando se realizan operación de inserción repetitivas. &lt;/p&gt;
+&lt;p&gt;“% Contiene el nombre del archivo&lt;/p&gt;
+&lt;p&gt;“# Contiene el nombre del archivo alternativo&lt;/p&gt;
+&lt;p&gt;“: Contiene el último comando usado. Por ejemplo podemos hacer @: para volver a ejecutar el último comando otra vez.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;El registro de expresión “=&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Al invocar este registro Vim nos sitúa en la linea de comandos donde podremos introducir cualquier expresión válida que se evalúe o convierta a una cadena.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Los registros de selección y soltar (drag’n'drop) “* “+ y “~&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Estos registros son usados cuando se usa Vim en ambientes GUI. Escritorio de Windows, Mac OSX y X11.&lt;/p&gt;
+</description><category>registers</category><category>vim</category><guid>http://deibit.com/posts/2011/09/08/como-funcionan-los-registros-de-vim/</guid><pubDate>Thu, 08 Sep 2011 21:02:37 GMT</pubDate></item><item><title>vim, copiando a través de SSH</title><link>http://deibit.com/posts/2011/06/28/vim-copiando-a-traves-de-ssh/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Lo primero, ajustamos mouse a null :set mouse=&lt;/p&gt;
+&lt;p&gt;Ahora pasamos a modo insert y con el botón derecho del mouse podemos copiar la selección sin ningún tipo de perdida de formato de origen.&lt;/p&gt;
+</description><category>putty</category><category>ssh</category><category>vim</category><guid>http://deibit.com/posts/2011/06/28/vim-copiando-a-traves-de-ssh/</guid><pubDate>Tue, 28 Jun 2011 07:01:09 GMT</pubDate></item></channel></rss>

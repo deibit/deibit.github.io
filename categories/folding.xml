@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (folding)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/folding.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Folding in vim, basic setup</title><link>http://deibit.com/posts/2011/11/15/folding-on-vim-basic-setup/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Ok, I used a very basic setup for folding. Just put ‘set foldmethod=marker’ in my .vimrc and leave the marker as is set by default, this is: {{{ for start a fold and }}} for end it.&lt;/p&gt;
+&lt;p&gt;I haven’t any other set, so it just works fine but I need to “manually” set the folds. A little price I don’t mind to pay. &lt;/p&gt;
+&lt;p&gt;Well, let’s say you got a big class on Python but you want to hidden in a fold.&lt;/p&gt;
+&lt;p&gt;- Select the whole body class with ‘V}’&lt;br&gt;
+- put :fold&lt;/p&gt;
+&lt;p&gt;And that’s all. You got a fold.&lt;/p&gt;
+&lt;p&gt;The rest is the usually commands on folding:&lt;/p&gt;
+&lt;p&gt;zo, zc open and close a fold&lt;br&gt;
+zO, zC open/close all folds&lt;br&gt;
+zR, zM same as former but sets fold level to highest/0 level&lt;/p&gt;
+</description><category>fold</category><category>folding</category><category>vim</category><guid>http://deibit.com/posts/2011/11/15/folding-on-vim-basic-setup/</guid><pubDate>Tue, 15 Nov 2011 21:35:04 GMT</pubDate></item></channel></rss>

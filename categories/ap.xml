@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (ap)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/ap.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:35 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Easy Wireless Access Point in Windows 7</title><link>http://deibit.com/posts/2012/05/17/easy-wireless-access-point-in-windows-7-4/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;First, run a cmd with Administrator privileges and type this:&lt;/p&gt;
+&lt;p&gt;[sourcecode]netsh wlan set hostednetwork mode=allow ssid=yourchoice key=againyourchoice[/sourcecode]&lt;/p&gt;
+&lt;p&gt;You can set ‘ssid’ and ‘key’ to whatever fits to you.&lt;/p&gt;
+&lt;p&gt;Next let’s start the AP:&lt;/p&gt;
+&lt;p&gt;[sourcecode]netsh wlan start hostednetwork[/sourcecode]&lt;/p&gt;
+&lt;p&gt;When you’re finish:&lt;/p&gt;
+&lt;p&gt;[sourcecode]netsh wlan stop hostednetwork[/sourcecode]&lt;/p&gt;
+&lt;p&gt;‘netsh’ seems to be a very useful tool with a miriad of options. Would be worth to take time to explore it.&lt;/p&gt;
+</description><category>ap</category><category>cmd</category><category>netsh</category><category>wifi</category><category>windows</category><guid>http://deibit.com/posts/2012/05/17/easy-wireless-access-point-in-windows-7-4/</guid><pubDate>Thu, 17 May 2012 08:31:57 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+<head>
+<meta charset="utf-8">
+<base href="http://deibit.com/index-6.html">
+<meta name="description" content="This is a demo site for Nikola.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>deibit (publicaciones antiguas, página 6) | deibit</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="http://deibit.com/index-6.html">
+<link rel="prev" href="index-7.html" type="text/html">
+<link rel="next" href="index-5.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://deibit.com/">
+
+                <span id="blog-title">deibit</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archivo</a>
+                </li>
+<li>
+<a href="categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2011/01/03/xss-en-buscon-rae-es/" class="u-url">XSS en buscon.rae.es</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2011/01/03/xss-en-buscon-rae-es/" rel="bookmark"><time class="published dt-published" datetime="2011-01-03T21:28:19+01:00" title="2011-01-03 21:28">2011-01-03 21:28</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Vía un amigo me han pasado un XSS bastante cachondo. Ignoro si la masa mediática ha pasado por encima de él pero huele a carnaza ripia. Sin más:<br><br><br><a href="http://daganu.files.wordpress.com/2011/01/xss1.png"><img src="http://daganu.files.wordpress.com/2011/01/xss1.png?w=300" alt="" title="xss1" width="300" height="179" class="aligncenter size-medium wp-image-115"></a><br><br><br>
+No, no han “atacado” el servidor ni lo han “defaceado”. Se trata de un XSS no persistente que inyecta en un marco HTML procedente de un servidor externo, cuyo código usa como hojas de estilo (CSS) las propias del sitio de la rae para darle “autenticidad”.<br><br><br>
+Captura del resultado de dos tipos de peticiones, arriba una petición sin payload y abajo la que si lo lleva.<br><br><br><a href="http://daganu.files.wordpress.com/2011/01/xss3.png"><img src="http://daganu.files.wordpress.com/2011/01/xss3.png?w=300" alt="" title="xss3" width="300" height="173" class="aligncenter size-medium wp-image-116"></a><br><br><br>
+Poco que añadir. El parámetro ‘LEMA’ no es filtrado adecuadamente (¿se quedaron sólo en &amp;tl &amp;gt?) y en la petición con payload puede verse como se hace uso del DOM para modificar la propiedad ‘location’ de un formulario incrustando HTML externo desde el dominio http://leysinde.110mb.com. Un hosting gratuito.<br><br><br>
+El código incrustado, ya por curiosidad:<br><br><br><a href="http://daganu.files.wordpress.com/2011/01/xss2.png"><img src="http://daganu.files.wordpress.com/2011/01/xss2.png?w=300" alt="" title="xss2" width="300" height="179" class="aligncenter size-medium wp-image-118"></a><br><br><br>
+Me llamó la atención el .js http://cdn.viglink.com/api/vglnk.js lo interpreta y sale. Si ves el código desde el navegador no verás nada. Pero si tiras de wget no lo interpreta y:<br><br><br><a href="http://daganu.files.wordpress.com/2011/01/xss4.jpg"><img src="http://daganu.files.wordpress.com/2011/01/xss4.jpg?w=300" alt="" title="xss4" width="300" height="288" class="aligncenter size-medium wp-image-119"></a><br><br><br>
+Es un script que te mete 110mb.com para echarle un ojo a los números de tu sitio :D ¡Menuda desilusión!</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/12/18/anadir-librerias-nativas-en-netbeans/" class="u-url">Añadir librerías nativas en NetBeans</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/12/18/anadir-librerias-nativas-en-netbeans/" rel="bookmark"><time class="published dt-published" datetime="2010-12-18T17:07:18+01:00" title="2010-12-18 17:07">2010-12-18 17:07</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Compilando un proyecto en NetBeans, necesitaba referenciar librerías externas y nativas, es decir dll’s, dyn o so en Windows, Mac OSX y Linux respectivamente.</p>
+<p>En linea de comandos cuando se instancia java existe la opción de pasarle una definición con ‘-D’ y el atributo ‘java.library.path=PATH”. Con esto (en PATH añadimos la ruta entrecomillada) la VM podrá enlazar con las librerías y el programa no se quejará con un <em>java.lang.UnsatisfiedLinkError</em>.</p>
+<p>En Eclipse es muy sencillo añadirlas a través de las propiedades del proyecto (en otro post futuro lo pondré). En NetBeans la cosa anda a medio camino entre linea de comandos e IDE.</p>
+<p>Nos vamos a las propiedades del proyecto y en Run vemos una casilla para las opciones de la VM. Allí podemos poner la misma opción como si se tratara de que la linea de comandos.</p>
+<p>Una imagen:</p>
+<p><a href="http://daganu.files.wordpress.com/2010/12/netbeans.jpg"><img src="http://daganu.files.wordpress.com/2010/12/netbeans.jpg?w=300" alt="" title="netbeans" width="300" height="218" class="aligncenter size-medium wp-image-111"></a></p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/12/18/miniservidor-http-en-java/" class="u-url">Miniservidor Http en Java</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/12/18/miniservidor-http-en-java/" rel="bookmark"><time class="published dt-published" datetime="2010-12-18T16:35:26+01:00" title="2010-12-18 16:35">2010-12-18 16:35</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>En Python podemos escribir un pequeño servidor web tirando del paquete SimpleHttpServer, para cosillas básicas como un pequeño interfaz web de usuario ad hoc viene muy bien, además es estándar.</p>
+<p>Andaba buscando algo parecido para Java. Swing puede ser engorroso y montar un Tomcat es como matar moscas a cañonazos para una cosa pequeña.</p>
+<p>La solución la vi por Reddit cuando uno contestó a alguien sobre frameworks sencillos. El JDK dispone de una serie de clases para este tipo de cometidos. El paquete es <a href="http://download.oracle.com/javase/6/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/package-summary.html">com.sun.net.httpserver</a>. </p>
+<p>Con esto podemos montar un pequeño servidor al igual que con Python. Esta clase fue introducida al parecer con el JDK 1.6, solo que al estar en los paquetes sun y no en los estándar de la documentación no están tan a la vista.</p>
+<p>El código que dan de ejemplo ligeramente modificado:</p>
+<p>[sourcecode language="java"]<br>
+package javatest;</p>
+<p>import com.sun.net.httpserver.HttpExchange;<br>
+import com.sun.net.httpserver.HttpHandler;<br>
+import com.sun.net.httpserver.HttpServer;<br>
+import java.io.IOException;<br>
+import java.io.InputStream;<br>
+import java.io.OutputStream;<br>
+import java.net.InetSocketAddress;</p>
+<p>/**<br>
+ *<br>
+ * @author david<br>
+ */<br>
+public class Main implements HttpHandler {</p>
+<p>    /**<br>
+     * @param args the command line arguments<br>
+     */<br>
+    public static void main(String[] args) throws IOException {<br>
+        // TODO code application logic here<br>
+        HttpServer server = HttpServer.create();<br>
+        server.bind(new InetSocketAddress(8000), 100);<br>
+        server.createContext("/test", new Main());<br>
+        server.setExecutor(null);<br>
+        server.start();<br>
+    }</p>
+<p>    public void handle(HttpExchange he) throws IOException {<br>
+           InputStream is = he.getRequestBody();<br>
+           System.out.println(is);<br>
+           String response = "Respuesta";<br>
+           he.sendResponseHeaders(200, response.length());<br>
+           OutputStream os = he.getResponseBody();<br>
+           os.write(response.getBytes());<br>
+           os.close();<br>
+    }<br>
+}<br>
+[/sourcecode]</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/12/16/crear-librerias-dinamicas-en-mac-osx/" class="u-url">Crear librerías dinámicas en Mac OSX</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/12/16/crear-librerias-dinamicas-en-mac-osx/" rel="bookmark"><time class="published dt-published" datetime="2010-12-16T21:32:21+01:00" title="2010-12-16 21:32">2010-12-16 21:32</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Compilando sqllite3 para Mac OSX sale un archivo objeto sqlite3.o. Con el podemos enlazarlo estáticamente con nuestro ejecutable:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ gcc libsqlite3.o test.c -o test-stat</em></p>
+<p>vemos con file:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ file libsqlite3.o<br>
+libsqlite3.o: Mach-O 64-bit object x86_64</em></p>
+<p>Ese libsqlite3.o lo podemos transformar en una librería dinámica con:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ gcc -dynamiclib -o libsqlite3.dynlib libsqlite3.o</em></p>
+<p>hacemos un file:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ file libsqlite3.dylib<br>
+libsqlite3.dylib: Mach-O 64-bit dynamically linked shared library x86_64</em></p>
+<p>Si queremos que explicitamente nuestro ejecutable compile con esa librería y no la que viene (a riesgo de que no sea compatible) con<br>
+el SDK de Mac:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ gcc -L. -lsqlite3 test.c -o test-dyn</em></p>
+<p>comprobamos:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ otool -L test-dyn<br>
+test-dyn:<br>
+	libsqlite3.dylib (compatibility version 0.0.0, current version 0.0.0)<br>
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 125.2.1)</em></p>
+<p>Anteriormente, una simple compilación nos generaba un ejecutable enlazado dinámicamente con la sqlite3 del sistema y para ver la diferencia:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ otool -L test<br>
+test:<br>
+	/usr/lib/libsqlite3.dylib (compatibility version 9.0.0, current version 9.6.0)<br>
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 125.2.1)</em></p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/12/15/la-resolucion-minima-jamas-vista/" class="u-url">La resolución mínima jamas "vista"</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/12/15/la-resolucion-minima-jamas-vista/" rel="bookmark"><time class="published dt-published" datetime="2010-12-15T17:02:29+01:00" title="2010-12-15 17:02">2010-12-15 17:02</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Durante una instalación de las Additional Tools para una Ubuntu 10.10 en Virtual Box falló (igual siempre sale así) el driver de video. Es lógico puesto que precisamente se instala un nuevo driver en el huésped para mejorar la experiencia de usuario. El caso es que llamó la atención la forma de visualizarse la salida de video:<br><a href="http://daganu.files.wordpress.com/2010/12/petada.jpg"><img src="http://daganu.files.wordpress.com/2010/12/petada.jpg?w=300" alt="" title="petada" width="300" height="241" class="aligncenter size-medium wp-image-98"></a></p>
+<p>Lo que se ve a la izquierda es el símbolo o logo de Ubuntu, a la derecha de él, el menu de Aplicaciones (en inglés).<br><a href="http://daganu.files.wordpress.com/2010/12/petada2.jpg"><img src="http://daganu.files.wordpress.com/2010/12/petada2.jpg?w=300" alt="" title="petada2" width="300" height="241" class="aligncenter size-medium wp-image-99"></a></p>
+<p>Esa sombra que se ve por ahí en medio es el cursor.</p>
+<p>Resulta bella la mezcla de colores y caracteres ASCII, da la sensación de estamos tirando de consola para componer una proyección gráfica exagerada de la interfaz de usuario.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/12/15/qsplitter-en-qt-creator/" class="u-url">QSplitter en Qt Creator</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/12/15/qsplitter-en-qt-creator/" rel="bookmark"><time class="published dt-published" datetime="2010-12-15T06:06:07+01:00" title="2010-12-15 06:06">2010-12-15 06:06</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Si intentamos localizar el componente en la lista que tiene el diseñador en Qt Creator no lo veremos. QSplitter, aunque se trata de un widget visual, se halla en el menú contextual, exactamente en la parte de los ‘layout’.</p>
+<p>Basta con seleccionar dos componentes adecuados (por ejemplo) y seleccionar dicha opción:</p>
+<p><a href="http://daganu.files.wordpress.com/2010/12/splitter.png"><img src="http://daganu.files.wordpress.com/2010/12/splitter.png?w=300" alt="" title="splitter" width="300" height="222" class="aligncenter size-medium wp-image-93"></a></p>
+<p>Al final el resultado es el previsto:</p>
+<p><a href="http://daganu.files.wordpress.com/2010/12/captura-de-pantalla-2010-12-15-a-las-06-04-11.png"><img src="http://daganu.files.wordpress.com/2010/12/captura-de-pantalla-2010-12-15-a-las-06-04-11.png?w=300" alt="" title="qsplitter2" width="300" height="230" class="aligncenter size-medium wp-image-94"></a></p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/12/12/trucos-para-mac-osx/" class="u-url">Trucos para Mac OSX</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/12/12/trucos-para-mac-osx/" rel="bookmark"><time class="published dt-published" datetime="2010-12-12T15:23:32+01:00" title="2010-12-12 15:23">2010-12-12 15:23</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Hacer una “nota” instantánea con el texto seleccionado.</p>
+<p>cmd + shift + y </p>
+<p>Capturar la pantalla:</p>
+<p>cmd + shift + 3</p>
+<p>Capturar un trozo de pantalla a seleccionar:</p>
+<p>cmd + shift + 4</p>
+<p>si pulsamos ctrl también, la imagen se pegará al portapapeles.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/12/06/inicializacion-de-variables-en-plantillas/" class="u-url">Inicialización de variables en plantillas</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/12/06/inicializacion-de-variables-en-plantillas/" rel="bookmark"><time class="published dt-published" datetime="2010-12-06T10:05:27+01:00" title="2010-12-06 10:05">2010-12-06 10:05</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Cuando tratamos con tipos básicos nos encontramos con el problema de no saber a que valor debemos inicializarlo.</p>
+<p>Si el tipo es un entero podría ser ’0′ pero si es float el equivalente es ’0.0′</p>
+<p>En este caso no sabemos como inicializarlo:</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;<br>
+void funcion()<br>
+{<br>
+    T x;<br>
+}<br>
+[/sourcecode]</p>
+<p>Para inicializar a cero cualquier valor disponemos de un “inicializador”: <em>T x = T();</em></p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;<br>
+void funcion()<br>
+{<br>
+    T x = T();<br>
+}<br>
+[/sourcecode]</p>
+<p>En el caso de una función miembro, podemos hacerlo en la lista de inicialización de un constructor.</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;<br>
+class Test<br>
+{<br>
+   T var_miembro;<br>
+   Test() : var_miembro() {}<br>
+};<br>
+[/sourcecode]</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/12/06/miembros-de-clase-con-plantillas/" class="u-url">Miembros de clase con plantillas</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/12/06/miembros-de-clase-con-plantillas/" rel="bookmark"><time class="published dt-published" datetime="2010-12-06T09:28:45+01:00" title="2010-12-06 09:28">2010-12-06 09:28</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Aunque nuestra clase sea o no una clase plantilla sus miembros pueden ser plantillas a su vez o independientemente.</p>
+<p>Esto permite que una función miembro acepte un parámetro de tipo arbitrario.</p>
+<p>Por ejemplo al sobrecargar un constructor de copia.</p>
+<p>[sourcecode language="cpp"]<br>
+vector&lt;int&gt; vInt1;<br>
+vector&lt;int&gt; vInt2;<br>
+vector&lt;float&gt; vFloat1;<br>
+…<br>
+vInt1 = vInt2; // correcto<br>
+vInt1 = vFloat1; // error<br>
+[/sourcecode]</p>
+<p>En la cabecera de la clase (<em>clase.h</em>)</p>
+<p>[sourcecode language="cpp"]<br>
+…<br>
+template &lt;typename T2&gt;<br>
+    vector&lt;T&gt;&amp; operator= (vector&lt;T2&gt; const&amp;);<br>
+[/sourcecode]</p>
+<p>En la implementación:</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;  // si procede en la clase<br>
+ template &lt;typename T2&gt;<br>
+vector&lt;T&gt;&amp; vector&lt;T&gt;::operator= (vector&lt;T2&gt; const&amp; op2)<br>
+…<br>
+[/sourcecode]</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/12/06/typename-para-evitar-ambiguedades/" class="u-url">'typename' para evitar ambigüedades</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/12/06/typename-para-evitar-ambiguedades/" rel="bookmark"><time class="published dt-published" datetime="2010-12-06T08:28:09+01:00" title="2010-12-06 08:28">2010-12-06 08:28</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Vamos a suponer que tenemos una clase donde dentro de ella hemos definido un tipo:<br>
+[sourcecode language="cpp"]<br>
+…<br>
+typedef std::vector&lt;int&gt; Container;<br>
+…<br>
+[/sourcecode]</p>
+<p>Si hacemos referencia a este tipo para crear por ejemplo un nuevo objeto. Intuitivamente nos sale esto:</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;<br>
+class CTest<br>
+{<br>
+   T::Container * ptr;<br>
+};<br>
+[/sourcecode]</p>
+<p>Pero curiosamente lo que interpreta el compilador es que estamos multiplicando ‘ptr’ por un miembro clase de CTest.</p>
+<p>Para evitarlo se hace uso de ‘typename’.</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;<br>
+class CTest<br>
+{<br>
+   typename T::Container * ptr;<br>
+};<br>
+[/sourcecode]</p>
+
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="previous">
+                <a href="index-7.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-5.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul></nav>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:daganu@gmail.com">David García</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script><script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

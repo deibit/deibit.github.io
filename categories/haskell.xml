@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (haskell)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/haskell.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Actualizar la Haskell Platform en Mac OS X</title><link>http://deibit.com/posts/2011/03/29/actualizar-la-haskell-platform-en-mac-os-x/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Hace tiempo (¿febrero?) que publicaron una actualización de la plataforma Haskell. Como es un lenguaje con un ecosistema desconocido para mi preferí desinstalar la antigua plataforma antes de instalar la nueva.&lt;/p&gt;
+&lt;p&gt;Sucedió que no estaba claro por donde se le podía meter mano para desinstalar e incluso la gente del IRC tenía sus dudas. Entre unos y otros vimos que el desinstalador se hallaba en la ruta:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;/Library/Frameworks/GHC.framework/Tools&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;sudo Uninstaller y listo. &lt;/p&gt;
+&lt;p&gt;Tras la instalación de la nueva (es point and click) ya viene con el nuevo GHC 7.0.2&lt;/p&gt;
+&lt;p&gt;Ahora a pelearme con Cabal.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;a href="http://hackage.haskell.org/platform"&gt;&lt;img src="http://hackage.haskell.org/platform/icons/button-100.png"&gt;&lt;/a&gt;&lt;/p&gt;
+</description><category>haskell</category><category>MacOSX</category><category>uninstall</category><guid>http://deibit.com/posts/2011/03/29/actualizar-la-haskell-platform-en-mac-os-x/</guid><pubDate>Tue, 29 Mar 2011 14:56:11 GMT</pubDate></item></channel></rss>

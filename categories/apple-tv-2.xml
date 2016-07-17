@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (apple tv 2)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/apple-tv-2.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Solution to XBMC crashes on Apple TV2</title><link>http://deibit.com/posts/2011/10/14/solution-to-xbmc-crashes-on-apple-tv2/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;I was watching a tv show when xbmc suddenly crashes Apple TV. It rebooted and I continued play the movie. 10 minutes later the issue appeared again…and so on but always a 10 minutes lapse.&lt;/p&gt;
+&lt;p&gt;I checked manually if a new update for ATV2 would exists and yes, there was a new update. I pressed later (thanks, but I want my device as is it) and figured out how I could cut ATV2 from calling back home.&lt;/p&gt;
+&lt;p&gt;Easy, tell ATV2 a nice 127.0.0.1 answer to its request when asking for the update center domain.&lt;/p&gt;
+&lt;p&gt;¿What’s the domain?&lt;/p&gt;
+&lt;p&gt;As a programmer I’m soooo lazy. One way would be listening tcpdump for a DNS request, but this is a large amount of time (10 minutes) and a lot of keystroking. &lt;/p&gt;
+&lt;p&gt;Gooling a little I &lt;a href="http://forum.xbmc.org/showthread.php?t=91502&amp;amp;page=4"&gt;found&lt;/a&gt; the domain.&lt;/p&gt;
+&lt;p&gt;ssh your ATV2 (root@IP)&lt;br&gt;
+apt-get install nano&lt;br&gt;
+nano /etc/hosts&lt;/p&gt;
+&lt;p&gt;and add this:&lt;/p&gt;
+&lt;p&gt;127.0.0.1      mesu.apple.com&lt;/p&gt;
+&lt;p&gt;After watching 2 shows more XBMC is still running and waiting orders!&lt;/p&gt;
+</description><category>apple tv 2</category><category>atv2</category><category>crash</category><category>crashing</category><category>fix</category><category>hosts</category><category>xbmc</category><guid>http://deibit.com/posts/2011/10/14/solution-to-xbmc-crashes-on-apple-tv2/</guid><pubDate>Fri, 14 Oct 2011 21:49:44 GMT</pubDate></item></channel></rss>

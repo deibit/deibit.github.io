@@ -1,0 +1,10 @@
+<html><body><p>Si queremos editar y recargar nuestro archivo de configuración de Vim (.vimrc en Linux y compañía, _vimrc en Windows) para efectuar ciclos de prueba y error, hay dos comandos Ex y una varible de entorno que nos van a facilitar esta operación.</p>
+<p>El comando Ex <i>source </i>leera e interpretará el archivo que le pasemos, en este caso será el .vimrc.</p>
+<p>A su vez, la variable $MYVIMRC contiene el path hacia el archivo .vimrc. Puede comprobarse con un :echo $MYVIMRC.</p>
+<p>Si queremos editarlo de manera eventual, tan solo tenemos que abrirlo así:</p>
+<p>:e $MYVIMRC</p>
+<p>y cuando terminemos, volvemos a recargar el archivo para que nuestros cambios surtan efecto:</p>
+<p>:source $MYVIMRC</p>
+<p>Lo interesante es -si le metemos mano al vimrc bastante a menudo- mapear esas dos operaciones hacia cualquier combinación de teclas que tengamos libre añadiendo al vimrc las siguientes lineas:</p>
+<p><i>map s :source $MYVIMRC</i><br><i>map e :e $MYVIMRC</i><i></i></p>
+</body></html>

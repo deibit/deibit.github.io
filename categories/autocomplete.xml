@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (autocomplete)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/autocomplete.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>vim: Configurar (de una vez por todas) OmniCppComplete</title><link>http://deibit.com/posts/2011/04/19/vim-configurar-de-una-vez-por-todas-omnicppcomplete/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Una de las cosas que me traían mosqueado era el autocompletado en Vim para el lenguaje C++ (el lenguaje más complejo inventado por un ser humano). Para ello disponíamos de un plugin llamado “&lt;a href="http://www.vim.org/scripts/script.php?script_id=1520"&gt;OmniCppComplete&lt;/a&gt;” que venía a paliar la falta de una buena función de completado para C++ (se tiraba, hasta donde llegaba de la de C).&lt;/p&gt;
+&lt;p&gt;El problema es que hay distintas configuraciones para OmniCppComplete pululando por ahí, y entre experimentos y pruebas ninguna parecía funcionar; entre otras cosas por el quasihackeo que hay que hacerle a las cabeceras de la STL para poder obtener el ansiado completado cuando usamos esta librería.&lt;/p&gt;
+&lt;p&gt;La base de OmniCppComplete son los archivos generados por la herramienta “ctags”. Por cada librería que usemos, si queremos disponer del autocompletado debemos generar un archivo ctags. Y no de cualquier forma. Si variamos la configuración de ctags es posible que no obtengamos el resultado previsto.&lt;/p&gt;
+&lt;p&gt;A esto hay que sumarle la configuración del propio OmniCppComplete en nuestro “vimrc”, aquí dejo la que me ha funcionado con comentarios:&lt;/p&gt;
+&lt;p&gt;[sourcecode]&lt;br&gt;
+" Directorios donde encontrar ctags&lt;br&gt;
+set tags+=~/.vim/.tags/stl&lt;br&gt;
+set tags+=./tags&lt;/p&gt;
+&lt;p&gt;" Mapeado para generar ctags de nuestro proyecto&lt;br&gt;
+noremap &amp;lt;F12&amp;gt; :!ctags -R –c++-kinds=+p –fields=+iaS –extra=+q .&amp;lt;cr&amp;gt;&lt;br&gt;
+inoremap &amp;lt;F12&amp;gt; &amp;lt;Esc&amp;gt;:!ctags -R –c++-kinds=+p –fields=+iaS –extra=+q .&amp;lt;cr&amp;gt; &lt;/p&gt;
+&lt;p&gt;" Opciones para OmniCppComplete&lt;br&gt;
+let OmniCpp_NamespaceSearch = 1&lt;br&gt;
+let OmniCpp_GlobalScopeSearch = 1&lt;br&gt;
+let OmniCpp_ShowAccess = 1&lt;br&gt;
+let OmniCpp_MayCompleteDot = 1&lt;br&gt;
+let OmniCpp_MayCompleteArrow = 1&lt;br&gt;
+let OmniCpp_MayCompleteScope = 1&lt;br&gt;
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"] &lt;/p&gt;
+&lt;p&gt;" Opciones para el menu de completado&lt;br&gt;
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif&lt;br&gt;
+set completeopt=menuone,menu,longest,preview&lt;br&gt;
+[/sourcecode]&lt;/p&gt;
+&lt;p&gt;En “~/.vim/.tags” voy dejando los archivos ctags de las librerías típicas: stl, boost, Qt… y en “./tags” se dejan las tags del proyecto actual. &lt;/p&gt;
+&lt;p&gt;Hay que acordarse de actualizar la variable “OmniCpp_DefaultNamespaces” con los espacios de nombres que agreguemos.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Generando las tags para la STL&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Una de las primeras cosas que querremos es el completado para STL. Hay que bajar las cabeceras preparadas para procesarlas por ctags desde &lt;a href="http://www.vim.org/scripts/script.php?script_id=2358"&gt;aquí&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Luego sobre el directorio descomprimido:&lt;/p&gt;
+&lt;p&gt;[sourcecode language="bash"]&lt;br&gt;
+ctags -R –c++-kinds=+p –fields=+iaS –extra=+q –language-force=C++ cpp_src&lt;br&gt;
+[/sourcecode]&lt;/p&gt;
+&lt;p&gt;Y ya tenemos nuestro archivo de tags para copiarlo a “~/vim/.tags” o donde queramos (siempre que luego lo reflejemos en el vimrc con tags+=).&lt;/p&gt;
+&lt;p&gt;Una captura con el completado:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://daganu.files.wordpress.com/2011/04/stlcompletion.png"&gt;&lt;img src="http://daganu.files.wordpress.com/2011/04/stlcompletion.png?w=300" alt="" title="stlcompletion" width="300" height="253" class="aligncenter size-medium wp-image-274"&gt;&lt;/a&gt;&lt;/p&gt;
+</description><category>autocomplete</category><category>c++</category><category>vim</category><guid>http://deibit.com/posts/2011/04/19/vim-configurar-de-una-vez-por-todas-omnicppcomplete/</guid><pubDate>Tue, 19 Apr 2011 04:50:15 GMT</pubDate></item></channel></rss>

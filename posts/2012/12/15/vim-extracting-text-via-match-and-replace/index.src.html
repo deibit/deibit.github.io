@@ -1,0 +1,25 @@
+<html><body><p>Lets suppose you want to extract text from some lines, exactly the url of the img tags.</p>
+<p>[sourcecode language="html"]</p>
+<p>&lt;img src="http://www.images.com/?=1" alt="images"/&gt;</p>
+<p>&lt;img src="http://www.images.com/?=2" alt="images2"/&gt;</p>
+<p>[/sourcecode]</p>
+<p>What we are going to do is match the target data with a regexp, group it and put it in the replace with field of a :s operation:</p>
+<p>:%s/.*\(http:\/\/www.images.com\/?=.\).*\1/g</p>
+<p>After that the two lines are replaced with:</p>
+<p>[sourcecode language="html"]</p>
+<p>http://www.images.com/?=1</p>
+<p>http://www.images.com/?=2</p>
+<p>[/sourcecode]</p>
+<p>What that weird expression means is:</p>
+<p>:%s///g -&gt; for all the buffer (%) substitute (s) this / with / this /</p>
+<p>The target part is:</p>
+<p>.*\(http:\/\/www.images.com\/?=.\).*</p>
+<p>.* -&gt; for every character as many as it appears</p>
+<p>\(http:\/\/www.images.com\/?=.\) -&gt; match this and put it in \1 group for latter reference.</p>
+<p>.*  -&gt; same as before.</p>
+<p>And the replacement is:</p>
+<p>\1</p>
+<p>Which means just take the first group and use it for replacement</p>
+<p>So the final results will be our beloved urls.</p>
+<p> </p>
+</body></html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+<head>
+<meta charset="utf-8">
+<base href="http://deibit.com/index-2.html">
+<meta name="description" content="This is a demo site for Nikola.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>deibit (publicaciones antiguas, página 2) | deibit</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="http://deibit.com/index-2.html">
+<link rel="prev" href="index-3.html" type="text/html">
+<link rel="next" href="index-1.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://deibit.com/">
+
+                <span id="blog-title">deibit</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archivo</a>
+                </li>
+<li>
+<a href="categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/06/01/gnome-deshacernos-del-panel-principal/" class="u-url">Gnome: Deshacernos del panel principal</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/06/01/gnome-deshacernos-del-panel-principal/" rel="bookmark"><time class="published dt-published" datetime="2010-06-01T17:20:00+02:00" title="2010-06-01 17:20">2010-06-01 17:20</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Si tenemos instalado y tuneado AWN (Avant Window Navigator) y queremos quitar el panel principal, veremos que no se puede ya que está bloqueado para prevenir su borrado accidental.</p>
+<p>Para que el sistema adopte a AWN en vez de Gnome-Panel accedemos al editor de configuraciones del escritorio GNOME.</p>
+<p>gconf-editor</p>
+<p>Buscamos la rama Desktop -&gt; Gnome -&gt; Session -&gt; required_components</p>
+<p>En la entrada panel cambiamos el valor que esté por avant-window-navigator</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/05/31/vim-invocar-la-ayuda-desde-el-editor/" class="u-url">vim: Invocar la ayuda desde el editor</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/05/31/vim-invocar-la-ayuda-desde-el-editor/" rel="bookmark"><time class="published dt-published" datetime="2010-05-31T19:34:00+02:00" title="2010-05-31 19:34">2010-05-31 19:34</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Con el comando <b>K</b> podemos invocar la ayuda asociada al tipo de archivo. Si estamos editando un archivo fuente en C y nos situamos por <span style="font-family:inherit;">ejemplo</span> en la función “printf”, saldrá la página man asociada a esa función.</p>
+<p>Lo mismo en Perl o Python. Según la variable <tt>:set keywordprg </tt>esté asociada al lector de documentación del lenguaje en el que el fichero esté definido.</p>
+<p>En el caso por defecto <b>keywordprg=man</b> buscará en las páginas man. Si queremos que busque en una sección en concreto podemos añadir el número, por ejemplo: 3K mirará en la sección 3 de las páginas man.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/05/10/vim-exportar-a-html/" class="u-url">vim: Exportar a html...</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/05/10/vim-exportar-a-html/" rel="bookmark"><time class="published dt-published" datetime="2010-05-10T21:04:00+02:00" title="2010-05-10 21:04">2010-05-10 21:04</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Si tenemos texto que queremos exportar a HTML, Vim nos provee de un plugin estándar para hacerlo.</p>
+<p>Seleccionamos el rango (que obviamente puede ser todo el archivo) e introducimos el comando ‘TOhtml’</p>
+<p>El siguiente fragmento (aunque exigiría algunos retoques) está exportado con el mismo.<br><code><br><span style="background-color:#121212;"></span><font color="#e5786d">#include </font><font color="#95e454"><i></i></font></code></p>
+<p><span style="background-color:#121212;"></span><font color="#caeb82">int</font> main()</p>
+<p><span style="background-color:#121212;"></span>{</p>
+<p><span style="background-color:#121212;"></span>    <font color="#caeb82">int</font> ( *p )() = <font color="#e5786d">NULL</font>;</p>
+<p><span style="background-color:#121212;"></span>    (*p)();</p>
+<p><span style="background-color:#121212;"></span>    <font color="#87afff">return</font> <font color="#e5786d">0</font>;</p>
+<p><span style="background-color:#121212;"></span>}</p>
+<p><span style="background-color:#121212;"></span></p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/05/10/vim-movimiento-i/" class="u-url">vim: Movimiento (I)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/05/10/vim-movimiento-i/" rel="bookmark"><time class="published dt-published" datetime="2010-05-10T20:57:00+02:00" title="2010-05-10 20:57">2010-05-10 20:57</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Algunas combinaciones y comandos para movernos por la pantalla:</p>
+<p>h,j,k,l -&gt; izquierda, abajo, arriba, derecha</p>
+<p>Ctrt + e -&gt; desplazar pantalla hacia abajo<br>Ctrl + y -&gt; desplazar pantalla hacia arriba</p>
+<p>H, M, L -&gt; Arriba (High), Mitad (Middle), Abajo (Low)</p>
+<p>Ctrl + f -&gt; Avance página<br>Ctrl + b -&gt; Retroceso página</p>
+<p>ma -&gt; Poner una marca (a)<br>‘a -&gt; Ir a la marca (a)</p>
+<p>gg -&gt; Principio<br>G -&gt; Final</p>
+<p>[numero_de_linea]gg<br>[numero_de_linea]G           Ir a la linea [numero_de_linea]<br>:[numero_de_linea]</p>
+<p>w,W -&gt; Avanzar por palabra (sin/con símbolos)<br>b,B -&gt; Retroceder por palabra (sin/con símbolos)<br>e,E -&gt; Ir al final de la palabra (sin/con símbolos)</p>
+<p>f[caracter] -&gt; ir al carácter [carácter] más próximo<br>F[carácter] -&gt; ir al carácter [carácter] más próximo</p>
+<p>‘. -&gt; Ir a la última linea editada</p>
+<p>Ctrl + o -&gt; Ir a la posición anterior del cursor<br>Ctrl + i -&gt; Ir a la posición posterior del cursor</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/04/28/vim-filtrar-texto-varios-trucos/" class="u-url">vim: Filtrar texto (varios trucos)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/04/28/vim-filtrar-texto-varios-trucos/" rel="bookmark"><time class="published dt-published" datetime="2010-04-28T21:08:00+02:00" title="2010-04-28 21:08">2010-04-28 21:08</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>* Antes una utilísima función para “grepear” partes del texto hacia un registro:</p>
+<p>:g/patron/y A</p>
+<p>Se guardará en el registro “a</p>
+<p>Básicamente es: g = grep /patron_a_encontrar/ y = yank A = append</p>
+<p>* Leer la salida de un comando hacia el editor:</p>
+<p>:r!ls</p>
+<p>r = read ! = ejecutar_un_comando ls = comando_ls</p>
+<p>:-r!ls</p>
+<p>Lo mismo que el anterior pero el caracter ‘-’ al principio hará que el texto se inserte antes de la linea actual.</p>
+<p>* Usar un programa externo para filtrar texto:</p>
+<p>:%!sort</p>
+<p>% = todo_el_fichero ! = ejecutar_un_comando sort = comando_sort</p>
+<p>:10,20!sort</p>
+<p>Lo mismo que el anterior pero solo de la linea 10 a la 20 </p>
+<p>V<br>(seleccionar lineas)<br>!sort</p>
+<p>Es lo mismo que los anteriores pero usando el modo visual linea</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/04/25/vim-como-ver-simbolos-ocultos/" class="u-url">vim: Como ver símbolos ocultos</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/04/25/vim-como-ver-simbolos-ocultos/" rel="bookmark"><time class="published dt-published" datetime="2010-04-25T09:49:00+02:00" title="2010-04-25 09:49">2010-04-25 09:49</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Para hacer que Vim muestre los símbolos ocultos (saltos de linea, etc), tan solo tenemos que introducir:</p>
+<p>:set invlist</p>
+<p>Para volver a la situación anterior igualmente introducimos el mismo comando.</p>
+<p>La instrucción en si es ‘list’ que mostrará los caracteres ocultos, sólo que con ‘inv’ actuará de interruptor lógico, inviertiendo el estado actual.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/04/12/vim-deshabilitar-preview-en-omni-completion/" class="u-url">vim: deshabilitar "preview" en omni-completion</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/04/12/vim-deshabilitar-preview-en-omni-completion/" rel="bookmark"><time class="published dt-published" datetime="2010-04-12T06:40:00+02:00" title="2010-04-12 06:40">2010-04-12 06:40</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>A veces resulta molesto cuando activamos omni-completion y nos sale la ventana de ‘preview’. </p>
+<p>Para quitarla podemos añadir en nuestro .vimrc la siguiente línea:</p>
+<p>set cot -= preview</p>
+<p>cot es la abreviatura de complete options. Si queremos saber más :h cot.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/04/07/vim-statusline/" class="u-url">vim: statusline</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/04/07/vim-statusline/" rel="bookmark"><time class="published dt-published" datetime="2010-04-07T21:22:00+02:00" title="2010-04-07 21:22">2010-04-07 21:22</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>set statusline=%&lt;%F%m%r%y\ %{&amp;ff}\ %=\ lin:%l\/%L\ col:%c%V\ pos:%o\ ascii:%b\ hex:%B\ (%n)\ %p%%</p>
+<p>De izquierda a derecha: </p>
+<p>Ruta del fichero, Tipo de fichero, Tipo de edición fichero, Línea, Columna, Posición, Ascii, Hexadecimal, Número de buffer y porcentaje del fichero.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/03/25/gephi-visualizacion-y-exploracion-de-grafos/" class="u-url">Gephi - visualización y exploración de grafos</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/03/25/gephi-visualizacion-y-exploracion-de-grafos/" rel="bookmark"><time class="published dt-published" datetime="2010-03-25T16:02:00+01:00" title="2010-03-25 16:02">2010-03-25 16:02</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Esta herramienta de visualización y exploración de grafos. Está hecha en Java, sobre la plataforma NetBeans, módular (acepta plugins), es libre y multiplataforma.</p>
+<p><a href="http://gephi.org/">http://gephi.org/</a></p>
+<p>
+</p>
+<p><a href="http://vimeo.com/9726202">Introducing Gephi 0.7</a> from <a href="http://vimeo.com/gephi">gephi</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2010/03/10/code-bubbles-el-ide-del-futuro/" class="u-url">Code Bubbles: ¿El IDE del futuro?</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2010/03/10/code-bubbles-el-ide-del-futuro/" rel="bookmark"><time class="published dt-published" datetime="2010-03-10T23:13:00+01:00" title="2010-03-10 23:13">2010-03-10 23:13</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p><a href="http://www.cs.brown.edu/people/acb/codebubbles_site.htm">Code Bubbles.</a> Un nuevo concepto en diseño conceptual de entornos de desarrollo integrados. ¿Donde quedarán los días del WordStar y el Cobol? :)</p>
+<p><a href="http://www.youtube.com/v/PsPX0nElJ0k&amp;rel=0&amp;color1=0xb1b1b1&amp;color2=0xcfcfcf&amp;hl=en_US&amp;feature=player_embedded&amp;fs=1;rel=0">http://www.youtube.com/v/PsPX0nElJ0k&amp;rel=0&amp;color1=0xb1b1b1&amp;color2=0xcfcfcf&amp;hl=en_US&amp;feature=player_embedded&amp;fs=1;rel=0</a></p>
+
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="previous">
+                <a href="index-3.html" rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-1.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul></nav>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:daganu@gmail.com">David García</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script><script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

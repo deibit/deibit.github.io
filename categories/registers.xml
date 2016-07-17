@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (registers)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/registers.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:36 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Como funcionan los registros de vim</title><link>http://deibit.com/posts/2011/09/08/como-funcionan-los-registros-de-vim/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Copiar, pegar y cortar son conceptos que en Vim pueden llegar a ser un poco liosos si no se aprende bien como funciona el tema de los registros.&lt;/p&gt;
+&lt;p&gt;Los registros son “espacios” donde Vim guarda aquello que copiamos (&lt;strong&gt;y&lt;/strong&gt;ank) o borramos (&lt;strong&gt;d&lt;/strong&gt;elete). Cualquier operación que signifique borrar, copiar o en definitiva cambiar el texto va a ser “registrada” por Vim.&lt;/p&gt;
+&lt;p&gt;Vim posee 9 de estos registros, vamos a ver para que y como funciona cada uno de ellos:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;El registro sin nombre&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Invocado como “”&lt;/p&gt;
+&lt;p&gt;Vim copia aquí todo lo que se borra o copia. También copia a este registro aquello que se ha escrito en el último registro referenciado. Es decir:&lt;/p&gt;
+&lt;p&gt;“ay3w (seleccionar registro ‘a’ y copiar 3 palabras)&lt;/p&gt;
+&lt;p&gt;Podremos comprobar como tanto en el registro ‘a’ y en el registro sin nombre o ‘”‘ se halla el mismo valor.&lt;/p&gt;
+&lt;p&gt;El registro sin nombre es como un puntero a la última acción efectuada sobre un registro.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Los registros numerados del 0 al 9&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;El registro ’0′ se usa cada cada vez que se copia. Todo lo que copiemos estará en el registro ’0′.&lt;/p&gt;
+&lt;p&gt;Del 1 al 9 son registros que van a ir secuencialmente todo aquello que cambiemos en el texto. Cada cambio situará el texto contenido en un registro al siguiente (como una cola) al salir del registro ’9′ el contenido se perderá.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;El registro de borrado o ‘-’&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Aquí se sitúan los datos borrados siempre que el comando haya afectado a menos de una linea y no se haya invocado un registro específicamente.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Registros nombrados o registros a-z y A-Z&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Estos son los registros que el usuario puede invocar. Si se invoca como letra minúscula el contenido anterior se perderá. Si se invoca en mayúsculas el contenido será agregado al contenido anterior que tuviera el registro.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Registros de solo lectura ‘.’ ‘%’ ‘#’ y ‘:’&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;“. este registro contendrá el último texto insertado. Un registro tremendamente útil cuando se realizan operación de inserción repetitivas. &lt;/p&gt;
+&lt;p&gt;“% Contiene el nombre del archivo&lt;/p&gt;
+&lt;p&gt;“# Contiene el nombre del archivo alternativo&lt;/p&gt;
+&lt;p&gt;“: Contiene el último comando usado. Por ejemplo podemos hacer @: para volver a ejecutar el último comando otra vez.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;El registro de expresión “=&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Al invocar este registro Vim nos sitúa en la linea de comandos donde podremos introducir cualquier expresión válida que se evalúe o convierta a una cadena.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Los registros de selección y soltar (drag’n'drop) “* “+ y “~&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Estos registros son usados cuando se usa Vim en ambientes GUI. Escritorio de Windows, Mac OSX y X11.&lt;/p&gt;
+</description><category>registers</category><category>vim</category><guid>http://deibit.com/posts/2011/09/08/como-funcionan-los-registros-de-vim/</guid><pubDate>Thu, 08 Sep 2011 21:02:37 GMT</pubDate></item></channel></rss>

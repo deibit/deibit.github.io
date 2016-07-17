@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (decompiler)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/decompiler.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Damo Security Challenge VIII - Write Up</title><link>http://deibit.com/posts/2013/05/20/damo-security-challenge-viii-write-up/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Well, the (at this time) final challenge of Damo series. A really cool one. I expected it would take me much more time but I must have been lucky solving it.&lt;/p&gt;
+&lt;p&gt;This time we have to show our RE skills, more accurately on Java apps. Ok, we just download the zip that contains the GovermentFileStore.jar&lt;/p&gt;
+&lt;p&gt;If we execute the app it shows a modal window asking for a username / password. I put it through a http-proxy (Burp) and sniffing all network activity with Wireshark but there weren’t activity at all. I put a wrong combination, failed of course but any network traffic…Ok, username and password are checked at home.&lt;/p&gt;
+&lt;p&gt;By using a decompiler we target the custom package: com.security.challenge.eight, just wandering along the code the username/password arises:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-111301-00001.png"&gt;&lt;img class="aligncenter size-medium wp-image-682" alt="2013-05-20 11:13:01 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-111301-00001.png?w=300" width="300" height="230"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now we can upload files.I did some tries uploading little custom php shells (you know, the system($_GET['cmd']…) but it didn’t feel the way to go. Some of the advices at the challenge page says “flaws in the application”. Ok let’s change the strategy.&lt;/p&gt;
+&lt;p&gt;From the captured traffic at Burp, our requests to the upload script uses a Basic Authentication coded string:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-134505-00001.png"&gt;&lt;img class="aligncenter size-medium wp-image-683" alt="2013-05-20 13:45:05 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-134505-00001.png?w=300" width="300" height="101"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;From the request we take the Basic Authentication value:&lt;/p&gt;
+&lt;p&gt;Host: damo.clanteam.com&lt;br&gt;
+&lt;strong&gt;Authorization: Basic YWRtaW5pc3RyYXRvcjphZGYwODkyM2RoZGZzZGZnNzQ1a2x4&lt;/strong&gt;&lt;br&gt;
+Accept: */*&lt;br&gt;
+Accept-Language: en&lt;br&gt;
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)&lt;br&gt;
+Connection: close&lt;/p&gt;
+&lt;p&gt;When we decoded it (base64) results in:&lt;/p&gt;
+&lt;p&gt;administrator:adf08923dhdfsdfg745klx&lt;/p&gt;
+&lt;p&gt;Now we can tinker with it in the browser at the file_upload folder:&lt;/p&gt;
+&lt;p&gt;&lt;img class="aligncenter size-medium wp-image-684" alt="2013-05-20 13:19:18 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-131918-00001.png?w=300" width="300" height="191"&gt;&lt;/p&gt;
+&lt;p&gt;Besides other contestants stuff the admin’s file is there. What? ok, the older one and the first from the list.&lt;/p&gt;
+&lt;p&gt;Now if we try to uncompress the file (a Zip format) it ask for a password.&lt;/p&gt;
+&lt;p&gt;When we upload the file it seems to be already compressed (pay attention at the PK signature of the second screenshot) so the application is compressing and cyphering the zip. Additionally the package of the decompiled Java net.lingala.zip4j confirms all.&lt;/p&gt;
+&lt;p&gt;Well, again, looking at the code it looked clear:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-132656-00001.png"&gt;&lt;img class="aligncenter size-medium wp-image-685" alt="2013-05-20 13:26:56 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-132656-00001.png?w=300" width="300" height="37"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If the original filename was: &lt;em&gt;memo_to_hof_admin.txt&lt;/em&gt; We only need to know the SHA1 hash of the filename (Python):&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt;&amp;gt; hashlib.sha1(“memo_to_hof_admin.txt”).hexdigest()&lt;br&gt;
+’293b663b729409237c28c2ff5659b0ba22caf50b’&lt;/p&gt;
+&lt;p&gt;Uncompressing the zip gives us a txt file with the following content:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-135525-00001.png"&gt;&lt;img class="aligncenter size-medium wp-image-686" alt="2013-05-20 13:55:25 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-135525-00001.png?w=300" width="300" height="139"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And that’s all! We are done.&lt;/p&gt;
+&lt;p&gt;Kudos to &lt;a href="http://damo.clanteam.com/"&gt;damo&lt;/a&gt; for the challenges, it was a pleasure to play with them.&lt;/p&gt;
+</description><category>challenge</category><category>ctf</category><category>decompiler</category><category>java</category><category>writeup</category><guid>http://deibit.com/posts/2013/05/20/damo-security-challenge-viii-write-up/</guid><pubDate>Mon, 20 May 2013 12:58:38 GMT</pubDate></item></channel></rss>

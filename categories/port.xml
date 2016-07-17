@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (port)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/port.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:35 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Usando MacPorts</title><link>http://deibit.com/posts/2011/04/22/usando-macports/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Una de las carencias de los Macs es que le faltan ciertas librerías o que son anticuadas. Por ejemplo, la versión de GCC que trae por defecto (previa instalación de XCode) es la 4.2.1. Para paliar esa falta hay varias opciones: &lt;a href="https://github.com/mxcl/homebrew"&gt;Homebrew&lt;/a&gt;, &lt;a href="http://www.macports.org/"&gt;MacPorts&lt;/a&gt; y &lt;a href="http://www.finkproject.org/"&gt;Finks&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Personalmente uso MacPorts, aunque no he probado los otros, dejo aquí algunos comandos que siempre termino reaprendiendo cada vez que tengo que echar mano de él.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Buscar algún programa o librería:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$ port search “palabra”&lt;/p&gt;
+&lt;p&gt;Admite varias opciones como: –glob, –regex, –line y –case-sensitive entre otras.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Instalar:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$ sudo port install “paquete”&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Desinstalar:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$ sudo port uninstall “paquete”&lt;/p&gt;
+&lt;p&gt;Entre las opciones, permite cargarse o no las dependencias y/o dependencias inversas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;¿Que tengo instalado?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$ port installed&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Desinstala los que estén inactivos:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$ sudo port uninstall inactive&lt;/p&gt;
+&lt;p&gt;Me explico. Por defecto MacPorts no desinstala la versión anterior cuando actualizamos (para no romper dependencias) pero si queremos que las borre lo podemos hacer indicando “inactive” a la orden uninstall.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Actualizar MacPort:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$ sudo port selfudate&lt;/p&gt;
+&lt;p&gt;Esto es para actualizar “port”, la herramienta en si.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Actualizar paquetes:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$ sudo port upgrade outdated&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Información sobre un paquete:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$ port info “paquete”&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dependencias de un paquete:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$ port deps “paquete”&lt;/p&gt;
+&lt;p&gt;y las inversas: $ port dependents “paquete” &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hay bastantes más opciones, el programa es muy versátil e intuitivo, si queremos más información: &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$ port help&lt;br&gt;
+o&lt;br&gt;
+$ port help “comando”&lt;/p&gt;
+</description><category>MacOSX</category><category>macports</category><category>port</category><guid>http://deibit.com/posts/2011/04/22/usando-macports/</guid><pubDate>Fri, 22 Apr 2011 05:51:33 GMT</pubDate></item></channel></rss>

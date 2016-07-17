@@ -1,0 +1,13 @@
+<html><body><p>Copio directamente de <a href="http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern">Vim Tips</a> un apunte que es bastante útil.</p>
+<p>Si queremos borrar lineas que contengan un mismo patrón, en forma de expresión regular, hacemos:</p>
+<p>g/patron/d (gREP/PATRON/dELETE)</p>
+<p>Básicamente es grepear un patrón y conectarlo a una orden, en este caso ‘d’ delete o borrar.</p>
+<p><strong>EDITADO:</strong> Como dice un comentario, no es necesario el \s* para borrar las lineas en blanco. Esta opción su que nos serviría para borrar lineas que solo contengan espacios en blanco. Sería: g/^\s*$/d</p>
+<p>Un ejemplo, borrar todas las lineas en blanco:</p>
+<p>g/^$/d</p>
+<p>También se puede invertir el patrón (al igual que grep -v) si ponemos:</p>
+<p>g!/^$/d (nótese el signo de admiración) o cambiar la ‘g!’ por ‘v’.</p>
+<p>v/^$/d</p>
+<p>Todo esto es la misma filosofía que por ejemplo enviar las lineas que coincidan con un patrón hacia un mismo registro:</p>
+<p>g/patron/y A</p>
+</body></html>

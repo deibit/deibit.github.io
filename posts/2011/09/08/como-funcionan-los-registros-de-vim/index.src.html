@@ -1,0 +1,26 @@
+<html><body><p>Copiar, pegar y cortar son conceptos que en Vim pueden llegar a ser un poco liosos si no se aprende bien como funciona el tema de los registros.</p>
+<p>Los registros son “espacios” donde Vim guarda aquello que copiamos (<strong>y</strong>ank) o borramos (<strong>d</strong>elete). Cualquier operación que signifique borrar, copiar o en definitiva cambiar el texto va a ser “registrada” por Vim.</p>
+<p>Vim posee 9 de estos registros, vamos a ver para que y como funciona cada uno de ellos:</p>
+<p><strong>El registro sin nombre</strong></p>
+<p>Invocado como “”</p>
+<p>Vim copia aquí todo lo que se borra o copia. También copia a este registro aquello que se ha escrito en el último registro referenciado. Es decir:</p>
+<p>“ay3w (seleccionar registro ‘a’ y copiar 3 palabras)</p>
+<p>Podremos comprobar como tanto en el registro ‘a’ y en el registro sin nombre o ‘”‘ se halla el mismo valor.</p>
+<p>El registro sin nombre es como un puntero a la última acción efectuada sobre un registro.</p>
+<p><strong>Los registros numerados del 0 al 9</strong></p>
+<p>El registro ’0′ se usa cada cada vez que se copia. Todo lo que copiemos estará en el registro ’0′.</p>
+<p>Del 1 al 9 son registros que van a ir secuencialmente todo aquello que cambiemos en el texto. Cada cambio situará el texto contenido en un registro al siguiente (como una cola) al salir del registro ’9′ el contenido se perderá.</p>
+<p><strong>El registro de borrado o ‘-’</strong></p>
+<p>Aquí se sitúan los datos borrados siempre que el comando haya afectado a menos de una linea y no se haya invocado un registro específicamente.</p>
+<p><strong>Registros nombrados o registros a-z y A-Z</strong></p>
+<p>Estos son los registros que el usuario puede invocar. Si se invoca como letra minúscula el contenido anterior se perderá. Si se invoca en mayúsculas el contenido será agregado al contenido anterior que tuviera el registro.</p>
+<p><strong>Registros de solo lectura ‘.’ ‘%’ ‘#’ y ‘:’</strong></p>
+<p>“. este registro contendrá el último texto insertado. Un registro tremendamente útil cuando se realizan operación de inserción repetitivas. </p>
+<p>“% Contiene el nombre del archivo</p>
+<p>“# Contiene el nombre del archivo alternativo</p>
+<p>“: Contiene el último comando usado. Por ejemplo podemos hacer @: para volver a ejecutar el último comando otra vez.</p>
+<p><strong>El registro de expresión “=</strong></p>
+<p>Al invocar este registro Vim nos sitúa en la linea de comandos donde podremos introducir cualquier expresión válida que se evalúe o convierta a una cadena.</p>
+<p><strong>Los registros de selección y soltar (drag’n'drop) “* “+ y “~</strong></p>
+<p>Estos registros son usados cuando se usa Vim en ambientes GUI. Escritorio de Windows, Mac OSX y X11.</p>
+</body></html>

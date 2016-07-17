@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (calling)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/calling.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Calling Python from C++</title><link>http://deibit.com/posts/2013/02/17/calling-python-from-c/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Just a little snippet of code to show how to call python (an entire Python interpreter) from inside a C++ program:&lt;/p&gt;
+&lt;p&gt;[sourcecode language="cpp"]&lt;br&gt;
+#include &amp;lt;Python.h&amp;gt;&lt;/p&gt;
+&lt;p&gt;int main(int argc, char const *argv[])&lt;br&gt;
+{&lt;br&gt;
+Py_SetProgramName(const_cast&amp;lt;char*&amp;gt;(argv[0]));&lt;br&gt;
+Py_Initialize();&lt;br&gt;
+PyRun_SimpleString("from time import time,ctime\n" "print ‘Today is’,ctime(time())\n");&lt;br&gt;
+Py_Finalize();&lt;br&gt;
+return 0;&lt;br&gt;
+}&lt;br&gt;
+[/sourcecode]&lt;/p&gt;
+&lt;p&gt;You will need the path to the Python headers and library “libpython2.7″ (2.7 for the Python version).&lt;/p&gt;
+&lt;p&gt;In OSX I asked clang++ this way:&lt;/p&gt;
+&lt;p&gt;clang++ -I./python2.7 -L. -lpython2.7 pyfromcpp.cpp -o pyfromcpp
+&lt;/p&gt;</description><category>c++</category><category>call</category><category>calling</category><category>clang</category><category>Python</category><guid>http://deibit.com/posts/2013/02/17/calling-python-from-c/</guid><pubDate>Sun, 17 Feb 2013 00:50:36 GMT</pubDate></item></channel></rss>

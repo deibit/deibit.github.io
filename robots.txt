@@ -1,0 +1,4 @@
+Sitemap: http://deibit.com/sitemapindex.xml
+
+User-Agent: *
+Host: deibit.com

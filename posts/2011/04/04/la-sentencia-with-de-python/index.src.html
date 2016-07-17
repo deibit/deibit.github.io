@@ -1,0 +1,52 @@
+<html><body><p>‘with’ se introdujo en Python 2.5. En esa versión no estaba disponible directamente (eso fue a partir de la 2.6) y había que importarla con ‘with_statement’.</p>
+<p>‘with’ es una sentencia relacionada con la gestión de recursos y su tratamiento cuando estos provocan una excepción o salen de su entorno.</p>
+<p>Un ejemplo simple. Queremos abrir un fichero asignándolo a una variable, algo común en el quehacer diario.</p>
+<p>[sourcecode language="python"]<br>
+try:<br>
+    f = open("test_with.txt", ‘w’)<br>
+    f.write("prueba")<br>
+except:<br>
+    print "error al abrir fichero"<br>
+finally:<br>
+    if f:<br>
+        f.close()<br>
+[/sourcecode]</p>
+<p>El código es bastante autoexplicativo. f es el nombre al que asignamos un objeto archivo. Esta operación, la apertura de un archivo y escritura en el, puede ocasionar varios errores de naturaleza múltiple (no esta el archivo, no tenemos permisos…). Por ello capturamos la excepción y gestionamos. Si todo sale bien pasaremos a la clausula ‘finally’ y allí gestionaremos la liberación del recurso, en este caso simplemente cerrar el archivo.</p>
+<p>En este caso, somos nosotros los que estamos gestionando el recurso al cerrarlo ocurra o no una excepción. Mientras que somos responsables de responder ante las excepciones que este objeto nos quiera comunicar, gestionar el cierre del recurso es algo que el mismo recurso podría gestionar mejor que nosotros.</p>
+<p>¿No estaría mejor abrir el archivo, operar sobre el y listo?</p>
+<p>[sourcecode language="python"]<br>
+try:<br>
+    with open("test22.txt",’r') as f:<br>
+        f.write("prueba")<br>
+except:<br>
+    print "no esta el fichero"<br>
+[/sourcecode]</p>
+<p>En este fragmento ocurre eso precisamente. Gracias a ‘with’. Si observamos notaremos la ausencia del cierre del recurso, la comprobación de que sí está asignado a la variable ‘f’ y por supuesto, la clausula ‘finally’, ya que es el propio recurso quien se gestiona su propio cierre.</p>
+<p><strong>¿Como ocurre esto?</strong></p>
+<p>Cualquier tipo puede ser gestionado por ‘with’ a través de un “Manejador de contexto” (Context manager). Un manejador de contexto son dos funciones que van a ser llamadas por Python durante la ejecución. Los nombres son ‘__enter__’ y ‘__exit__’. Cuando se opera sobre el objeto se llama a ‘__enter__’ y cuando se sale, por cualquier motivo, se llama a ‘__exit__’.</p>
+<p>Un ejemplo:</p>
+<p>[sourcecode language="python"]<br>
+class With_Test(object):<br>
+    def __init__(self, n):<br>
+        print "en init…"<br>
+        self.n = n<br>
+    def __enter__(self):<br>
+        print "entrando…"<br>
+        return self<br>
+    def __exit__(self, exc_type, exec_value, traceback):<br>
+        print "saliendo…"<br>
+    def metodo(self):<br>
+        print "n vale: %s" % self.n</p>
+<p>with With_Test(8) as wt:<br>
+    wt.metodo()<br>
+[/sourcecode]</p>
+<p>Esto imprimirá por pantalla:</p>
+<p>[sourcecode]<br>
+bellucci:python david$ python test_with.py<br>
+en init…<br>
+entrando…<br>
+n vale: 8<br>
+saliendo…<br>
+[/sourcecode]</p>
+<p>Si construimos nuestros objetos con este método abstraemos a los usuarios de nuestras clases de la gestión de cierre del recurso. La sintaxis es más clara y elegante. </p>
+</body></html>

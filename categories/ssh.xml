@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (ssh)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/ssh.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>vim pasting through ssh (PuTTy)</title><link>http://deibit.com/posts/2012/08/21/vim-pasting-through-ssh-putty/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;I always forget it whilst working in Putty. So here is this note when we want to paste anything in an open Vim in our ssh session:&lt;/p&gt;
+&lt;p&gt;set mouse=&lt;/p&gt;
+&lt;p&gt;insert mode&lt;/p&gt;
+&lt;p&gt;right mouse button&lt;/p&gt;
+</description><category>paste</category><category>putty</category><category>ssh</category><category>vim</category><guid>http://deibit.com/posts/2012/08/21/vim-pasting-through-ssh-putty/</guid><pubDate>Tue, 21 Aug 2012 07:33:07 GMT</pubDate></item><item><title>vim, copiando a través de SSH</title><link>http://deibit.com/posts/2011/06/28/vim-copiando-a-traves-de-ssh/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Lo primero, ajustamos mouse a null :set mouse=&lt;/p&gt;
+&lt;p&gt;Ahora pasamos a modo insert y con el botón derecho del mouse podemos copiar la selección sin ningún tipo de perdida de formato de origen.&lt;/p&gt;
+</description><category>putty</category><category>ssh</category><category>vim</category><guid>http://deibit.com/posts/2011/06/28/vim-copiando-a-traves-de-ssh/</guid><pubDate>Tue, 28 Jun 2011 07:01:09 GMT</pubDate></item><item><title>Autenticación por llave en SSH</title><link>http://deibit.com/posts/2011/01/15/autenticacion-por-llave-en-ssh/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Cuando tienes varias máquinas se hace tedioso loguearte cada vez que tienes que entrar en alguna.&lt;/p&gt;
+&lt;p&gt;Para ello disponemos de la opción de autenticarnos a través de una llave.&lt;/p&gt;
+&lt;p&gt;Primero generamos una llave en nuestra máquina local:&lt;/p&gt;
+&lt;p&gt;home$ ssh-keygen -t rsa -b 4096&lt;/p&gt;
+&lt;p&gt;Donde -t es el tipo de cifrado (rsa, dsa…) y -b es la lontigud en bits de la clave.&lt;/p&gt;
+&lt;p&gt;Nos preguntará donde queremos guardar la llave. La opción por defecto es en ‘./ssh/id_rsa’&lt;/p&gt;
+&lt;p&gt;Ahora debemos copiar la llave pública a la máquina remota:&lt;/p&gt;
+&lt;p&gt;home$ scp ~/.ssh/id_rsa.pub usuario@remota:&lt;/p&gt;
+&lt;p&gt;Esto deja la llave pública en nuestro ‘home’ remoto.&lt;/p&gt;
+&lt;p&gt;Ahora debemos concatenar esa llave pública al archivo del home remoto ‘.ssh/authorized_keys’&lt;/p&gt;
+&lt;p&gt;Entramos en la máquina remota y concatenamos la llave que hemos copiado a través de ‘scp’ en el home.&lt;/p&gt;
+&lt;p&gt;remota$ cat id_rsa.pub &amp;gt;&amp;gt; .ssh/authorized_keys&lt;/p&gt;
+&lt;p&gt;y borramos la llave pública:&lt;/p&gt;
+&lt;p&gt;remota$ rm id_rsa.pub&lt;/p&gt;
+&lt;p&gt;Si usamos GNOME el programa GNOME Keyring nos preguntará la frase de paso y nos dará opción a que cada vez que nos logueemos&lt;br&gt;
+lo hará por nosotros facilitando la entrada en cada máquina.&lt;/p&gt;
+</description><category>bash</category><category>linux</category><category>ssh</category><guid>http://deibit.com/posts/2011/01/15/autenticacion-por-llave-en-ssh/</guid><pubDate>Sat, 15 Jan 2011 11:54:31 GMT</pubDate></item></channel></rss>

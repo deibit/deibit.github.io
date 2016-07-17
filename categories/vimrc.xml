@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (vimrc)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/vimrc.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>vim: The same vimrc on multiple computers</title><link>http://deibit.com/posts/2012/08/29/vim-the-same-vimrc-on-multiple-computers/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Reading this &lt;a href="http://usevim.com/2012/08/29/conditional-vimrc/"&gt;post&lt;/a&gt; I remember that I never commented here the way I (and a lot of people) use to share the same vimrc on different computers. Instead of doing it as that post says (which is not a great idea because an ‘ack’ may exists in OSX systems via port or homebrew) you can actually differentiate computers by…its name!…surprised?&lt;/p&gt;
+&lt;p&gt;Vim has a handy function called ‘hostname’. So, easy, just store it in a variable and let the music go:&lt;/p&gt;
+&lt;p&gt;let computername=hostname()&lt;/p&gt;
+&lt;p&gt;Now you can adapt your preferences between your computers. For example you can have a laptop with a little screen and a big iMac with a stunning 27 inch display. Obviously your columns and lines would not be the same.&lt;/p&gt;
+&lt;p&gt;How do you solve it? Come in, you are welcome to comment. I promise I won’t delete your contribution ;)&lt;/p&gt;
+</description><category>github</category><category>vim</category><category>vimrc</category><guid>http://deibit.com/posts/2012/08/29/vim-the-same-vimrc-on-multiple-computers/</guid><pubDate>Wed, 29 Aug 2012 20:02:01 GMT</pubDate></item><item><title>Two handy functions for turning on-off an 'IDE' in vim</title><link>http://deibit.com/posts/2011/09/13/two-handy-functions-for-turning-on-off-an-ide-in-vim/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Sometimes I found myself working on Vim as a simple editor, just to write a single file (tweaking a configuration file and similar stuff) but frequently I’m working on a project, these kind of project you’d use a complete IDE (put here Eclipse, NetBeans…). &lt;/p&gt;
+&lt;p&gt;Vim fills my needs in both sides so I worked two functions that make switching from side to side in a flick. Just put this in your vimrc and change key triggers as you want:&lt;/p&gt;
+&lt;div class="code-unformatted"&gt;&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="lineno"&gt; 1 &lt;/span&gt;nmap &amp;amp;lt;leader&amp;amp;gt;ide :call GetIDE()&amp;amp;lt;CR&amp;amp;gt;
+&lt;span class="lineno"&gt; 2 &lt;/span&gt;function! GetIDE()
+&lt;span class="lineno"&gt; 3 &lt;/span&gt;    if !exists(&amp;amp;quot;*GetIDE&amp;amp;quot;)
+&lt;span class="lineno"&gt; 4 &lt;/span&gt;        return
+&lt;span class="lineno"&gt; 5 &lt;/span&gt;    endif
+&lt;span class="lineno"&gt; 6 &lt;/span&gt;    NERDTree
+&lt;span class="lineno"&gt; 7 &lt;/span&gt;    TagbarOpen
+&lt;span class="lineno"&gt; 8 &lt;/span&gt;    set columns +=20
+&lt;span class="lineno"&gt; 9 &lt;/span&gt;endfunc
+&lt;span class="lineno"&gt;10 &lt;/span&gt;
+&lt;span class="lineno"&gt;11 &lt;/span&gt;nmap &amp;amp;lt;leader&amp;amp;gt;edi :call GetEDI()&amp;amp;lt;CR&amp;amp;gt;
+&lt;span class="lineno"&gt;12 &lt;/span&gt;function! GetEDI()
+&lt;span class="lineno"&gt;13 &lt;/span&gt;    if !exists(&amp;amp;quot;*GetEDI&amp;amp;quot;)
+&lt;span class="lineno"&gt;14 &lt;/span&gt;        return
+&lt;span class="lineno"&gt;15 &lt;/span&gt;    endif
+&lt;span class="lineno"&gt;16 &lt;/span&gt;    NERDTreeClose
+&lt;span class="lineno"&gt;17 &lt;/span&gt;    TagbarClose
+&lt;span class="lineno"&gt;18 &lt;/span&gt;    set columns -=20
+&lt;span class="lineno"&gt;19 &lt;/span&gt;endfunc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Just the idea is simple: leader+ide to get a full flavor IDE and leader+edi to return to an EDItor (pun wasn’t intended when named the function EDI = reverse(IDE);)&lt;/p&gt;
+&lt;p&gt;Code still needed a review and maybe an improvent but works right. Of course you’ll need NERDTree and Tagbar plugins but is easy to change these for your favorite plugin. &lt;/p&gt;
+&lt;p&gt;Hope it will be useful for you.&lt;/p&gt;
+</description><category>ide</category><category>vim</category><category>vimrc</category><guid>http://deibit.com/posts/2011/09/13/two-handy-functions-for-turning-on-off-an-ide-in-vim/</guid><pubDate>Tue, 13 Sep 2011 09:10:47 GMT</pubDate></item></channel></rss>

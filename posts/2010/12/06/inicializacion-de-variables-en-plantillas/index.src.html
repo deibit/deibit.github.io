@@ -1,0 +1,28 @@
+<html><body><p>Cuando tratamos con tipos básicos nos encontramos con el problema de no saber a que valor debemos inicializarlo.</p>
+<p>Si el tipo es un entero podría ser ’0′ pero si es float el equivalente es ’0.0′</p>
+<p>En este caso no sabemos como inicializarlo:</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;<br>
+void funcion()<br>
+{<br>
+    T x;<br>
+}<br>
+[/sourcecode]</p>
+<p>Para inicializar a cero cualquier valor disponemos de un “inicializador”: <em>T x = T();</em></p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;<br>
+void funcion()<br>
+{<br>
+    T x = T();<br>
+}<br>
+[/sourcecode]</p>
+<p>En el caso de una función miembro, podemos hacerlo en la lista de inicialización de un constructor.</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;<br>
+class Test<br>
+{<br>
+   T var_miembro;<br>
+   Test() : var_miembro() {}<br>
+};<br>
+[/sourcecode]</p>
+</body></html>

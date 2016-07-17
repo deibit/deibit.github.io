@@ -1,0 +1,26 @@
+<html><body><p>Sometimes I found myself working on Vim as a simple editor, just to write a single file (tweaking a configuration file and similar stuff) but frequently I’m working on a project, these kind of project you’d use a complete IDE (put here Eclipse, NetBeans…). </p>
+<p>Vim fills my needs in both sides so I worked two functions that make switching from side to side in a flick. Just put this in your vimrc and change key triggers as you want:</p>
+<div class="code-unformatted"><pre class="code literal-block"><span></span><span class="lineno"> 1 </span>nmap &amp;lt;leader&amp;gt;ide :call GetIDE()&amp;lt;CR&amp;gt;
+<span class="lineno"> 2 </span>function! GetIDE()
+<span class="lineno"> 3 </span>    if !exists(&amp;quot;*GetIDE&amp;quot;)
+<span class="lineno"> 4 </span>        return
+<span class="lineno"> 5 </span>    endif
+<span class="lineno"> 6 </span>    NERDTree
+<span class="lineno"> 7 </span>    TagbarOpen
+<span class="lineno"> 8 </span>    set columns +=20
+<span class="lineno"> 9 </span>endfunc
+<span class="lineno">10 </span>
+<span class="lineno">11 </span>nmap &amp;lt;leader&amp;gt;edi :call GetEDI()&amp;lt;CR&amp;gt;
+<span class="lineno">12 </span>function! GetEDI()
+<span class="lineno">13 </span>    if !exists(&amp;quot;*GetEDI&amp;quot;)
+<span class="lineno">14 </span>        return
+<span class="lineno">15 </span>    endif
+<span class="lineno">16 </span>    NERDTreeClose
+<span class="lineno">17 </span>    TagbarClose
+<span class="lineno">18 </span>    set columns -=20
+<span class="lineno">19 </span>endfunc
+</pre></div>
+<p>Just the idea is simple: leader+ide to get a full flavor IDE and leader+edi to return to an EDItor (pun wasn’t intended when named the function EDI = reverse(IDE);)</p>
+<p>Code still needed a review and maybe an improvent but works right. Of course you’ll need NERDTree and Tagbar plugins but is easy to change these for your favorite plugin. </p>
+<p>Hope it will be useful for you.</p>
+</body></html>

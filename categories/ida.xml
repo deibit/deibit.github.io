@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (ida)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/ida.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Ya se puede probar la versión demo de IDA Pro 6</title><link>http://deibit.com/posts/2010/11/30/ya-se-puede-probar-la-version-demo-de-ida-pro-6/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Desde la página oficial, se puede &lt;a href="http://www.hex-rays.com/idapro/idadowndemo.htm"&gt;descargar&lt;/a&gt; una versión demo de la nueva versión de IDA.&lt;br&gt;
+La característica estrella, sin duda, es la nueva interfaz gráfica basada en las librerías Qt. Una currada de Daniel Pistelli.&lt;/p&gt;
+&lt;p&gt;No obstante el nuevo IDA también trae la antigua interfaz, algo que facilitará a los antiguos usuarios la transición.&lt;/p&gt;
+&lt;p&gt;Una fotillo (versión Mac):&lt;/p&gt;
+&lt;div class="separator" style="clear:both;text-align:center;"&gt;&lt;a style="margin-left:1em;margin-right:1em;" href="http://daganu.files.wordpress.com/2010/11/ida41.jpg"&gt;&lt;img src="http://daganu.files.wordpress.com/2010/11/ida41.jpg?w=300" border="0" alt="" width="320" height="229"&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;div class="separator" style="clear:both;text-align:center;"&gt;&lt;/div&gt;
+&lt;div class="separator" style="clear:both;text-align:center;"&gt;&lt;/div&gt;
+&lt;div class="separator" style="clear:both;text-align:center;"&gt;&lt;/div&gt;
+</description><category>ida</category><category>qt</category><category>reversing</category><category>seguridad</category><guid>http://deibit.com/posts/2010/11/30/ya-se-puede-probar-la-version-demo-de-ida-pro-6/</guid><pubDate>Tue, 30 Nov 2010 18:42:00 GMT</pubDate></item></channel></rss>

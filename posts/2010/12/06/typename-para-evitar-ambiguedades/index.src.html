@@ -1,0 +1,24 @@
+<html><body><p>Vamos a suponer que tenemos una clase donde dentro de ella hemos definido un tipo:<br>
+[sourcecode language="cpp"]<br>
+…<br>
+typedef std::vector&lt;int&gt; Container;<br>
+…<br>
+[/sourcecode]</p>
+<p>Si hacemos referencia a este tipo para crear por ejemplo un nuevo objeto. Intuitivamente nos sale esto:</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;<br>
+class CTest<br>
+{<br>
+   T::Container * ptr;<br>
+};<br>
+[/sourcecode]</p>
+<p>Pero curiosamente lo que interpreta el compilador es que estamos multiplicando ‘ptr’ por un miembro clase de CTest.</p>
+<p>Para evitarlo se hace uso de ‘typename’.</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;<br>
+class CTest<br>
+{<br>
+   typename T::Container * ptr;<br>
+};<br>
+[/sourcecode]</p>
+</body></html>

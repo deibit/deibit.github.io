@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (substitution)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/substitution.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>vim, substitute command with unicode characters</title><link>http://deibit.com/posts/2012/08/24/vim-substitute-command-with-unicode-characters/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;When we need to substitute an unicode character via a :s// command.&lt;/p&gt;
+&lt;p&gt;First we need to know which code the character have, it is easy with just typing: ga&lt;/p&gt;
+&lt;p&gt;ga brings us the ascii, hex and octal code of the character.&lt;/p&gt;
+&lt;p&gt;next we put it in our s command:&lt;/p&gt;
+&lt;p&gt;:%:s/\%u&amp;lt;code&amp;gt;/&amp;lt;substitution/g&lt;/p&gt;
+&lt;p&gt;note the % character before the code&lt;/p&gt;
+</description><category>substitution</category><category>unicode</category><category>vim</category><guid>http://deibit.com/posts/2012/08/24/vim-substitute-command-with-unicode-characters/</guid><pubDate>Fri, 24 Aug 2012 07:33:16 GMT</pubDate></item></channel></rss>

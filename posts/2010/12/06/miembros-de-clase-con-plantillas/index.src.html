@@ -1,0 +1,25 @@
+<html><body><p>Aunque nuestra clase sea o no una clase plantilla sus miembros pueden ser plantillas a su vez o independientemente.</p>
+<p>Esto permite que una función miembro acepte un parámetro de tipo arbitrario.</p>
+<p>Por ejemplo al sobrecargar un constructor de copia.</p>
+<p>[sourcecode language="cpp"]<br>
+vector&lt;int&gt; vInt1;<br>
+vector&lt;int&gt; vInt2;<br>
+vector&lt;float&gt; vFloat1;<br>
+…<br>
+vInt1 = vInt2; // correcto<br>
+vInt1 = vFloat1; // error<br>
+[/sourcecode]</p>
+<p>En la cabecera de la clase (<em>clase.h</em>)</p>
+<p>[sourcecode language="cpp"]<br>
+…<br>
+template &lt;typename T2&gt;<br>
+    vector&lt;T&gt;&amp; operator= (vector&lt;T2&gt; const&amp;);<br>
+[/sourcecode]</p>
+<p>En la implementación:</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;  // si procede en la clase<br>
+ template &lt;typename T2&gt;<br>
+vector&lt;T&gt;&amp; vector&lt;T&gt;::operator= (vector&lt;T2&gt; const&amp; op2)<br>
+…<br>
+[/sourcecode]</p>
+</body></html>

@@ -1,0 +1,35 @@
+<html><body><p>Una de las cosas que me traían mosqueado era el autocompletado en Vim para el lenguaje C++ (el lenguaje más complejo inventado por un ser humano). Para ello disponíamos de un plugin llamado “<a href="http://www.vim.org/scripts/script.php?script_id=1520">OmniCppComplete</a>” que venía a paliar la falta de una buena función de completado para C++ (se tiraba, hasta donde llegaba de la de C).</p>
+<p>El problema es que hay distintas configuraciones para OmniCppComplete pululando por ahí, y entre experimentos y pruebas ninguna parecía funcionar; entre otras cosas por el quasihackeo que hay que hacerle a las cabeceras de la STL para poder obtener el ansiado completado cuando usamos esta librería.</p>
+<p>La base de OmniCppComplete son los archivos generados por la herramienta “ctags”. Por cada librería que usemos, si queremos disponer del autocompletado debemos generar un archivo ctags. Y no de cualquier forma. Si variamos la configuración de ctags es posible que no obtengamos el resultado previsto.</p>
+<p>A esto hay que sumarle la configuración del propio OmniCppComplete en nuestro “vimrc”, aquí dejo la que me ha funcionado con comentarios:</p>
+<p>[sourcecode]<br>
+" Directorios donde encontrar ctags<br>
+set tags+=~/.vim/.tags/stl<br>
+set tags+=./tags</p>
+<p>" Mapeado para generar ctags de nuestro proyecto<br>
+noremap &lt;F12&gt; :!ctags -R –c++-kinds=+p –fields=+iaS –extra=+q .&lt;cr&gt;<br>
+inoremap &lt;F12&gt; &lt;Esc&gt;:!ctags -R –c++-kinds=+p –fields=+iaS –extra=+q .&lt;cr&gt; </p>
+<p>" Opciones para OmniCppComplete<br>
+let OmniCpp_NamespaceSearch = 1<br>
+let OmniCpp_GlobalScopeSearch = 1<br>
+let OmniCpp_ShowAccess = 1<br>
+let OmniCpp_MayCompleteDot = 1<br>
+let OmniCpp_MayCompleteArrow = 1<br>
+let OmniCpp_MayCompleteScope = 1<br>
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"] </p>
+<p>" Opciones para el menu de completado<br>
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif<br>
+set completeopt=menuone,menu,longest,preview<br>
+[/sourcecode]</p>
+<p>En “~/.vim/.tags” voy dejando los archivos ctags de las librerías típicas: stl, boost, Qt… y en “./tags” se dejan las tags del proyecto actual. </p>
+<p>Hay que acordarse de actualizar la variable “OmniCpp_DefaultNamespaces” con los espacios de nombres que agreguemos.</p>
+<p><strong>Generando las tags para la STL</strong></p>
+<p>Una de las primeras cosas que querremos es el completado para STL. Hay que bajar las cabeceras preparadas para procesarlas por ctags desde <a href="http://www.vim.org/scripts/script.php?script_id=2358">aquí</a>. </p>
+<p>Luego sobre el directorio descomprimido:</p>
+<p>[sourcecode language="bash"]<br>
+ctags -R –c++-kinds=+p –fields=+iaS –extra=+q –language-force=C++ cpp_src<br>
+[/sourcecode]</p>
+<p>Y ya tenemos nuestro archivo de tags para copiarlo a “~/vim/.tags” o donde queramos (siempre que luego lo reflejemos en el vimrc con tags+=).</p>
+<p>Una captura con el completado:</p>
+<p><a href="http://daganu.files.wordpress.com/2011/04/stlcompletion.png"><img src="http://daganu.files.wordpress.com/2011/04/stlcompletion.png?w=300" alt="" title="stlcompletion" width="300" height="253" class="aligncenter size-medium wp-image-274"></a></p>
+</body></html>

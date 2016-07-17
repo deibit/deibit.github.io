@@ -1,0 +1,43 @@
+<html><body><p>En C++ si queremos tener un puntero a la función miembro de un objeto no podemos hacerlo como si fuese C, es decir:</p>
+<p>typedef void (*funcion) ();<br>
+funcion = &amp;t::f_Miembro;</p>
+<p>En lugar de ello la sintaxis es algo más curiosa:</p>
+<p>typedef void (Test::*pMember)(void);<br>
+pMember p;</p>
+<p>Luego, para ir asignando las funciones miembro:</p>
+<p>p = &amp;Test::Member;<br>
+…<br>
+p = &amp;Test::Member2;</p>
+<p>Es decir, cada vez que asignemos una función miembro y al igual que en la definición se hace<br>
+indicando la clase. Luego para usar ese puntero si se referencia al objeto en particular:</p>
+<p>Test *t = new Test();<br>
+(t-&gt;*p)();</p>
+<p>Es decir, no podemos directamente “atar” una función miembro de un objeto en particular a nuestro puntero y posteriormente usarla llamando: p();</p>
+<p>El puntero prácticamente se usa para seleccionar una función del objeto y ser usada a través del objeto. En tiempo de ejecución puede ser bastante útil para usos de plugins, etc.</p>
+<p>El código:</p>
+<p>[sourcecode language="cpp"]<br>
+#include &lt;iostream&gt;</p>
+<p>class Test<br>
+{<br>
+  public:</p>
+<p>  void Member(void)<br>
+  {<br>
+      std::cout &lt;&lt; "test" &lt;&lt; std::endl;<br>
+  }</p>
+<p>  void Member2(void)<br>
+  {<br>
+      std::cout &lt;&lt; "test2" &lt;&lt; std::endl;<br>
+  }<br>
+};<br>
+typedef void (Test::*pMember) (void);<br>
+int main()<br>
+{<br>
+   Test *t = new Test();<br>
+   pMember p = &amp;Test::Member;<br>
+   (t-&gt;*p)();<br>
+   p = &amp;Test::Member2;<br>
+   (t-&gt;*p)();<br>
+   return 0;<br>
+}<br>
+[/sourcecode]</p>
+</body></html>

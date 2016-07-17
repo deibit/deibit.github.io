@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (autocompletion)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/autocompletion.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>vim: Formas de autocompletado</title><link>http://deibit.com/posts/2011/03/08/vim-formas-de-autocompletado/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;En Vim 7 se introdujo la opción de completar texto. Vamos a ver las formas más usadas o útiles.&lt;/p&gt;
+&lt;p&gt;Cuando aparece el menú con las opciones podemos movernos entre ellas con Ctrl+P y Ctrl+N (Previous y Next). Si no nos satisface ninguna opción cerramos la ventana con Ctrl+E (End) y si queremos insertar la opción señalada Ctrl+Y (Yes) o enter.&lt;/p&gt;
+&lt;p&gt;Cuando aparece el menu, si hay muchas opciones, en algunos comandos de completado, podemos seguir escribiendo hasta adecuar los resultados.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OPCIONES&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Ctrl+X Ctrl+N: Busca entre las palabras del archivo actual. Desde el cursor hasta “abajo” (Next).&lt;/p&gt;
+&lt;p&gt;Ctrl+X Ctrl+P: Lo mismo que la anterior pero hacia “arriba” (Previous).&lt;/p&gt;
+&lt;p&gt;Ctrl+X Ctrl+F: Con esta opción Vim busca entre los nombres de archivo y nos muestra una lista de los coincidentes (File).&lt;/p&gt;
+&lt;p&gt;Ctrl+X Ctrl+I: Interesantísima para programar en C. Busca las palabras entre los archivos incluidos (Include).&lt;/p&gt;
+&lt;p&gt;Ctrl+X Ctrl+L: Completa una linea entera. Muy útil cuando las lineas se repiten (Line).&lt;/p&gt;
+&lt;p&gt;Ctrl+X Ctrl+O: Por cada tipo de archivo (cpp, c, py…) se puede definir una función que completará código (Omnicompletion).&lt;/p&gt;
+&lt;p&gt;Ctrl+X Ctrl+S: Si tenemos activada la corrección ortográfica nos presenta una lista de opciones (Spelling).&lt;/p&gt;
+&lt;p&gt;Hay otras pero estás son desde mi punto de vista las más interesantes.&lt;/p&gt;
+</description><category>autocompletion</category><category>editor</category><category>vim</category><guid>http://deibit.com/posts/2011/03/08/vim-formas-de-autocompletado/</guid><pubDate>Tue, 08 Mar 2011 05:01:51 GMT</pubDate></item></channel></rss>

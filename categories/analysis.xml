@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (Analysis)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/analysis.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>XSS en buscon.rae.es</title><link>http://deibit.com/posts/2011/01/03/xss-en-buscon-rae-es/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Vía un amigo me han pasado un XSS bastante cachondo. Ignoro si la masa mediática ha pasado por encima de él pero huele a carnaza ripia. Sin más:&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;a href="http://daganu.files.wordpress.com/2011/01/xss1.png"&gt;&lt;img src="http://daganu.files.wordpress.com/2011/01/xss1.png?w=300" alt="" title="xss1" width="300" height="179" class="aligncenter size-medium wp-image-115"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+No, no han “atacado” el servidor ni lo han “defaceado”. Se trata de un XSS no persistente que inyecta en un marco HTML procedente de un servidor externo, cuyo código usa como hojas de estilo (CSS) las propias del sitio de la rae para darle “autenticidad”.&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+Captura del resultado de dos tipos de peticiones, arriba una petición sin payload y abajo la que si lo lleva.&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+ &lt;a href="http://daganu.files.wordpress.com/2011/01/xss3.png"&gt;&lt;img src="http://daganu.files.wordpress.com/2011/01/xss3.png?w=300" alt="" title="xss3" width="300" height="173" class="aligncenter size-medium wp-image-116"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+Poco que añadir. El parámetro ‘LEMA’ no es filtrado adecuadamente (¿se quedaron sólo en &amp;amp;tl &amp;amp;gt?) y en la petición con payload puede verse como se hace uso del DOM para modificar la propiedad ‘location’ de un formulario incrustando HTML externo desde el dominio http://leysinde.110mb.com. Un hosting gratuito.&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+El código incrustado, ya por curiosidad:&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;a href="http://daganu.files.wordpress.com/2011/01/xss2.png"&gt;&lt;img src="http://daganu.files.wordpress.com/2011/01/xss2.png?w=300" alt="" title="xss2" width="300" height="179" class="aligncenter size-medium wp-image-118"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+Me llamó la atención el .js http://cdn.viglink.com/api/vglnk.js lo interpreta y sale. Si ves el código desde el navegador no verás nada. Pero si tiras de wget no lo interpreta y:&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;a href="http://daganu.files.wordpress.com/2011/01/xss4.jpg"&gt;&lt;img src="http://daganu.files.wordpress.com/2011/01/xss4.jpg?w=300" alt="" title="xss4" width="300" height="288" class="aligncenter size-medium wp-image-119"&gt;&lt;/a&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
+Es un script que te mete 110mb.com para echarle un ojo a los números de tu sitio :D ¡Menuda desilusión!&lt;/p&gt;
+</description><category>Analysis</category><category>seguridad</category><category>vulnerabilidad</category><category>xss</category><guid>http://deibit.com/posts/2011/01/03/xss-en-buscon-rae-es/</guid><pubDate>Mon, 03 Jan 2011 20:28:19 GMT</pubDate></item></channel></rss>

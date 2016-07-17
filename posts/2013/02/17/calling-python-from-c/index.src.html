@@ -1,0 +1,16 @@
+<html><body><p>Just a little snippet of code to show how to call python (an entire Python interpreter) from inside a C++ program:</p>
+<p>[sourcecode language="cpp"]<br>
+#include &lt;Python.h&gt;</p>
+<p>int main(int argc, char const *argv[])<br>
+{<br>
+Py_SetProgramName(const_cast&lt;char*&gt;(argv[0]));<br>
+Py_Initialize();<br>
+PyRun_SimpleString("from time import time,ctime\n" "print ‘Today is’,ctime(time())\n");<br>
+Py_Finalize();<br>
+return 0;<br>
+}<br>
+[/sourcecode]</p>
+<p>You will need the path to the Python headers and library “libpython2.7″ (2.7 for the Python version).</p>
+<p>In OSX I asked clang++ this way:</p>
+<p>clang++ -I./python2.7 -L. -lpython2.7 pyfromcpp.cpp -o pyfromcpp
+</p></body></html>

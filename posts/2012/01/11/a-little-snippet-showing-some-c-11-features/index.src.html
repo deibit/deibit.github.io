@@ -1,0 +1,23 @@
+<html><body><p>Title says it all:</p>
+<p>[sourcecode language="cpp"]<br>
+// $clang++ –std=c++0x –stdlib=libc++ snippet.cpp -o snippet</p>
+<p>#include &lt;vector&gt;<br>
+#include &lt;iostream&gt;</p>
+<p>using namespace std;</p>
+<p>int main()<br>
+{<br>
+    auto vv = vector&lt;vector&lt;int&gt;&gt;(); //1<br>
+    auto v = vector&lt;int&gt;(); //2<br>
+    v.push_back(1);<br>
+    v.push_back(2);<br>
+    for(int z:v) //3<br>
+    {<br>
+        cout &lt;&lt; z &lt;&lt; endl;<br>
+    }<br>
+    return 0;<br>
+}<br>
+[/sourcecode]</p>
+<p>1.- No more angle bracket mess<br>
+2.- auto type inference<br>
+3.- new for (…the win!)</p>
+</body></html>

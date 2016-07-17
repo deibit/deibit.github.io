@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (c++0x)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/c%2B%2B0x.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>A little snippet showing some C++ 11 features</title><link>http://deibit.com/posts/2012/01/11/a-little-snippet-showing-some-c-11-features/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Title says it all:&lt;/p&gt;
+&lt;p&gt;[sourcecode language="cpp"]&lt;br&gt;
+// $clang++ –std=c++0x –stdlib=libc++ snippet.cpp -o snippet&lt;/p&gt;
+&lt;p&gt;#include &amp;lt;vector&amp;gt;&lt;br&gt;
+#include &amp;lt;iostream&amp;gt;&lt;/p&gt;
+&lt;p&gt;using namespace std;&lt;/p&gt;
+&lt;p&gt;int main()&lt;br&gt;
+{&lt;br&gt;
+    auto vv = vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;(); //1&lt;br&gt;
+    auto v = vector&amp;lt;int&amp;gt;(); //2&lt;br&gt;
+    v.push_back(1);&lt;br&gt;
+    v.push_back(2);&lt;br&gt;
+    for(int z:v) //3&lt;br&gt;
+    {&lt;br&gt;
+        cout &amp;lt;&amp;lt; z &amp;lt;&amp;lt; endl;&lt;br&gt;
+    }&lt;br&gt;
+    return 0;&lt;br&gt;
+}&lt;br&gt;
+[/sourcecode]&lt;/p&gt;
+&lt;p&gt;1.- No more angle bracket mess&lt;br&gt;
+2.- auto type inference&lt;br&gt;
+3.- new for (…the win!)&lt;/p&gt;
+</description><category>c++</category><category>c++0x</category><category>c++11</category><guid>http://deibit.com/posts/2012/01/11/a-little-snippet-showing-some-c-11-features/</guid><pubDate>Wed, 11 Jan 2012 01:33:40 GMT</pubDate></item></channel></rss>

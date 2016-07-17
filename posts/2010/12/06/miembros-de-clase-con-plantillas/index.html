@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+<head>
+<meta charset="utf-8">
+<base href="http://deibit.com/posts/2010/12/06/miembros-de-clase-con-plantillas/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miembros de clase con plantillas | deibit</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="canonical" href="http://deibit.com/posts/2010/12/06/miembros-de-clase-con-plantillas/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="David García">
+<link rel="prev" href="../typename-para-evitar-ambiguedades/" title="'typename' para evitar ambigüedades" type="text/html">
+<link rel="next" href="../inicializacion-de-variables-en-plantillas/" title="Inicialización de variables en plantillas" type="text/html">
+<meta property="og:site_name" content="deibit">
+<meta property="og:title" content="Miembros de clase con plantillas">
+<meta property="og:url" content="http://deibit.com/posts/2010/12/06/miembros-de-clase-con-plantillas/">
+<meta property="og:description" content="Aunque nuestra clase sea o no una clase plantilla sus miembros pueden ser plantillas a su vez o independientemente.
+Esto permite que una función miembro acepte un parámetro de tipo arbitrario.
+Por eje">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2010-12-06T09:28:45+01:00">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="Programming">
+<meta property="article:tag" content="templates">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://deibit.com/">
+
+                <span id="blog-title">deibit</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../../../../archive.html">Archivo</a>
+                </li>
+<li>
+<a href="../../../../../categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="../../../../../rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.src.html" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Miembros de clase con plantillas</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    David García
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2010-12-06T09:28:45+01:00" itemprop="datePublished" title="2010-12-06 09:28">2010-12-06 09:28</time></a></p>
+            
+        <p class="sourceline"><a href="index.src.html" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>Aunque nuestra clase sea o no una clase plantilla sus miembros pueden ser plantillas a su vez o independientemente.</p>
+<p>Esto permite que una función miembro acepte un parámetro de tipo arbitrario.</p>
+<p>Por ejemplo al sobrecargar un constructor de copia.</p>
+<p>[sourcecode language="cpp"]<br>
+vector&lt;int&gt; vInt1;<br>
+vector&lt;int&gt; vInt2;<br>
+vector&lt;float&gt; vFloat1;<br>
+…<br>
+vInt1 = vInt2; // correcto<br>
+vInt1 = vFloat1; // error<br>
+[/sourcecode]</p>
+<p>En la cabecera de la clase (<em>clase.h</em>)</p>
+<p>[sourcecode language="cpp"]<br>
+…<br>
+template &lt;typename T2&gt;<br>
+    vector&lt;T&gt;&amp; operator= (vector&lt;T2&gt; const&amp;);<br>
+[/sourcecode]</p>
+<p>En la implementación:</p>
+<p>[sourcecode language="cpp"]<br>
+template &lt;typename T&gt;  // si procede en la clase<br>
+ template &lt;typename T2&gt;<br>
+vector&lt;T&gt;&amp; vector&lt;T&gt;::operator= (vector&lt;T2&gt; const&amp; op2)<br>
+…<br>
+[/sourcecode]</p>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/c%2B%2B/" rel="tag">c++</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/programming/" rel="tag">Programming</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/templates/" rel="tag">templates</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../typename-para-evitar-ambiguedades/" rel="prev" title="'typename' para evitar ambigüedades">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../inicializacion-de-variables-en-plantillas/" rel="next" title="Inicialización de variables en plantillas">Siguiente publicación</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:daganu@gmail.com">David García</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../../../../assets/js/all-nocdn.js"></script><script src="../../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

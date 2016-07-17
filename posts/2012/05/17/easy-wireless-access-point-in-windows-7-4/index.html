@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+<head>
+<meta charset="utf-8">
+<base href="http://deibit.com/posts/2012/05/17/easy-wireless-access-point-in-windows-7-4/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Easy Wireless Access Point in Windows 7 | deibit</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="canonical" href="http://deibit.com/posts/2012/05/17/easy-wireless-access-point-in-windows-7-4/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="David García">
+<link rel="prev" href="../../../03/10/uninstall-all-installed-apps-in-macports/" title="Uninstall all installed apps in MacPorts" type="text/html">
+<link rel="next" href="../../25/jailbreaking-apple-tv-2-with-seas0npass-and-overcoming-1600-error/" title="Jailbreaking Apple TV 2 with Seas0nPass (...and overcoming 1600 error)" type="text/html">
+<meta property="og:site_name" content="deibit">
+<meta property="og:title" content="Easy Wireless Access Point in Windows 7">
+<meta property="og:url" content="http://deibit.com/posts/2012/05/17/easy-wireless-access-point-in-windows-7-4/">
+<meta property="og:description" content="First, run a cmd with Administrator privileges and type this:
+[sourcecode]netsh wlan set hostednetwork mode=allow ssid=yourchoice key=againyourchoice[/sourcecode]
+You can set ‘ssid’ and ‘key’ to whate">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2012-05-17T10:31:57+02:00">
+<meta property="article:tag" content="ap">
+<meta property="article:tag" content="cmd">
+<meta property="article:tag" content="netsh">
+<meta property="article:tag" content="wifi">
+<meta property="article:tag" content="windows">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://deibit.com/">
+
+                <span id="blog-title">deibit</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../../../../archive.html">Archivo</a>
+                </li>
+<li>
+<a href="../../../../../categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="../../../../../rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.src.html" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Easy Wireless Access Point in Windows 7</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    David García
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2012-05-17T10:31:57+02:00" itemprop="datePublished" title="2012-05-17 10:31">2012-05-17 10:31</time></a></p>
+            
+        <p class="sourceline"><a href="index.src.html" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>First, run a cmd with Administrator privileges and type this:</p>
+<p>[sourcecode]netsh wlan set hostednetwork mode=allow ssid=yourchoice key=againyourchoice[/sourcecode]</p>
+<p>You can set ‘ssid’ and ‘key’ to whatever fits to you.</p>
+<p>Next let’s start the AP:</p>
+<p>[sourcecode]netsh wlan start hostednetwork[/sourcecode]</p>
+<p>When you’re finish:</p>
+<p>[sourcecode]netsh wlan stop hostednetwork[/sourcecode]</p>
+<p>‘netsh’ seems to be a very useful tool with a miriad of options. Would be worth to take time to explore it.</p>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/ap/" rel="tag">ap</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/cmd/" rel="tag">cmd</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/netsh/" rel="tag">netsh</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/wifi/" rel="tag">wifi</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/windows/" rel="tag">windows</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../../03/10/uninstall-all-installed-apps-in-macports/" rel="prev" title="Uninstall all installed apps in MacPorts">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../../25/jailbreaking-apple-tv-2-with-seas0npass-and-overcoming-1600-error/" rel="next" title="Jailbreaking Apple TV 2 with Seas0nPass (...and overcoming 1600 error)">Siguiente publicación</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:daganu@gmail.com">David García</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../../../../assets/js/all-nocdn.js"></script><script src="../../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

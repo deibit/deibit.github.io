@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+<head>
+<meta charset="utf-8">
+<base href="http://deibit.com/index-11.html">
+<meta name="description" content="This is a demo site for Nikola.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>deibit (publicaciones antiguas, página 11) | deibit</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="http://deibit.com/index-11.html">
+<link rel="prev" href="." type="text/html">
+<link rel="next" href="index-10.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://deibit.com/">
+
+                <span id="blog-title">deibit</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archivo</a>
+                </li>
+<li>
+<a href="categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/09/10/a-couple-of-new-books-for-the-next-weeks/" class="u-url">A couple of new books for the next weeks!</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/09/10/a-couple-of-new-books-for-the-next-weeks/" rel="bookmark"><time class="published dt-published" datetime="2012-09-10T11:44:58+02:00" title="2012-09-10 11:44">2012-09-10 11:44</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p><img src="http://daganu.files.wordpress.com/2012/09/libros.jpg" alt="A couple of new books for the next weeks!" class="size-full wp-image-560"></p>
+<p>C++ Primer (5 edition) and C++ Concurrency in Action</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/08/29/vim-the-same-vimrc-on-multiple-computers/" class="u-url">vim: The same vimrc on multiple computers</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/08/29/vim-the-same-vimrc-on-multiple-computers/" rel="bookmark"><time class="published dt-published" datetime="2012-08-29T22:02:01+02:00" title="2012-08-29 22:02">2012-08-29 22:02</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Reading this <a href="http://usevim.com/2012/08/29/conditional-vimrc/">post</a> I remember that I never commented here the way I (and a lot of people) use to share the same vimrc on different computers. Instead of doing it as that post says (which is not a great idea because an ‘ack’ may exists in OSX systems via port or homebrew) you can actually differentiate computers by…its name!…surprised?</p>
+<p>Vim has a handy function called ‘hostname’. So, easy, just store it in a variable and let the music go:</p>
+<p>let computername=hostname()</p>
+<p>Now you can adapt your preferences between your computers. For example you can have a laptop with a little screen and a big iMac with a stunning 27 inch display. Obviously your columns and lines would not be the same.</p>
+<p>How do you solve it? Come in, you are welcome to comment. I promise I won’t delete your contribution ;)</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/08/24/vim-substitute-command-with-unicode-characters/" class="u-url">vim, substitute command with unicode characters</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/08/24/vim-substitute-command-with-unicode-characters/" rel="bookmark"><time class="published dt-published" datetime="2012-08-24T09:33:16+02:00" title="2012-08-24 09:33">2012-08-24 09:33</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>When we need to substitute an unicode character via a :s// command.</p>
+<p>First we need to know which code the character have, it is easy with just typing: ga</p>
+<p>ga brings us the ascii, hex and octal code of the character.</p>
+<p>next we put it in our s command:</p>
+<p>:%:s/\%u&lt;code&gt;/&lt;substitution/g</p>
+<p>note the % character before the code</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/08/22/moving-selected-text-in-vim/" class="u-url">Moving selected text in vim</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/08/22/moving-selected-text-in-vim/" rel="bookmark"><time class="published dt-published" datetime="2012-08-22T08:49:10+02:00" title="2012-08-22 08:49">2012-08-22 08:49</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>One of the features of other editors (put: SublimeText or Notepad++) that is not native to Vim is move selected text via Ctrl+shift+arrow.</p>
+<p>But of course this is not problem in Vim, just add this to your .vimrc:</p>
+<p>[sourcecode]</p>
+<p>nnoremap &lt;c-s-down&gt; :m+&lt;CR&gt;==<br>
+nnoremap &lt;c-s-up&gt; :m-2&lt;CR&gt;==<br>
+inoremap &lt;c-s-down&gt; &lt;Esc&gt;:m+&lt;CR&gt;==gi<br>
+inoremap &lt;c-s-up&gt; &lt;Esc&gt;:m-2&lt;CR&gt;==gi<br>
+vnoremap &lt;c-s-down&gt; :m’&gt;+&lt;CR&gt;gv=gv<br>
+vnoremap &lt;c-s-up&gt; :m-2&lt;CR&gt;gv=gv</p>
+<p>[/sourcecode]</p>
+<p>source: <a href="http://vim.wikia.com/wiki/Moving_lines_up_or_down">http://vim.wikia.com/wiki/Moving_lines_up_or_down</a></p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/08/21/vim-pasting-through-ssh-putty/" class="u-url">vim pasting through ssh (PuTTy)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/08/21/vim-pasting-through-ssh-putty/" rel="bookmark"><time class="published dt-published" datetime="2012-08-21T09:33:07+02:00" title="2012-08-21 09:33">2012-08-21 09:33</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>I always forget it whilst working in Putty. So here is this note when we want to paste anything in an open Vim in our ssh session:</p>
+<p>set mouse=</p>
+<p>insert mode</p>
+<p>right mouse button</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/06/30/designated-initializers-in-objective-c/" class="u-url">Designated Initializers in Objective C</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/06/30/designated-initializers-in-objective-c/" rel="bookmark"><time class="published dt-published" datetime="2012-06-30T06:59:35+02:00" title="2012-06-30 06:59">2012-06-30 06:59</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Object construction in Objective C is a two phase procedure. First the object has to be allocated in memory, hence the ‘alloc’ message we always see when a object is invoked this way (and not for example via a ‘get…’, which would be a Factory):</p>
+<p>[sourcecode language="objc"]<br>
+MyObject* o = [[MyObject alloc] init];<br>
+[/sourcecode]</p>
+<p>Second phase involves object initialization which is quite similar to what would be a constructor in C++. When we implement method ‘init’ (which is just a convention) we have to take care on superclass designated initializer . But, what is a designated initializer at all?</p>
+<p>Designated initializer is the method that best set up our object between all initializer methods. An example:</p>
+<p>[sourcecode language="objc"]<br>
+- (id) init:<br>
+- (id) initWithColor:(NSColor*)color;<br>
+- (id) initWithColor:(NSColor*)color andSize:(NSInteger)size;<br>
+[/sourcecode]</p>
+<p>What method do you think is the most complete?</p>
+<p>Our third method includes two parameter while the other only one or none.</p>
+<p>Now, we got a pattern that you are going to see every time you implement your own objects:</p>
+<p>[sourcecode language="objc"]<br>
+- (id) init<br>
+{<br>
+if (self = [super init]) {<br>
+}<br>
+return self;<br>
+}<br>
+[/sourcecode]</p>
+<p>This is the most basic method. It neither do variable initialization nor call other initializers. It just call its superclass initializer, check its got a valid pointer back (thus not nil) and return self.</p>
+<p>But if we got any other initializer methods we must call our most complete initializer. This is the designated initializer. So instead of our light ‘init’ tiny method we would have to call initWithColor:andSize:</p>
+<p>[sourcecode language="objc"]<br>
+- (id) init<br>
+{<br>
+NSColor* color = [NSColor greenColor];<br>
+NSInteger size = 30;<br>
+return [self initWithColor:color andSize:size];<br>
+}<br>
+[/sourcecode]</p>
+<p>and in our initWithColor:andSize:</p>
+<p>[sourcecode language="objc"]<br>
+- (id) initWithColor:(NSColor*)color andSize:(NSInteger)size<br>
+{<br>
+if (self = [super init]) {<br>
+_color = [color retain];<br>
+_size = size;<br>
+}<br>
+return self<br>
+}<br>
+[/sourcecode]</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/06/29/protocols-in-objective-c-12/" class="u-url">Protocols in Objective C</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/06/29/protocols-in-objective-c-12/" rel="bookmark"><time class="published dt-published" datetime="2012-06-29T12:28:17+02:00" title="2012-06-29 12:28">2012-06-29 12:28</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>Just a reference note on how to implement a “protocol” in Objective C.</p>
+<p>First. We define our protocol in a file named “Protocol.h”:</p>
+<p>[sourcecode language="objc"]<br>
+@protocol Protocol</p>
+<p>@required<br>
+- (void)requiredMethod:(NSString*)param;</p>
+<p>@optional<br>
+- (void)optionalMethod;</p>
+<p>@end<br>
+[/sourcecode]</p>
+<p>We can declare a method as optional or required. If the method is required you must implement that method in your class.</p>
+<p>Next, we decided to use the protocol in our class, first the header “UseProtocol.h” then the implementation “UseProtocol.m”:</p>
+<p>[sourcecode language="objc"]<br>
+#import &lt;Foundation/Foundation.h&gt;<br>
+#import "Protocol.h"</p>
+<p>@interface UseProtocol : NSObject &lt;Protocol&gt;<br>
+@end<br>
+[/sourcecode]</p>
+<p> </p>
+<p>[sourcecode language="objc"]</p>
+<p>#import "UseProtocol.h"</p>
+<p>@implementation UseProtocol</p>
+<p>- (void)requiredMethod:(NSString*)param {<br>
+ NSLog(@"%@", param);<br>
+}</p>
+<p>@end</p>
+<p>[/sourcecode]</p>
+<p>and next we glue it up together in a main.m</p>
+<p>[sourcecode language="objc"]<br>
+#import &lt;Foundation/Foundation.h&gt;<br>
+#import "UseProtocol.h"</p>
+<p>int main(int argc, const char* argv[]) {<br>
+ NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];<br>
+ UseProtocol* p = [[UseProtocol alloc] init];<br>
+ [p requiredMethod:@"test"];<br>
+ [p release];<br>
+ [pool drain];<br>
+ return 0;<br>
+}<br>
+[/sourcecode]</p>
+<p>We could use XCode but is too heavy for our little task…</p>
+<p>If you used an editor, you can compiled it through command line:</p>
+<p>[sourcecode]clang -framework Foundation UseProtocol.m main.m -o main[/sourcecode]</p>
+
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2012/05/27/adding-ringtones-to-ios-5-1-jailbreak/" class="u-url">Adding Ringtones to iOS 5.1 (Jailbreak)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                David García
+            </span></p>
+            <p class="dateline"><a href="posts/2012/05/27/adding-ringtones-to-ios-5-1-jailbreak/" rel="bookmark"><time class="published dt-published" datetime="2012-05-27T06:15:29+02:00" title="2012-05-27 06:15">2012-05-27 06:15</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>As we may expect Apple does the easy almost impossible but…in a elegant way!</p>
+<p>So an easy way to push ringtones to a jailbroken iPhone (iOS 5.1) is (you should have installed ssh services):</p>
+<p>1.- Take your favorite tune and open it in iTunes</p>
+<p>2.- Right click and export to AAC</p>
+<p>3.- Show it in Finder and change file extension from ‘.m4a’ to ‘.m4r’ and drag it to the Desktop (or another handy folder)</p>
+<p>4.- Open a terminal an ssh to your device</p>
+<p>5.- Locate this folder: “/var/stash/Ringtones.aOqYcf/” . It may seem the same except the latter part.</p>
+<p>6.- Copy that path</p>
+<p>7.- Open a terminal in your Mac (or PuTTY in Windows)</p>
+<p>8.- Type this replacing the values:</p>
+<p>scp TONENAME.m4r root@IPOFYOURDEVICE:/var/stash/Ringtones.aOqYcf/TONENAME.m4r</p>
+<p>9.- Enjoy your tune!</p>
+
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="previous">
+                <a href="." rel="prev">Publicaciones posteriores</a>
+            </li>
+            <li class="next">
+                <a href="index-10.html" rel="next">Publicaciones anteriores</a>
+            </li>
+        </ul></nav>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:daganu@gmail.com">David García</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script><script src="assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

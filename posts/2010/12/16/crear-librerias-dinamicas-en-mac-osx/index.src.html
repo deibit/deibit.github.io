@@ -1,0 +1,24 @@
+<html><body><p>Compilando sqllite3 para Mac OSX sale un archivo objeto sqlite3.o. Con el podemos enlazarlo estáticamente con nuestro ejecutable:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ gcc libsqlite3.o test.c -o test-stat</em></p>
+<p>vemos con file:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ file libsqlite3.o<br>
+libsqlite3.o: Mach-O 64-bit object x86_64</em></p>
+<p>Ese libsqlite3.o lo podemos transformar en una librería dinámica con:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ gcc -dynamiclib -o libsqlite3.dynlib libsqlite3.o</em></p>
+<p>hacemos un file:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ file libsqlite3.dylib<br>
+libsqlite3.dylib: Mach-O 64-bit dynamically linked shared library x86_64</em></p>
+<p>Si queremos que explicitamente nuestro ejecutable compile con esa librería y no la que viene (a riesgo de que no sea compatible) con<br>
+el SDK de Mac:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ gcc -L. -lsqlite3 test.c -o test-dyn</em></p>
+<p>comprobamos:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ otool -L test-dyn<br>
+test-dyn:<br>
+	libsqlite3.dylib (compatibility version 0.0.0, current version 0.0.0)<br>
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 125.2.1)</em></p>
+<p>Anteriormente, una simple compilación nos generaba un ejecutable enlazado dinámicamente con la sqlite3 del sistema y para ver la diferencia:</p>
+<p><em>bellucci:sqlite-autoconf-3070400 david$ otool -L test<br>
+test:<br>
+	/usr/lib/libsqlite3.dylib (compatibility version 9.0.0, current version 9.6.0)<br>
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 125.2.1)</em></p>
+</body></html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (library)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/library.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Añadir librerías nativas en NetBeans</title><link>http://deibit.com/posts/2010/12/18/anadir-librerias-nativas-en-netbeans/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Compilando un proyecto en NetBeans, necesitaba referenciar librerías externas y nativas, es decir dll’s, dyn o so en Windows, Mac OSX y Linux respectivamente.&lt;/p&gt;
+&lt;p&gt;En linea de comandos cuando se instancia java existe la opción de pasarle una definición con ‘-D’ y el atributo ‘java.library.path=PATH”. Con esto (en PATH añadimos la ruta entrecomillada) la VM podrá enlazar con las librerías y el programa no se quejará con un &lt;em&gt;java.lang.UnsatisfiedLinkError&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;En Eclipse es muy sencillo añadirlas a través de las propiedades del proyecto (en otro post futuro lo pondré). En NetBeans la cosa anda a medio camino entre linea de comandos e IDE.&lt;/p&gt;
+&lt;p&gt;Nos vamos a las propiedades del proyecto y en Run vemos una casilla para las opciones de la VM. Allí podemos poner la misma opción como si se tratara de que la linea de comandos.&lt;/p&gt;
+&lt;p&gt;Una imagen:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://daganu.files.wordpress.com/2010/12/netbeans.jpg"&gt;&lt;img src="http://daganu.files.wordpress.com/2010/12/netbeans.jpg?w=300" alt="" title="netbeans" width="300" height="218" class="aligncenter size-medium wp-image-111"&gt;&lt;/a&gt;&lt;/p&gt;
+</description><category>java</category><category>library</category><category>netbeans</category><guid>http://deibit.com/posts/2010/12/18/anadir-librerias-nativas-en-netbeans/</guid><pubDate>Sat, 18 Dec 2010 16:07:18 GMT</pubDate></item><item><title>Crear librerías dinámicas en Mac OSX</title><link>http://deibit.com/posts/2010/12/16/crear-librerias-dinamicas-en-mac-osx/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Compilando sqllite3 para Mac OSX sale un archivo objeto sqlite3.o. Con el podemos enlazarlo estáticamente con nuestro ejecutable:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;bellucci:sqlite-autoconf-3070400 david$ gcc libsqlite3.o test.c -o test-stat&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;vemos con file:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;bellucci:sqlite-autoconf-3070400 david$ file libsqlite3.o&lt;br&gt;
+libsqlite3.o: Mach-O 64-bit object x86_64&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Ese libsqlite3.o lo podemos transformar en una librería dinámica con:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;bellucci:sqlite-autoconf-3070400 david$ gcc -dynamiclib -o libsqlite3.dynlib libsqlite3.o&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;hacemos un file:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;bellucci:sqlite-autoconf-3070400 david$ file libsqlite3.dylib&lt;br&gt;
+libsqlite3.dylib: Mach-O 64-bit dynamically linked shared library x86_64&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Si queremos que explicitamente nuestro ejecutable compile con esa librería y no la que viene (a riesgo de que no sea compatible) con&lt;br&gt;
+el SDK de Mac:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;bellucci:sqlite-autoconf-3070400 david$ gcc -L. -lsqlite3 test.c -o test-dyn&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;comprobamos:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;bellucci:sqlite-autoconf-3070400 david$ otool -L test-dyn&lt;br&gt;
+test-dyn:&lt;br&gt;
+	libsqlite3.dylib (compatibility version 0.0.0, current version 0.0.0)&lt;br&gt;
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 125.2.1)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Anteriormente, una simple compilación nos generaba un ejecutable enlazado dinámicamente con la sqlite3 del sistema y para ver la diferencia:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;bellucci:sqlite-autoconf-3070400 david$ otool -L test&lt;br&gt;
+test:&lt;br&gt;
+	/usr/lib/libsqlite3.dylib (compatibility version 9.0.0, current version 9.6.0)&lt;br&gt;
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 125.2.1)&lt;/em&gt;&lt;/p&gt;
+</description><category>c</category><category>c++</category><category>compiler</category><category>gcc</category><category>library</category><category>MacOSX</category><guid>http://deibit.com/posts/2010/12/16/crear-librerias-dinamicas-en-mac-osx/</guid><pubDate>Thu, 16 Dec 2010 20:32:21 GMT</pubDate></item><item><title>Añadiendo librerías externas en Qt Creator</title><link>http://deibit.com/posts/2010/12/01/anadiendo-librerias-externas-en-qt-creator/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Aunque no sea muy intuitivo y no exista una opción en forma de “ventana”, podemos incluir librerías externas (que no sean del Qt toolkit) en Qt Creator de una manera fácil.&lt;/p&gt;
+&lt;p&gt;El tema está en las variables LIBS e INCLUDEPATH.&lt;/p&gt;
+&lt;p&gt;En LIBS agregamos el path y la librería que queramos, al estilo de opciones usado por GCC. Para las cabeceras usaremos INCLUDEPATH.&lt;/p&gt;
+&lt;p&gt;El lugar donde agregar opciones a estás variables es en el fichero de opciones del proyecto: &lt;em&gt;como_se_llame_el_proyecto.pro&lt;/em&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="http://daganu.files.wordpress.com/2010/12/creator.jpg"&gt;&lt;img class="aligncenter size-medium wp-image-73" title="creator" src="http://daganu.files.wordpress.com/2010/12/creator.jpg?w=300" alt="" width="300" height="190"&gt;&lt;/a&gt;&lt;/p&gt;
+</description><category>c++</category><category>ide</category><category>library</category><category>qt</category><guid>http://deibit.com/posts/2010/12/01/anadiendo-librerias-externas-en-qt-creator/</guid><pubDate>Wed, 01 Dec 2010 03:20:52 GMT</pubDate></item></channel></rss>

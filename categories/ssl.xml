@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (ssl)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/ssl.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Fixing java.security.cert.CertificateException in Burp Suite</title><link>http://deibit.com/posts/2012/11/23/fixing-java-security-cert-certificateexception-in-burp-suite/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;When Burp suite accesses a server with an encrypted channel it depends in some way on the underlying Java Security layer when using java.security classes. It happens that Java 7 disables the old &lt;a href="http://en.wikipedia.org/wiki/MD2_(cryptography)"&gt;MD2&lt;/a&gt; algorithm by default in its policy file:&lt;/p&gt;
+&lt;p&gt;File (windows):  &lt;em&gt;Programs Files\Java\jre7\lib\security\java.security&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;(excerpt)&lt;/p&gt;
+&lt;p&gt;…&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;jdk.certpath.disabledAlgorithms=MD2&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;# Algorithm restrictions for Secure Socket Layer/Transport Layer Security&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;# (SSL/TLS) processing&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;#&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;# In some environments, certain algorithms or key lengths may be undesirable&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;# when using SSL/TLS. This section describes the mechanism for disabling&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;# algorithms during SSL/TLS security parameters negotiation, including cipher&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;# suites selection, peer authentication and key exchange mechanisms.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;…&lt;/p&gt;
+&lt;p&gt;So, if we visit any site that supports MD2 Java will raise an exception prenventing Burp from continuing its work. The infamous:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Burp proxy error: java.security.cert.CertificateException: Certificates does not conform to algorithm constraints&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Just remove the ‘MD2′ from the directive and save the file. Your problem is gone but the whole Java ecosystem is now exposed and you have to remember to add the constraint again when finishing with Burp.&lt;/p&gt;
+</description><category>burp</category><category>constraint</category><category>java</category><category>proxy</category><category>ssl</category><category>web security</category><guid>http://deibit.com/posts/2012/11/23/fixing-java-security-cert-certificateexception-in-burp-suite/</guid><pubDate>Fri, 23 Nov 2012 22:20:06 GMT</pubDate></item><item><title>Testing for SSLv2</title><link>http://deibit.com/posts/2012/02/09/testing-for-sslv2/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Quick: Using openssl for testing supported SSLv2 connections:&lt;/p&gt;
+&lt;p&gt;openssl s_client -ssl2 -connect IP:PORT&lt;/p&gt;
+&lt;p&gt;SSLv2 was deprecated and its use is considered a security issue.&lt;/p&gt;
+</description><category>audit</category><category>nva</category><category>pentesting</category><category>ssl</category><category>ssl2</category><category>sslv2</category><guid>http://deibit.com/posts/2012/02/09/testing-for-sslv2/</guid><pubDate>Thu, 09 Feb 2012 12:55:32 GMT</pubDate></item></channel></rss>

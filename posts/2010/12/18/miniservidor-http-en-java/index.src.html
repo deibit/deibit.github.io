@@ -1,0 +1,42 @@
+<html><body><p>En Python podemos escribir un pequeño servidor web tirando del paquete SimpleHttpServer, para cosillas básicas como un pequeño interfaz web de usuario ad hoc viene muy bien, además es estándar.</p>
+<p>Andaba buscando algo parecido para Java. Swing puede ser engorroso y montar un Tomcat es como matar moscas a cañonazos para una cosa pequeña.</p>
+<p>La solución la vi por Reddit cuando uno contestó a alguien sobre frameworks sencillos. El JDK dispone de una serie de clases para este tipo de cometidos. El paquete es <a href="http://download.oracle.com/javase/6/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/package-summary.html">com.sun.net.httpserver</a>. </p>
+<p>Con esto podemos montar un pequeño servidor al igual que con Python. Esta clase fue introducida al parecer con el JDK 1.6, solo que al estar en los paquetes sun y no en los estándar de la documentación no están tan a la vista.</p>
+<p>El código que dan de ejemplo ligeramente modificado:</p>
+<p>[sourcecode language="java"]<br>
+package javatest;</p>
+<p>import com.sun.net.httpserver.HttpExchange;<br>
+import com.sun.net.httpserver.HttpHandler;<br>
+import com.sun.net.httpserver.HttpServer;<br>
+import java.io.IOException;<br>
+import java.io.InputStream;<br>
+import java.io.OutputStream;<br>
+import java.net.InetSocketAddress;</p>
+<p>/**<br>
+ *<br>
+ * @author david<br>
+ */<br>
+public class Main implements HttpHandler {</p>
+<p>    /**<br>
+     * @param args the command line arguments<br>
+     */<br>
+    public static void main(String[] args) throws IOException {<br>
+        // TODO code application logic here<br>
+        HttpServer server = HttpServer.create();<br>
+        server.bind(new InetSocketAddress(8000), 100);<br>
+        server.createContext("/test", new Main());<br>
+        server.setExecutor(null);<br>
+        server.start();<br>
+    }</p>
+<p>    public void handle(HttpExchange he) throws IOException {<br>
+           InputStream is = he.getRequestBody();<br>
+           System.out.println(is);<br>
+           String response = "Respuesta";<br>
+           he.sendResponseHeaders(200, response.length());<br>
+           OutputStream os = he.getResponseBody();<br>
+           os.write(response.getBytes());<br>
+           os.close();<br>
+    }<br>
+}<br>
+[/sourcecode]</p>
+</body></html>

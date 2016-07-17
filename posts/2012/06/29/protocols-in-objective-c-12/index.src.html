@@ -1,0 +1,44 @@
+<html><body><p>Just a reference note on how to implement a “protocol” in Objective C.</p>
+<p>First. We define our protocol in a file named “Protocol.h”:</p>
+<p>[sourcecode language="objc"]<br>
+@protocol Protocol</p>
+<p>@required<br>
+- (void)requiredMethod:(NSString*)param;</p>
+<p>@optional<br>
+- (void)optionalMethod;</p>
+<p>@end<br>
+[/sourcecode]</p>
+<p>We can declare a method as optional or required. If the method is required you must implement that method in your class.</p>
+<p>Next, we decided to use the protocol in our class, first the header “UseProtocol.h” then the implementation “UseProtocol.m”:</p>
+<p>[sourcecode language="objc"]<br>
+#import &lt;Foundation/Foundation.h&gt;<br>
+#import "Protocol.h"</p>
+<p>@interface UseProtocol : NSObject &lt;Protocol&gt;<br>
+@end<br>
+[/sourcecode]</p>
+<p> </p>
+<p>[sourcecode language="objc"]</p>
+<p>#import "UseProtocol.h"</p>
+<p>@implementation UseProtocol</p>
+<p>- (void)requiredMethod:(NSString*)param {<br>
+ NSLog(@"%@", param);<br>
+}</p>
+<p>@end</p>
+<p>[/sourcecode]</p>
+<p>and next we glue it up together in a main.m</p>
+<p>[sourcecode language="objc"]<br>
+#import &lt;Foundation/Foundation.h&gt;<br>
+#import "UseProtocol.h"</p>
+<p>int main(int argc, const char* argv[]) {<br>
+ NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];<br>
+ UseProtocol* p = [[UseProtocol alloc] init];<br>
+ [p requiredMethod:@"test"];<br>
+ [p release];<br>
+ [pool drain];<br>
+ return 0;<br>
+}<br>
+[/sourcecode]</p>
+<p>We could use XCode but is too heavy for our little task…</p>
+<p>If you used an editor, you can compiled it through command line:</p>
+<p>[sourcecode]clang -framework Foundation UseProtocol.m main.m -o main[/sourcecode]</p>
+</body></html>

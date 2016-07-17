@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (Shortcuts)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/shortcuts.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Algunos atajos interesantes en Bash</title><link>http://deibit.com/posts/2011/01/16/algunos-atajos-interesantes-en-bash/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;Sobre todo en Mac, se echa de menos algunos atajos de teclado para ir al final o al principio (‘end’ y ‘home’) de una linea en el Terminal.&lt;/p&gt;
+&lt;p&gt;Estos atajos de teclado funcionan en todos los Bash, así que pueden usarse en Mac y suplir esa carencia.&lt;/p&gt;
+&lt;p&gt;Ir al principio y final de una frase respectivamente: Ctrl + A y Ctrl + E&lt;/p&gt;
+&lt;p&gt;Avanzar una palabra antes y después del cursor: Alt + B y Alt + F&lt;/p&gt;
+&lt;p&gt;Borrar lo que haya delante o después del cursor: Ctrl + U y Ctrl + K&lt;/p&gt;
+&lt;p&gt;Borrar una palabra delante o después del cursor: Ctrl + W y Alt + D&lt;/p&gt;
+&lt;p&gt;Cambiar a MAY, min, Cap una palabra: Alt + U, Alt + M, Alt + C respectivamente.&lt;/p&gt;
+&lt;p&gt;Transponer dos caracteres o dos palabras: Ctrl + T y Alt + T&lt;/p&gt;
+&lt;p&gt;Histórico atrás y hacia delante: Ctrl + R y Ctrl + S&lt;/p&gt;
+&lt;p&gt;Estamos editando una linea muy larga y decidimos hacerlo en nuestro $EDITOR: Ctrl + X Ctrl + E&lt;/p&gt;
+</description><category>bash</category><category>consola</category><category>linux</category><category>MacOSX</category><category>Shortcuts</category><category>terminal</category><guid>http://deibit.com/posts/2011/01/16/algunos-atajos-interesantes-en-bash/</guid><pubDate>Sun, 16 Jan 2011 13:05:19 GMT</pubDate></item></channel></rss>

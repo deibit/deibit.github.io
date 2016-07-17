@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>deibit (scp)</title><link>http://deibit.com/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://deibit.com/categories/scp.xml"></atom:link><language>es</language><lastBuildDate>Sun, 17 Jul 2016 09:42:34 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Adding Ringtones to iOS 5.1 (Jailbreak)</title><link>http://deibit.com/posts/2012/05/27/adding-ringtones-to-ios-5-1-jailbreak/</link><dc:creator>David García</dc:creator><description>&lt;p&gt;As we may expect Apple does the easy almost impossible but…in a elegant way!&lt;/p&gt;
+&lt;p&gt;So an easy way to push ringtones to a jailbroken iPhone (iOS 5.1) is (you should have installed ssh services):&lt;/p&gt;
+&lt;p&gt;1.- Take your favorite tune and open it in iTunes&lt;/p&gt;
+&lt;p&gt;2.- Right click and export to AAC&lt;/p&gt;
+&lt;p&gt;3.- Show it in Finder and change file extension from ‘.m4a’ to ‘.m4r’ and drag it to the Desktop (or another handy folder)&lt;/p&gt;
+&lt;p&gt;4.- Open a terminal an ssh to your device&lt;/p&gt;
+&lt;p&gt;5.- Locate this folder: “/var/stash/Ringtones.aOqYcf/” . It may seem the same except the latter part.&lt;/p&gt;
+&lt;p&gt;6.- Copy that path&lt;/p&gt;
+&lt;p&gt;7.- Open a terminal in your Mac (or PuTTY in Windows)&lt;/p&gt;
+&lt;p&gt;8.- Type this replacing the values:&lt;/p&gt;
+&lt;p&gt;scp TONENAME.m4r root@IPOFYOURDEVICE:/var/stash/Ringtones.aOqYcf/TONENAME.m4r&lt;/p&gt;
+&lt;p&gt;9.- Enjoy your tune!&lt;/p&gt;
+</description><category>aac</category><category>ios 5</category><category>iPhone</category><category>jailbreak</category><category>ringtones</category><category>scp</category><guid>http://deibit.com/posts/2012/05/27/adding-ringtones-to-ios-5-1-jailbreak/</guid><pubDate>Sun, 27 May 2012 04:15:29 GMT</pubDate></item></channel></rss>

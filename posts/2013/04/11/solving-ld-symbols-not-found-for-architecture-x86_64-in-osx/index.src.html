@@ -1,0 +1,18 @@
+<html><body><p>It seems that this error is rather frequently when compiling programs. I found mine compiling a dumb example after building <a href="https://github.com/LaurentGomila/SFML">SFML 2.0</a> (git)</p>
+<p>After browsing several answers none of them worked for me. Making a “lipo -info” on all the framework libs gives a perfect “x86_64″ seal of approval…mmm</p>
+<p>I tried to force clang++ with the known flags combinations -m32, -m64, -std=c++11, -stdlib=libc++ and so on.</p>
+<p>None.</p>
+<p>A short time before giving up a light was turned on.</p>
+<p>I remembered installing SFML before as a shared library instead of a framework and there were a bunch of previous headers installed in /usr/local/include/SFML.</p>
+<p>Deleting it all the next go went right.</p>
+<p>The problem here was (I suspect) that the compiler was looking for the /usr/local/include before the headers that inhabit the same folder framework hence causing odd errors.</p>
+<p>Here is the output when applied the -v flag in clang++</p>
+<p>/usr/include/c++/4.2.1<br>
+/usr/include/c++/4.2.1/backward<br>
+/usr/local/include<br>
+/usr/bin/../lib/clang/4.2/include<br>
+/usr/include<br>
+/System/Library/Frameworks (framework directory)<br>
+/Library/Frameworks (framework directory)</p>
+<p>As you may note /usr/local/include is before /Library/Frameworks</p>
+</body></html>

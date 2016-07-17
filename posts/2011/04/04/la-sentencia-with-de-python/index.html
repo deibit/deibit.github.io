@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="es">
+<head>
+<meta charset="utf-8">
+<base href="http://deibit.com/posts/2011/04/04/la-sentencia-with-de-python/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La sentencia 'with' de Python | deibit</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="canonical" href="http://deibit.com/posts/2011/04/04/la-sentencia-with-de-python/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="David García">
+<link rel="prev" href="../../../03/30/vim-ver-los-scripts-cargados/" title="vim: Ver los scripts cargados" type="text/html">
+<link rel="next" href="../../05/vim-algunos-accesos-rapidos/" title="vim: Algunos accesos rápidos" type="text/html">
+<meta property="og:site_name" content="deibit">
+<meta property="og:title" content="La sentencia 'with' de Python">
+<meta property="og:url" content="http://deibit.com/posts/2011/04/04/la-sentencia-with-de-python/">
+<meta property="og:description" content="‘with’ se introdujo en Python 2.5. En esa versión no estaba disponible directamente (eso fue a partir de la 2.6) y había que importarla con ‘with_statement’.
+‘with’ es una sentencia relacionada con la">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2011-04-04T22:04:17+02:00">
+<meta property="article:tag" content="Programming">
+<meta property="article:tag" content="Python">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://deibit.com/">
+
+                <span id="blog-title">deibit</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../../../../archive.html">Archivo</a>
+                </li>
+<li>
+<a href="../../../../../categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="../../../../../rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.src.html" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">La sentencia 'with' de Python</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    David García
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2011-04-04T22:04:17+02:00" itemprop="datePublished" title="2011-04-04 22:04">2011-04-04 22:04</time></a></p>
+            
+        <p class="sourceline"><a href="index.src.html" id="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>‘with’ se introdujo en Python 2.5. En esa versión no estaba disponible directamente (eso fue a partir de la 2.6) y había que importarla con ‘with_statement’.</p>
+<p>‘with’ es una sentencia relacionada con la gestión de recursos y su tratamiento cuando estos provocan una excepción o salen de su entorno.</p>
+<p>Un ejemplo simple. Queremos abrir un fichero asignándolo a una variable, algo común en el quehacer diario.</p>
+<p>[sourcecode language="python"]<br>
+try:<br>
+    f = open("test_with.txt", ‘w’)<br>
+    f.write("prueba")<br>
+except:<br>
+    print "error al abrir fichero"<br>
+finally:<br>
+    if f:<br>
+        f.close()<br>
+[/sourcecode]</p>
+<p>El código es bastante autoexplicativo. f es el nombre al que asignamos un objeto archivo. Esta operación, la apertura de un archivo y escritura en el, puede ocasionar varios errores de naturaleza múltiple (no esta el archivo, no tenemos permisos…). Por ello capturamos la excepción y gestionamos. Si todo sale bien pasaremos a la clausula ‘finally’ y allí gestionaremos la liberación del recurso, en este caso simplemente cerrar el archivo.</p>
+<p>En este caso, somos nosotros los que estamos gestionando el recurso al cerrarlo ocurra o no una excepción. Mientras que somos responsables de responder ante las excepciones que este objeto nos quiera comunicar, gestionar el cierre del recurso es algo que el mismo recurso podría gestionar mejor que nosotros.</p>
+<p>¿No estaría mejor abrir el archivo, operar sobre el y listo?</p>
+<p>[sourcecode language="python"]<br>
+try:<br>
+    with open("test22.txt",’r') as f:<br>
+        f.write("prueba")<br>
+except:<br>
+    print "no esta el fichero"<br>
+[/sourcecode]</p>
+<p>En este fragmento ocurre eso precisamente. Gracias a ‘with’. Si observamos notaremos la ausencia del cierre del recurso, la comprobación de que sí está asignado a la variable ‘f’ y por supuesto, la clausula ‘finally’, ya que es el propio recurso quien se gestiona su propio cierre.</p>
+<p><strong>¿Como ocurre esto?</strong></p>
+<p>Cualquier tipo puede ser gestionado por ‘with’ a través de un “Manejador de contexto” (Context manager). Un manejador de contexto son dos funciones que van a ser llamadas por Python durante la ejecución. Los nombres son ‘__enter__’ y ‘__exit__’. Cuando se opera sobre el objeto se llama a ‘__enter__’ y cuando se sale, por cualquier motivo, se llama a ‘__exit__’.</p>
+<p>Un ejemplo:</p>
+<p>[sourcecode language="python"]<br>
+class With_Test(object):<br>
+    def __init__(self, n):<br>
+        print "en init…"<br>
+        self.n = n<br>
+    def __enter__(self):<br>
+        print "entrando…"<br>
+        return self<br>
+    def __exit__(self, exc_type, exec_value, traceback):<br>
+        print "saliendo…"<br>
+    def metodo(self):<br>
+        print "n vale: %s" % self.n</p>
+<p>with With_Test(8) as wt:<br>
+    wt.metodo()<br>
+[/sourcecode]</p>
+<p>Esto imprimirá por pantalla:</p>
+<p>[sourcecode]<br>
+bellucci:python david$ python test_with.py<br>
+en init…<br>
+entrando…<br>
+n vale: 8<br>
+saliendo…<br>
+[/sourcecode]</p>
+<p>Si construimos nuestros objetos con este método abstraemos a los usuarios de nuestras clases de la gestión de cierre del recurso. La sintaxis es más clara y elegante. </p>
+
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/programming/" rel="tag">Programming</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/python/" rel="tag">Python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../../03/30/vim-ver-los-scripts-cargados/" rel="prev" title="vim: Ver los scripts cargados">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../../05/vim-algunos-accesos-rapidos/" rel="next" title="vim: Algunos accesos rápidos">Siguiente publicación</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:daganu@gmail.com">David García</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../../../../assets/js/all-nocdn.js"></script><script src="../../../../../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>
