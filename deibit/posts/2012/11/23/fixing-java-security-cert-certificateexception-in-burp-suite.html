@@ -1,0 +1,17 @@
+<html><body><p>When Burp suite accesses a server with an encrypted channel it depends in some way on the underlying Java Security layer when using java.security classes. It happens that Java 7 disables the old <a href="http://en.wikipedia.org/wiki/MD2_(cryptography)">MD2</a> algorithm by default in its policy file:</p>
+<p>File (windows):  <em>Programs Files\Java\jre7\lib\security\java.security</em></p>
+<p>(excerpt)</p>
+<p>…</p>
+<p><em>jdk.certpath.disabledAlgorithms=MD2</em></p>
+<p><em># Algorithm restrictions for Secure Socket Layer/Transport Layer Security</em><br>
+<em># (SSL/TLS) processing</em><br>
+<em>#</em><br>
+<em># In some environments, certain algorithms or key lengths may be undesirable</em><br>
+<em># when using SSL/TLS. This section describes the mechanism for disabling</em><br>
+<em># algorithms during SSL/TLS security parameters negotiation, including cipher</em><br>
+<em># suites selection, peer authentication and key exchange mechanisms.</em></p>
+<p>…</p>
+<p>So, if we visit any site that supports MD2 Java will raise an exception prenventing Burp from continuing its work. The infamous:</p>
+<p><em>Burp proxy error: java.security.cert.CertificateException: Certificates does not conform to algorithm constraints</em></p>
+<p>Just remove the ‘MD2′ from the directive and save the file. Your problem is gone but the whole Java ecosystem is now exposed and you have to remember to add the constraint again when finishing with Burp.</p>
+</body></html>

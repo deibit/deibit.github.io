@@ -1,0 +1,8 @@
+<html><body><p>When an app is updated it register again as a launcher overpopulating the “Open with” menu each time.</p>
+<p>Run this from a terminal (user permissions is ok) for cleaning the menu by reconstructing the index. Note that you should close Finder before trying the results.</p>
+<p>[sourcecode]</p>
+<p>/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user</p>
+<p>[/sourcecode]</p>
+<p>That’s valid for 10.5 or later.</p>
+<p>via <a href="http://macs.about.com/od/usingyourmac/qt/remove-duplicate-applications-from-open-with.htm">http://macs.about.com/od/usingyourmac/qt/remove-duplicate-applications-from-open-with.htm</a></p>
+</body></html>

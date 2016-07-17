@@ -1,0 +1,7 @@
+<html><body><p>Compilando un proyecto en NetBeans, necesitaba referenciar librerías externas y nativas, es decir dll’s, dyn o so en Windows, Mac OSX y Linux respectivamente.</p>
+<p>En linea de comandos cuando se instancia java existe la opción de pasarle una definición con ‘-D’ y el atributo ‘java.library.path=PATH”. Con esto (en PATH añadimos la ruta entrecomillada) la VM podrá enlazar con las librerías y el programa no se quejará con un <em>java.lang.UnsatisfiedLinkError</em>.</p>
+<p>En Eclipse es muy sencillo añadirlas a través de las propiedades del proyecto (en otro post futuro lo pondré). En NetBeans la cosa anda a medio camino entre linea de comandos e IDE.</p>
+<p>Nos vamos a las propiedades del proyecto y en Run vemos una casilla para las opciones de la VM. Allí podemos poner la misma opción como si se tratara de que la linea de comandos.</p>
+<p>Una imagen:</p>
+<p><a href="http://daganu.files.wordpress.com/2010/12/netbeans.jpg"><img src="http://daganu.files.wordpress.com/2010/12/netbeans.jpg?w=300" alt="" title="netbeans" width="300" height="218" class="aligncenter size-medium wp-image-111"></a></p>
+</body></html>

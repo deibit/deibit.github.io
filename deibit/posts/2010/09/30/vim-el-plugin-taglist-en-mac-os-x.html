@@ -1,0 +1,7 @@
+<html><body><p>El muy útil plugin para Vim TagList necesita de ‘Exhuberant tags’ para funcionar. El ctags que trae Mac cuando se instala XCode y compañía presenta ciertos problemas cuando es usado por TagList (no funciona correctamente).</p>
+<p>Lo primero es instalar ‘ctags’ desde MacPort:</p>
+<p>sudo port install ctags</p>
+<p>Tras la instalación debemos incorporar a nuestro .vimrc la siguiente cadena:</p>
+<p>let Tlist_Ctags_Cmd=’/opt/local/bin/ctags’</p>
+<p>Con esto le decimos al plugin que cuando quiera usar ctags éste se encuentra en la localización que le hemos añadido. Así podrá usar el ctags de MacPort que es el que necesita.</p>
+</body></html>

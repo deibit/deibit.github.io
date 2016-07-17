@@ -1,0 +1,14 @@
+<html><body><p>Para añadir corrección ortográfica a VIM sólo tenemos que introducir:</p>
+<p>:setlocal spell spelllang=es</p>
+<p>Podemos escribirla en el .vimrc para que esté activada por defecto y añadiendo junto a esta opción las siguientes:</p>
+<p>runtime plugins/spellfile.vim<br>set spellfile=~/.vim/dict.add</p>
+<p>Esto nos permite mantener un archivo a modo de diccionario de palabras que no estén en el archivo ortográfico y queramos ir añadiendo.</p>
+<p>Al recargar el .vimrc o arrancar Vim nos preguntaŕa si queremos descargar el archivo de corrección ortográfica y otras cuestiones. Con las respuestas por defecto valdrá para una instalación estándar.</p>
+<p><b>Funcionamiento</b></p>
+<p>Vim señalará en rojo (si Vim fue compilado con syntax habilitado) las palabras que encuentre con errores ortográficos. En el modo normal disponemos de ‘z=’ para poder ver las opciones en un búfer. </p>
+<p>En el modo de inserción podemos hacerlo con el autocompletado Ctrl + x s. Nos presentaŕa un menú con las distintas opciones.</p>
+<p><b>Deshabilitar la corrección</b></p>
+<p>Si nos resulta molesta la corrección por cualquier motivo podemos definir una combinación de teclas para deshabilitarla o directamente :nospell desde ex.</p>
+<p>En el .vimrc:</p>
+<p>nmap ns :set nospell</p>
+</body></html>

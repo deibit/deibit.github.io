@@ -1,0 +1,8 @@
+<html><body><p>En bash, con el comando ‘file’ podemos averiguar que tipo de archivo (codificación, tipo, etc) vamos a editar.</p>
+<p>Recordad que esto lo podemos hace directamente en Vim :!file </p>
+<p>Para cambiar la codificación actual usamos :set fileencoding=</p>
+<p>En mi caso, con un vimrc que sincronizo entre las máquinas (un windows, varios mac y linux) cada vez que edito el .vimrc en una cambio sin querer la codificación y determinados mapeos no se procesan adecuadamente en según que sistema. Por ejemplo al mapear la ‘ñ’ en windows.</p>
+<p>Para que en Mac y Linux puedan procesar un vimrc editado en la codificación que usa Windows:</p>
+<p>:set fileencoding=utf-8</p>
+<p>y :wq</p>
+</body></html>

@@ -1,0 +1,33 @@
+<html><body><p>Los decoradores nos permiten agregar funcionalidad adicional a una función o clase. En Python hay algunos decoradores definidos por el propio lenguaje. Así, cuando queremos declarar a una función de una clase como “estática” o “método de clase” podemos usar un decorador. Las “properties” o propiedades también usan el mecanismo del decorador.</p>
+<p>Anteriormente, antes de los decoradores, la sintaxis para declarar una función estática sin decorador era la siguiente:</p>
+<p>[sourcecode language="python"]<br>
+def mi_funcion():<br>
+    pass<br>
+mi_funcion = staticmethod(mi_funcion)<br>
+[/sourcecode]</p>
+<p>Con el decorador, la sintaxis cambia y queda de la siguiente manera:</p>
+<p>[sourcecode language="python"]<br>
+@staticmethod<br>
+def mi_funcion():<br>
+    pass<br>
+[/sourcecode]</p>
+<p><strong>¿Como funciona un decorador?</strong></p>
+<p>Un decorador es una función que recibe como parámetro la función a decorar y define en su cuerpo a otra función que recibe los parámetros que va a usar la función a decorar (lioso ¿verdad?). Al final se termina devolviendo la función definida en el cuerpo del decorador. Un ejemplo lo explica mejor:</p>
+<p>[sourcecode language="python"]<br>
+def decorador(funcion_a_decorar):<br>
+    def funcion_definida_dentro_del_decorador(*args):<br>
+        print "decorador: aqui podriamos introducir las instrucciones del decorador"<br>
+        funcion_a_decorar(args[0]+1, args[1]+1)<br>
+        print "seguimos en el decorador"<br>
+    return funcion_definida_dentro_del_decorador</p>
+<p>@decorador<br>
+def a_decorar(x,y):<br>
+    print x+y<br>
+[/sourcecode]</p>
+<p>Cuando se define el decorador vemos que recibe como parámetros la función a decorar y que dentro define una función que va a retornar.</p>
+<p>Dentro de la función que retorna (funcion_definida…) se hace uso de la funcion_a_decorar porque obviamente se ha de ejecutar su contenido. Como podemos ver a continuación de la ejecución de la función a decorar se siguen ejecutando instrucciones del decorador.</p>
+<p>Si observamos, la función de dentro del decorador recibe los parámetros (en este caso como no sabemos de antemano su número usamos una lista) de la función a decorar.</p>
+<p><strong>¿Que usos podríamos darle?</strong></p>
+<p>Por ejemplo, en una aplicación web, podemos usar un decorador en las funciones de administración para comprobar que efectivamente el usuario es administrador.<br>
+Otro uso podría ser el de ejecutar una traza de debug cuando se va a entrar en la función a estudiar.</p>
+</body></html>

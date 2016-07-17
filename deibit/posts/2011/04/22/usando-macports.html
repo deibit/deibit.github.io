@@ -1,0 +1,30 @@
+<html><body><p>Una de las carencias de los Macs es que le faltan ciertas librerías o que son anticuadas. Por ejemplo, la versión de GCC que trae por defecto (previa instalación de XCode) es la 4.2.1. Para paliar esa falta hay varias opciones: <a href="https://github.com/mxcl/homebrew">Homebrew</a>, <a href="http://www.macports.org/">MacPorts</a> y <a href="http://www.finkproject.org/">Finks</a>. </p>
+<p>Personalmente uso MacPorts, aunque no he probado los otros, dejo aquí algunos comandos que siempre termino reaprendiendo cada vez que tengo que echar mano de él.</p>
+<p><strong>Buscar algún programa o librería:</strong></p>
+<p>$ port search “palabra”</p>
+<p>Admite varias opciones como: –glob, –regex, –line y –case-sensitive entre otras.</p>
+<p><strong>Instalar:</strong></p>
+<p>$ sudo port install “paquete”</p>
+<p><strong>Desinstalar:</strong></p>
+<p>$ sudo port uninstall “paquete”</p>
+<p>Entre las opciones, permite cargarse o no las dependencias y/o dependencias inversas.</p>
+<p><strong>¿Que tengo instalado?</strong></p>
+<p>$ port installed</p>
+<p><strong>Desinstala los que estén inactivos:</strong></p>
+<p>$ sudo port uninstall inactive</p>
+<p>Me explico. Por defecto MacPorts no desinstala la versión anterior cuando actualizamos (para no romper dependencias) pero si queremos que las borre lo podemos hacer indicando “inactive” a la orden uninstall.</p>
+<p><strong>Actualizar MacPort:</strong></p>
+<p>$ sudo port selfudate</p>
+<p>Esto es para actualizar “port”, la herramienta en si.</p>
+<p><strong>Actualizar paquetes:</strong></p>
+<p>$ sudo port upgrade outdated</p>
+<p><strong>Información sobre un paquete:</strong></p>
+<p>$ port info “paquete”</p>
+<p><strong>Dependencias de un paquete:</strong></p>
+<p>$ port deps “paquete”</p>
+<p>y las inversas: $ port dependents “paquete” </p>
+<p><strong>Hay bastantes más opciones, el programa es muy versátil e intuitivo, si queremos más información: </strong></p>
+<p>$ port help<br>
+o<br>
+$ port help “comando”</p>
+</body></html>

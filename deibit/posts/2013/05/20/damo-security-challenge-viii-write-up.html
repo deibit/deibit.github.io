@@ -1,0 +1,32 @@
+<html><body><p>Well, the (at this time) final challenge of Damo series. A really cool one. I expected it would take me much more time but I must have been lucky solving it.</p>
+<p>This time we have to show our RE skills, more accurately on Java apps. Ok, we just download the zip that contains the GovermentFileStore.jar</p>
+<p>If we execute the app it shows a modal window asking for a username / password. I put it through a http-proxy (Burp) and sniffing all network activity with Wireshark but there weren’t activity at all. I put a wrong combination, failed of course but any network traffic…Ok, username and password are checked at home.</p>
+<p>By using a decompiler we target the custom package: com.security.challenge.eight, just wandering along the code the username/password arises:</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-111301-00001.png"><img class="aligncenter size-medium wp-image-682" alt="2013-05-20 11:13:01 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-111301-00001.png?w=300" width="300" height="230"></a></p>
+<p>Now we can upload files.I did some tries uploading little custom php shells (you know, the system($_GET['cmd']…) but it didn’t feel the way to go. Some of the advices at the challenge page says “flaws in the application”. Ok let’s change the strategy.</p>
+<p>From the captured traffic at Burp, our requests to the upload script uses a Basic Authentication coded string:</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-134505-00001.png"><img class="aligncenter size-medium wp-image-683" alt="2013-05-20 13:45:05 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-134505-00001.png?w=300" width="300" height="101"></a></p>
+<p>From the request we take the Basic Authentication value:</p>
+<p>Host: damo.clanteam.com<br>
+<strong>Authorization: Basic YWRtaW5pc3RyYXRvcjphZGYwODkyM2RoZGZzZGZnNzQ1a2x4</strong><br>
+Accept: */*<br>
+Accept-Language: en<br>
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)<br>
+Connection: close</p>
+<p>When we decoded it (base64) results in:</p>
+<p>administrator:adf08923dhdfsdfg745klx</p>
+<p>Now we can tinker with it in the browser at the file_upload folder:</p>
+<p><img class="aligncenter size-medium wp-image-684" alt="2013-05-20 13:19:18 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-131918-00001.png?w=300" width="300" height="191"></p>
+<p>Besides other contestants stuff the admin’s file is there. What? ok, the older one and the first from the list.</p>
+<p>Now if we try to uncompress the file (a Zip format) it ask for a password.</p>
+<p>When we upload the file it seems to be already compressed (pay attention at the PK signature of the second screenshot) so the application is compressing and cyphering the zip. Additionally the package of the decompiled Java net.lingala.zip4j confirms all.</p>
+<p>Well, again, looking at the code it looked clear:</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-132656-00001.png"><img class="aligncenter size-medium wp-image-685" alt="2013-05-20 13:26:56 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-132656-00001.png?w=300" width="300" height="37"></a></p>
+<p>If the original filename was: <em>memo_to_hof_admin.txt</em> We only need to know the SHA1 hash of the filename (Python):</p>
+<p>&gt;&gt;&gt; hashlib.sha1(“memo_to_hof_admin.txt”).hexdigest()<br>
+’293b663b729409237c28c2ff5659b0ba22caf50b’</p>
+<p>Uncompressing the zip gives us a txt file with the following content:</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-20-135525-00001.png"><img class="aligncenter size-medium wp-image-686" alt="2013-05-20 13:55:25 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-20-135525-00001.png?w=300" width="300" height="139"></a></p>
+<p>And that’s all! We are done.</p>
+<p>Kudos to <a href="http://damo.clanteam.com/">damo</a> for the challenges, it was a pleasure to play with them.</p>
+</body></html>

@@ -1,0 +1,13 @@
+<html><body><p>I was watching a tv show when xbmc suddenly crashes Apple TV. It rebooted and I continued play the movie. 10 minutes later the issue appeared again…and so on but always a 10 minutes lapse.</p>
+<p>I checked manually if a new update for ATV2 would exists and yes, there was a new update. I pressed later (thanks, but I want my device as is it) and figured out how I could cut ATV2 from calling back home.</p>
+<p>Easy, tell ATV2 a nice 127.0.0.1 answer to its request when asking for the update center domain.</p>
+<p>¿What’s the domain?</p>
+<p>As a programmer I’m soooo lazy. One way would be listening tcpdump for a DNS request, but this is a large amount of time (10 minutes) and a lot of keystroking. </p>
+<p>Gooling a little I <a href="http://forum.xbmc.org/showthread.php?t=91502&amp;page=4">found</a> the domain.</p>
+<p>ssh your ATV2 (root@IP)<br>
+apt-get install nano<br>
+nano /etc/hosts</p>
+<p>and add this:</p>
+<p>127.0.0.1      mesu.apple.com</p>
+<p>After watching 2 shows more XBMC is still running and waiting orders!</p>
+</body></html>

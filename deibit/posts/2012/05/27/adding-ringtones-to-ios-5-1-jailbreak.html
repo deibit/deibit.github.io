@@ -1,0 +1,13 @@
+<html><body><p>As we may expect Apple does the easy almost impossible but…in a elegant way!</p>
+<p>So an easy way to push ringtones to a jailbroken iPhone (iOS 5.1) is (you should have installed ssh services):</p>
+<p>1.- Take your favorite tune and open it in iTunes</p>
+<p>2.- Right click and export to AAC</p>
+<p>3.- Show it in Finder and change file extension from ‘.m4a’ to ‘.m4r’ and drag it to the Desktop (or another handy folder)</p>
+<p>4.- Open a terminal an ssh to your device</p>
+<p>5.- Locate this folder: “/var/stash/Ringtones.aOqYcf/” . It may seem the same except the latter part.</p>
+<p>6.- Copy that path</p>
+<p>7.- Open a terminal in your Mac (or PuTTY in Windows)</p>
+<p>8.- Type this replacing the values:</p>
+<p>scp TONENAME.m4r root@IPOFYOURDEVICE:/var/stash/Ringtones.aOqYcf/TONENAME.m4r</p>
+<p>9.- Enjoy your tune!</p>
+</body></html>

@@ -1,0 +1,12 @@
+<html><body><p>One of the features of other editors (put: SublimeText or Notepad++) that is not native to Vim is move selected text via Ctrl+shift+arrow.</p>
+<p>But of course this is not problem in Vim, just add this to your .vimrc:</p>
+<p>[sourcecode]</p>
+<p>nnoremap &lt;c-s-down&gt; :m+&lt;CR&gt;==<br>
+nnoremap &lt;c-s-up&gt; :m-2&lt;CR&gt;==<br>
+inoremap &lt;c-s-down&gt; &lt;Esc&gt;:m+&lt;CR&gt;==gi<br>
+inoremap &lt;c-s-up&gt; &lt;Esc&gt;:m-2&lt;CR&gt;==gi<br>
+vnoremap &lt;c-s-down&gt; :m’&gt;+&lt;CR&gt;gv=gv<br>
+vnoremap &lt;c-s-up&gt; :m-2&lt;CR&gt;gv=gv</p>
+<p>[/sourcecode]</p>
+<p>source: <a href="http://vim.wikia.com/wiki/Moving_lines_up_or_down">http://vim.wikia.com/wiki/Moving_lines_up_or_down</a></p>
+</body></html>

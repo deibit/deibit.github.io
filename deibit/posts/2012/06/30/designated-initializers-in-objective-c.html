@@ -1,0 +1,44 @@
+<html><body><p>Object construction in Objective C is a two phase procedure. First the object has to be allocated in memory, hence the ‘alloc’ message we always see when a object is invoked this way (and not for example via a ‘get…’, which would be a Factory):</p>
+<p>[sourcecode language="objc"]<br>
+MyObject* o = [[MyObject alloc] init];<br>
+[/sourcecode]</p>
+<p>Second phase involves object initialization which is quite similar to what would be a constructor in C++. When we implement method ‘init’ (which is just a convention) we have to take care on superclass designated initializer . But, what is a designated initializer at all?</p>
+<p>Designated initializer is the method that best set up our object between all initializer methods. An example:</p>
+<p>[sourcecode language="objc"]<br>
+- (id) init:<br>
+- (id) initWithColor:(NSColor*)color;<br>
+- (id) initWithColor:(NSColor*)color andSize:(NSInteger)size;<br>
+[/sourcecode]</p>
+<p>What method do you think is the most complete?</p>
+<p>Our third method includes two parameter while the other only one or none.</p>
+<p>Now, we got a pattern that you are going to see every time you implement your own objects:</p>
+<p>[sourcecode language="objc"]<br>
+- (id) init<br>
+{<br>
+if (self = [super init]) {<br>
+}<br>
+return self;<br>
+}<br>
+[/sourcecode]</p>
+<p>This is the most basic method. It neither do variable initialization nor call other initializers. It just call its superclass initializer, check its got a valid pointer back (thus not nil) and return self.</p>
+<p>But if we got any other initializer methods we must call our most complete initializer. This is the designated initializer. So instead of our light ‘init’ tiny method we would have to call initWithColor:andSize:</p>
+<p>[sourcecode language="objc"]<br>
+- (id) init<br>
+{<br>
+NSColor* color = [NSColor greenColor];<br>
+NSInteger size = 30;<br>
+return [self initWithColor:color andSize:size];<br>
+}<br>
+[/sourcecode]</p>
+<p>and in our initWithColor:andSize:</p>
+<p>[sourcecode language="objc"]<br>
+- (id) initWithColor:(NSColor*)color andSize:(NSInteger)size<br>
+{<br>
+if (self = [super init]) {<br>
+_color = [color retain];<br>
+_size = size;<br>
+}<br>
+return self<br>
+}<br>
+[/sourcecode]</p>
+</body></html>

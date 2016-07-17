@@ -1,0 +1,6 @@
+<html><body><p>Al pasar archivos editados en VIM de un sistema a otro puede ocurrir que nos de error cuando son interpretado (las dichosas terminaciones entre otros).</p>
+<p>Esta secuencia Ex hace que se guarde el archivo del bufer actual de DOS a UNIX:</p>
+<p>:update<br>:e ++ff=dos<br>:setlocal ff=unix<br>:w</p>
+<p>Actualiza el bufer actual. Añade a ‘ff’ (file format) el formato dos, indicando que lo así sea interpretado. Ajusta ‘ff’ al valor unix y convierte el archivo. Por último guardamos.</p>
+<p>Visto y más información <a href="http://vim.wikia.com/wiki/File_format">aquí</a>.</p>
+</body></html>

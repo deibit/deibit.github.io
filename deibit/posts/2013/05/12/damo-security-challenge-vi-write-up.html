@@ -1,0 +1,15 @@
+<html><body><p>I managed to have to some time to post on another write up. This is the challenge number 6 (ta-ta-taaaa), numbers IV, V, IX and X are offline by now.</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-12-100706-00001.png"><img class="aligncenter size-medium wp-image-667" alt="2013-05-12 10:07:06 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-12-100706-00001.png?w=300" width="300" height="203"></a></p>
+<p>We have the Hall of Fame page (like previous challenges) a members area and this time a Register functionality where you can have an account.</p>
+<p>After creating an account proceed to the login page and mark the remember me box. By doing this two cookies will be created: usernamesch6 and passwordsch6. Their values are codified in base64 (The username and the sha-512 hash of the password). This behavior marks the different so the key is close to those values.</p>
+<p>The application has to check if the user is admin before write a name in the Hall of Fame (We are in Members Only Area). Only the admin user is able to write there. How would the application check if the user is really the admin?</p>
+<p>A possible SQL sentence could be this way:</p>
+<p>SELECT ‘usernamesch6′ FROM users_table WHERE admin = ‘yes’ AND password = ‘passwordsch6′;</p>
+<p>So we need to get the sentence this form:</p>
+<p>SELECT ‘usernamesch6′ FROM users_table WHERE admin = ‘yes’ AND password =’1′ OR ’1′=’1′;</p>
+<p>Then the query will be affirmative and the application would think we are admin.</p>
+<p>Because the application decodes the value in base64 we previously need to code in base64 our payload.</p>
+<p>Payload should be 1′ OR ’1′=’1 which in base64 is the string: MScgT1IgJzEnPScx</p>
+<p>We set it in our cookie passwordsch6 and work done!</p>
+<p><a href="http://daganu.files.wordpress.com/2013/05/2013-05-12-104147-00001.png"><img class="aligncenter size-medium wp-image-669" alt="2013-05-12 10:41:47 +00001" src="http://daganu.files.wordpress.com/2013/05/2013-05-12-104147-00001.png?w=300" width="300" height="156"></a></p>
+</body></html>

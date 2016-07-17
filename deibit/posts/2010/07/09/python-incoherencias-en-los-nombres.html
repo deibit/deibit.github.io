@@ -1,0 +1,19 @@
+<html><body><p>Una de las cosas que más valoro de Java es la consistencia en el empleo de estilo con respecto a los nombres de métodos, clases, etc. En Python, a pesar del <a href="http://www.python.org/dev/peps/pep-0008/">PEP8 </a>que indica o recomienda ciertos usos, nos encontramos con una variedad de estilos en los nombres de funciones y métodos de clases:</p>
+<p>Del módulo ‘<i>threading</i>‘:</p>
+<p>Como se inspiró en la API de Java, nos encontramos con el camelCase habitual:</p>
+<p><i>threading.currentThread()</i></p>
+<p>Sin embargo, han sido renombrados para que sean conformes al PEP8:</p>
+<p><i>threading.current_thread()</i></p>
+<p>y además: <i>“However, no schedule has been set for the deprecation of the camelCase  names and they remain fully supported in both Python 2.x and 3.x.”</i></p>
+<p>Lo cual se traduce que incluso en la versión 3 de Python nos vamos a topar con distintos estilos en los fuentes que encontremos.</p>
+<p>Más. Los nombres de función han de ser en minúsculas y separados por guión bajo:</p>
+<p><i>esto_es_una_funcion()</i></p>
+<p>Pero, nuevamente en el módulo ‘<i>threading</i>‘:</p>
+<p><i>threading.Condition()<br>A factory function that returns a new….</i></p>
+<p>No acaba aquí la cosa, en los nombres de módulos:</p>
+<p><i>Modules should have short, all-lowercase names.</i></p>
+<p>Y como no, nos encontramos en los módulos estándar:</p>
+<p><i>BaseHTTPServer<br>ConfigParser<br>cPickle<br>cProfile </i><br>…</p>
+<p>Aunque muchos de ellos se están pasando al estilo del PEP8.</p>
+<p>Esto (y el cansino ‘self’) es una de las cosillas que molestan de Python. Seguir un estilo es utilísimo, con sólo un vistazo, sabemos que tenemos delante, máxime en un lenguaje dinámico donde no tenemos el apoyo de la sintaxis explicita (int, float…) al declarar un objeto.</p>
+</body></html>

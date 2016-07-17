@@ -1,0 +1,71 @@
+<html><body><p>Un iterador es un objeto sobre el que se puede…iterar. Aunque parece una obviedad es así. No puedes iterar sobre un número o tipo entero, ya que carece de la capacidad de iterar. Pero por ejemplo una lista si tiene esa capacidad:</p>
+<p>[sourcecode]<br>
+&gt;&gt;&gt; for n in [1,2,3]:<br>
+…     print n<br>
+…<br>
+1<br>
+2<br>
+3<br>
+&gt;&gt;&gt;<br>
+[/sourcecode]</p>
+<p>¿Que hace que un objeto pueda iterar? Lo hace gracias a un “protocolo”. Cuando se itera, en este caso en el bucle ‘for’, se llama a un método denominado ‘__iter__’, este método que pertenece al objeto lista (y a cualquier otro que lo implemente) va a devolver un objeto “iterator” y sobre el es sobre el que vamos a iterar:</p>
+<p>[sourcecode]<br>
+&gt;&gt;&gt; dir([])<br>
+['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__delslice__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getslice__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__setslice__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']<br>
+&gt;&gt;&gt; [1,2,3].__iter__()<br>
+&lt;listiterator object at 0xb74b69cc&gt;<br>
+&gt;&gt;&gt; a = [1,2,3].__iter__()<br>
+&gt;&gt;&gt; type(a)<br>
+&lt;type ‘listiterator’&gt;<br>
+[/sourcecode]</p>
+<p>Vemos como el objeto lista tiene el método ‘__iter__’ y que al ser llamado devuelve un objeto iterador. Este objeto lo asignamos a ‘a’.</p>
+<p>Ahora vemos que el objeto iterador implementa un método llamado ‘next’. Este método proporciona un objeto de la lista cada vez que es llamado o mejor dicho, cada vez que se produce una “iteración”. Al no haber más números en la lista, ‘next’, hace saltar la excepción “StopIteration”. La instrucción ‘for’ no propaga la excepción, simplemente la usa para salir de la iteración o bucle.</p>
+<p>[sourcecode]<br>
+&gt;&gt;&gt; dir(a)<br>
+['__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__iter__', '__length_hint__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'next']<br>
+&gt;&gt;&gt; a.next()<br>
+1<br>
+&gt;&gt;&gt; a.next()<br>
+2<br>
+&gt;&gt;&gt; a.next()<br>
+3<br>
+&gt;&gt;&gt; a.next()<br>
+Traceback (most recent call last):<br>
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;<br>
+StopIteration<br>
+&gt;&gt;&gt;<br>
+[/sourcecode]</p>
+<p>¿Podríamos construir nosotros nuestro propio iterador?</p>
+<p>Como no:</p>
+<p>[sourcecode language="python"]<br>
+class MyIter(object):<br>
+    def __init__(self, n):<br>
+        self.lista = range(1, n+1)<br>
+        self.index = -1<br>
+        self.limit = n<br>
+    def __iter__(self):<br>
+        return self<br>
+    def next(self):<br>
+        self.index += 1<br>
+        if self.index == self.limit:<br>
+            raise StopIteration<br>
+        else:<br>
+            return self.lista[self.index]<br>
+[/sourcecode]</p>
+<p>Implementamos ‘__iter__’ que va a devolver al mismo objeto que implementa ‘next’ un metodo que será llamado hasta que devuelva todos los valores que contiene. En ese momento hace saltar la excepción ‘StopIteration’ para que el consumidor sepa que ya no hay más valores disponibles.</p>
+<p>[sourcecode]<br>
+&gt;&gt;&gt; m = myiter.MyIter(8)<br>
+&gt;&gt;&gt; for n in m: print n<br>
+…<br>
+1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+&gt;&gt;&gt;<br>
+[/sourcecode]</p>
+<p>Relacionado con esto se puede ver el módulo ‘itertools’ y el tema de generadores.</p>
+</body></html>

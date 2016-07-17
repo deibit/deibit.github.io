@@ -1,0 +1,11 @@
+<html><body><p>Well I called it obfuscated parameters albeit what happens is that the params are rewritten, let’s see:</p>
+<p>This is a common URL:</p>
+<p>http://www.prisonernumbersix.com/article.php?id=1231</p>
+<p>But we can rewrite that URL and show an alternative, more beautiful:</p>
+<p>http://www.prisonernumbersix.com/article/1231</p>
+<p>sqlmap works testing every parameter by default, optionally we can point a parameter with ‘-p’ option. </p>
+<p>Problem here is that sqlmap is unaware when we try to test a “beautiful” URL.</p>
+<p>Solution is easy: mark parameter as an *</p>
+<p>Taking our example URL we call sqlmap this way:</p>
+<p>./sqlmap.py -u”http://www.prisonernumbersix.com/article/param1*” and that’s all!</p>
+</body></html>

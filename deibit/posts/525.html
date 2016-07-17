@@ -1,0 +1,17 @@
+<html><body><p>Every time I have to install Metasploit in a new machine I need to dive into zillions of pages about setting up MSF (for Metasploit Framework).<br>
+Setting it up is not complicated but when it comes to connect postgres…things tends to be harder.</p>
+<p>Before, make sure to install</p>
+<p>So first, get MSF from github repository:</p>
+<p>git clone https://github.com/rapid7/metasploit-framework.git metasploit</p>
+<p>install ruby dependencies:</p>
+<p>gem install pg</p>
+<p>$ sudo -u postgres createuser –superuser msf<br>
+$ sudo -u postgres psql<br>
+postgres=# \password msf<br>
+(I choose msf too)<br>
+postgres=# createdb msfdb<br>
+postgres=# \q</p>
+<p>Now on MSF:</p>
+<p>db_connect msf:msf@localhost/msfdb</p>
+<p> </p>
+</body></html>
