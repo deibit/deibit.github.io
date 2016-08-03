@@ -127,17 +127,17 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 #          ``STRIP_INDEXES``.  If it’s set to ``True``, end your links
 #          with a ``/``, otherwise end them with ``/index.html`` — or
 #          else they won’t be highlighted when active.
-
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ("/archive.html", "Archive"),
-        ("/categories/", "Tags"),
-        ("/rss.xml", "RSS"),
+        ("/index.html", "Home"),
+        ("/archive.html", "Archives"),
+        ("/categories/index.html", "Tags"),
+        ("/rss.xml", "RSS feed"),
     ),
 }
 
 # Name of the theme to use.
-THEME = "bootstrap3"
+THEME = "bootblog-jinja"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
@@ -1194,7 +1194,20 @@ UNSLUGIFY_TITLES = True
 
 # Put in global_context things you want available on all your templates.
 # It can be anything, data, functions, modules, etc.
-GLOBAL_CONTEXT = {}
+GLOBAL_CONTEXT = {'blog_sidebar': """\
+<div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>Welcome to my site!</p>
+</div>
+<div class="sidebar-module">
+  <h4>Links</h4>
+  <ol class="list-unstyled">
+    <li><a href="http://deibit.com/">Blog</a></li>
+    <li><a href="https://github.com/deibit">Github</a></li>
+    <li><a href="https://twitter.com/dgn1729">@dgn1729</a></li>
+  </ol>
+</div>
+"""}
 
 # Add functions here and they will be called with template
 # GLOBAL_CONTEXT as parameter when the template is about to be
