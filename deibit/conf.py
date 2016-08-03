@@ -845,9 +845,9 @@ COMMENT_SYSTEM_ID = "deibit-com"
 #          will not be generated for that directory.
 # STORY_INDEX = False
 # Enable comments on story pages?
-# COMMENTS_IN_STORIES = False
+COMMENTS_IN_STORIES = False
 # Enable comments on picture gallery pages?
-# COMMENTS_IN_GALLERIES = False
+COMMENTS_IN_GALLERIES = False
 
 # What file should be used for directory indexes?
 # Defaults to index.html
@@ -1089,19 +1089,6 @@ BODY_END =  '''
   ga('send', 'pageview');
 
 </script><div id="disqus_thread"></div>
-<script>
-  var disqus_config = function () {
-              this.page.url = PAGE_URL;
-              this.page.identifier = PAGE_IDENTIFIER;
-};
-  (function() { // DON'T EDIT BELOW THIS LINE
-          var d = document, s = d.createElement('script');
-              s.src = '//deibit-com.disqus.com/embed.js';
-                  s.setAttribute('data-timestamp', +new Date());
-                      (d.head || d.body).appendChild(s);
-                      })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   }'''
 
 # The possibility to extract metadata from the filename by using a
